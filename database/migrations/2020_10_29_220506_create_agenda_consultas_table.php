@@ -16,8 +16,13 @@ class CreateAgendaConsultasTable extends Migration
         Schema::create('agenda_consultas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('paciente_id');
+            $table->unsignedBigInteger('doutor_id');
             $table->date('data_consulta');
+            $table->string('sala_consulta', 60);
             $table->timestamps();
+
+            $table->foreign('paciente_id')->references('id')->on('pacientes');
+            $table->foreign('doutor_id')->references('id')->on('doutores');
         });
     }
 

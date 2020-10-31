@@ -19,6 +19,9 @@
             roomName: "{{$metting_option['name_room']}}",
             width: 920,
             height: 620,
+            userInfo: {
+              displayName: "{{$metting_option['user_name']}}"
+            },
             interfaceConfigOverwrite: {
                 filmStripOnly: false,
                 TOOLBAR_BUTTONS: [
