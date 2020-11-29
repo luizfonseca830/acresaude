@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pacientes;
+use App\Models\Pessoa;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -29,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,6 +54,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'nome' => ['required', 'string', 'max:255'],
             'sobrenome' => ['required', 'string', 'max:255'],
+            'cpf' => ['required', 'max:30'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'usuario' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
@@ -66,12 +69,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'nome' => $data['nome'],
-            'sobrenome' => $data['sobrenome'],
+        $user = User::create([
             'usuario' => $data['usuario'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        Pessoa::create([
+            'user_id' => $user->id,
+            'nome' => $data['nome'],
+            'sobrenome' => $data['sobrenome'],
+            'cpf' => $data['cpf'],
+            'tipo_usuario_id' => 3, // => PACIENTE
+        ]);
+
+        return $user;
     }
 }

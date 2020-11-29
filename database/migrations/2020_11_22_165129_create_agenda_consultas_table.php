@@ -21,8 +21,8 @@ class CreateAgendaConsultasTable extends Migration
             $table->string('sala_consulta', 60);
             $table->timestamps();
 
-            $table->foreign('paciente_id')->references('id')->on('pacientes');
-            $table->foreign('doutor_id')->references('id')->on('doutores');
+            $table->foreign('paciente_id')->references('id')->on('pessoas');
+            $table->foreign('doutor_id')->references('id')->on('pessoas');
         });
     }
 
