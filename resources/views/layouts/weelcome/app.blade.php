@@ -19,14 +19,16 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/welcome/menu.css')}}">
+    @yield('link-css')
 </head>
 <body>
 <div id="app">
 
-    <main class="py-4">
+    <main class="py-5">
         @extends('layouts.weelcome.menu')
         @yield('content')
     </main>
 </div>
 </body>
+@yield('link-scirpt')
 </html>
