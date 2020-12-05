@@ -16,4 +16,8 @@ class Pessoa extends Model
         'sobrenome',
         'cpf',
     ];
+
+    public function tipoUsuario(){
+        return $this->hasOne(TipoUsuario::class,'id', 'tipo_usuario_id');
+    }
 }
