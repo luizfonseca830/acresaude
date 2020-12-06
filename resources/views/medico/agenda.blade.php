@@ -7,27 +7,70 @@
 
 @section('content')
     <div class="container ajuste">
+        <div class="row new_agenda">
+            <a data-toggle="modal" data-target="#agenda"><input type="button" class="btn btn-outline-primary" value="Adicionar na Agenda"></a>
+        </div>
+        @if(session()->has('sucess'))
+            <div class="alert alert-success">{{ session('sucess') }}</div>
+            {{session()->forget('sucess')}}
+        @endif
         <div id='wrap'>
-
-            <div id='external-events'>
-                <h4>Eventos</h4>
-
-                <div id='external-events-list'>
-                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                        <div class='fc-event-main'>Adiciona dia de consulta</div>
-                    </div>
-                </div>
-
-                <p>
-                    <input type='checkbox' id='drop-remove'/>
-                    <label for='drop-remove'>remove after drop</label>
-                </p>
-            </div>
-
             <div id='calendar-wrap'>
                 <div id='calendar' data-route-load-agenda="{{route('routeLoadAgenda')}}"></div>
             </div>
+        </div>
+    </div>
+    {{--    MODAL--}}
+    <div class="modal fade" id="agenda" tabindex="-1" role="dialog" aria-labelledby="agenda" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Informações da Agenda</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="{{route('agenda.store')}}">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="exampleInputTitulo">Título</label>
+                            <input type="text" class="form-control" name="titulo" id="exampleInputTitulo" placeholder="Digito o título" required>
+                            @error('titulo')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
 
+                        <div class="form-group">
+                            <label for="exampleInputDateInicio">Data de Início</label>
+                            <input type="datetime-local" name="start" class="form-control" id="exampleInputDateInicio" required>
+                            @error('start')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputDateFim">Data de Finalização</label>
+                            <input type="datetime-local" name="end" class="form-control" id="exampleInputDateFim" required>
+                            @error('end')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputDesc">Descrição</label>
+                            <textarea class="form-control" name="descricao" id="exampleInputDesc" rows="2"></textarea>
+                            @error('descricao')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fecha</button>
+                        <input type="submit" class="btn btn-primary" value="Confirmar Compra">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 @endsection

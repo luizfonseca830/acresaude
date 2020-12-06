@@ -44,9 +44,19 @@
                                     @if(auth()->user()->pessoa->tipoUsuario->nome == 'Doutor')
                                         <a class="dropdown-item" href="{{route('agenda.index')}}">Agenda Pessoal</a>
                                     @endif
-                                    <a class="dropdown-item" href="#">Consultas Marcadas</a>
+
+                                    @if(auth()->user()->pessoa->tipoUsuario->nome == 'Doutor')
+                                        <a class="dropdown-item" href="{{route('medico.consultas.index')}}">Consultas
+                                            Marcadas</a>
+                                    @else
+                                        <a class="dropdown-item" href="{{route('paciente.consultas.index')}}">Consultas
+                                            Marcadas</a>
+                                    @endif
                                     <a class="dropdown-item" href="{{route('minhascompras.index')}}">Minhas Compras</a>
-                                    <a class="dropdown-item" href="#">Sair</a>
+                                    <form method="post" action="{{route('sair')}}">
+                                        @csrf
+                                        <input type="submit" class="dropdown-item" value="Sair">
+                                    </form>
                                 </div>
                             </li>
                         </ul>

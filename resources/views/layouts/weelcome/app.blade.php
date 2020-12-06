@@ -19,16 +19,18 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/welcome/menu.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
     @yield('link-css')
 </head>
 <body>
 <div id="app">
-
     <main class="py-5">
         @extends('layouts.weelcome.menu')
         @yield('content')
     </main>
 </div>
+@yield('container')
 </body>
+<script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
 @yield('link-scirpt')
 </html>

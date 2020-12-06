@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Loja;
 
 use App\Http\Controllers\Controller;
+use App\Models\AgendaConsultas;
 use App\Models\Compras;
 use App\Models\InformacaoCompras;
 use Illuminate\Http\Request;
@@ -53,7 +54,7 @@ class LojaController extends Controller
             'status_compra' => 0,
         ]);
 
-        return redirect()->route('/');
+        return redirect()->route('inicio');
     }
 
     /**

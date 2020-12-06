@@ -20,4 +20,8 @@ class Pessoa extends Model
     public function tipoUsuario(){
         return $this->hasOne(TipoUsuario::class,'id', 'tipo_usuario_id');
     }
+
+    public function medico(){
+        return $this->hasOne(Medico::class, 'pessoa_id', 'id');
+    }
 }

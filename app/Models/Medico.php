@@ -17,4 +17,12 @@ class Medico extends Model
     public function agenda(){
         return $this->hasMany(AgendaMedico::class, 'medico_id', 'id');
     }
+
+    public function pessoa(){
+        return $this->hasOne(Pessoa::class, 'id', 'pessoa_id');
+    }
+
+    public function especialide(){
+        return $this->hasOne(EspecilidadeMedico::class, 'id', 'especialidade_medico_id');
+    }
 }

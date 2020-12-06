@@ -1,0 +1,13 @@
+.prontuario {
+    position:fixed;
+    left:75%;
+    padding:10px;
+    width:350px;
+    border:3px solid rgba(6, 115, 250, 0.5);
+    border-radius: 25px ;
+    background: rgba(6, 115, 250, 0.5);
+}
+
+h5 {
+    font-weight: bold;
+}

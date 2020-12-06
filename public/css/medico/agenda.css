@@ -1,14 +1,11 @@
-body {
-    margin-top: 40px;
-    font-size: 14px;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+.new_agenda {
+    margin-bottom: 2%;
+    margin-left: 85%;
 }
 
 #external-events {
-    position: fixed;
-    left: 100px;
     top: 180px;
-    width: 250px;
+    width: 100%;
     padding: 0 10px;
     border: 1px solid #ccc;
     background: #eee;
@@ -35,10 +32,6 @@ body {
 #external-events p input {
     margin: 0;
     vertical-align: middle;
-}
-
-#calendar-wrap {
-    margin-left: 200px;
 }
 
 #calendar {

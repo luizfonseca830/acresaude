@@ -11,7 +11,9 @@ class AgendaConsultas extends Model
 
     protected $table = 'agenda_consultas';
 
-    protected $fillable = ['paciente_id', 'doutor_id', 'data_consulta', 'sala_consulta'];
+    protected $fillable = ['paciente_id', 'medico_id', 'compra_id', 'agenda_id', 'data_consulta', 'sala_consulta', 'status_finalizado', 'status_reserva'];
 
-
+    public function paciente(){
+        return $this->hasOne(Pessoa::class, 'id', 'paciente_id');
+    }
 }
