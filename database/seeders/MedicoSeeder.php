@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\EspecilidadeMedico;
+use App\Models\Medico;
 use Illuminate\Database\Seeder;
 
-class EspecialidadeMedicoSeeder extends Seeder
+class MedicoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,9 @@ class EspecialidadeMedicoSeeder extends Seeder
     public function run()
     {
         //
-        EspecilidadeMedico::create([
-            'nome' => 'Pediatria',
+        Medico::create([
+            'pessoa_id' => 1,
+            'especialidade_medico_id' => 1,
         ]);
     }
 }
