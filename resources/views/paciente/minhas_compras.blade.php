@@ -4,6 +4,10 @@
 @endsection
 @section('content')
     <div class="container ajuste">
+        @if(session()->has('sucess'))
+            <div class="alert alert-success">{{ session('sucess') }}</div>
+            {{session()->forget('sucess')}}
+        @endif
         <table class="table">
             <thead>
             <tr>
@@ -20,12 +24,25 @@
                     <th>{{$compra->id}}</th>
                     <th>Consulta</th>
                     <th>{{$compra->created_at}}</th>
-                    @if($compra->status == 0)
+                    @if($compra->status_compra == 0)
                         <th class="text-warning font-weight-bold">Pendente</th>
-                    @elseif($compra->status == 1)
-                        <th class="text-success font-weight-bold">Pago</th>
+                    @elseif($compra->status_compra == 1 && !is_null($compra->agendaConsulta))
+                        @if(!is_null($compra->agendaConsulta->compra_id) && is_null($compra->agendaConsulta->sala_consulta))
+                            <th class="text-success font-weight-bold">Agendado</th>
+                        @elseif (!is_null($compra->agendaConsulta->status_finalizado))
+                            <th class="text-success font-weight-bold">Consulta Finalizada</th>
+                        @else
+                            <th class="text-success font-weight-bold">Pago</th>
+                        @endif
+                    @elseif(!is_null($compra->agendaConsulta->compra_id) && is_null($compra->agendaConsulta->sala_consulta))
+                        <th class="text-success font-weight-bold">Agendado</th>
                     @else
                         <th class="text-danger font-weight-bold">Recusado</th>
+                    @endif
+                    {{--ACOES--}}
+                    @if(is_null($compra->agendaConsulta))
+                        <th><a href="{{route('paciente.agenda.index', $compra->id)}}"><i
+                                    class="fas fa-calendar-alt fa-2x"></i></a></th>
                     @endif
                 </tr>
             @endforeach

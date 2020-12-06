@@ -1,18 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    /* initialize the external events
-    -----------------------------------------------------------------*/
-
-    var containerEl = document.getElementById('external-events-list');
-    new FullCalendar.Draggable(containerEl, {
-        itemSelector: '.fc-event',
-        eventData: function(eventEl) {
-            return {
-                title: eventEl.innerText.trim()
-            }
-        }
-    });
-
     /* initialize the calendar
     -----------------------------------------------------------------*/
 

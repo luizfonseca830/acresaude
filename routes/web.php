@@ -21,15 +21,35 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function () {
-    //
-    Route::get('/atendimento', [\App\Http\Controllers\Metting\MettingController::class, 'index'])->name('atendimento.index');
-    Route::get('/atendimento/{id}', [\App\Http\Controllers\Metting\MettingController::class, 'show'])->name('atendimento.show');
+    //SAIR
+    Route::post('/sair', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('sair');
 
     Route::get('/loja', [\App\Http\Controllers\Loja\LojaController::class, 'index'])->name('loja.index');
     Route::post('/loja/store', [\App\Http\Controllers\Loja\LojaController::class, 'store'])->name('loja.store');
     Route::get('/minhascompras', [\App\Http\Controllers\Pessoa\MinhasComprasController::class, 'index'])->name('minhascompras.index');
 
-//    MEDICO
+//    MEDICO AGENDA
     Route::get('/agenda', [\App\Http\Controllers\Medico\AgendaController::class, 'index'])->name('agenda.index');
     Route::get('/load-agenda', [\App\Http\Controllers\Medico\AgendaController::class, 'loadAgenda'])->name('routeLoadAgenda');
+    Route::post('/agenda/store', [\App\Http\Controllers\Medico\AgendaController::class, 'store'])->name('agenda.store');
+
+    //PACIENTE AGENDA
+    Route::match(['get', 'post'],'/agenda/consulta/{id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'index'])->name('paciente.agenda.index');
+    Route::post('/ajax/busca', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'show'])->name('paciente.agenda.ajax');
+    Route::match(['get', 'post'],'/consulta/marca/{compra_id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'marcaConsulta'])->name('paciente.maracaConsulta');
+
+    //PACIENTE CONSULTA
+    Route::get('/paciente/minhasconsultas', [\App\Http\Controllers\Paciente\MinhasConsultasController::class, 'index'])->name('paciente.consultas.index');
+
+    //MEDICO CONSULTA
+    Route::get('/medico/minhasconsultas', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'index'])->name('medico.consultas.index');
+    Route::get('/medico/consulta/criar/{consulta_id}', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'update'])->name('medico.consultas.update');
+    Route::match(['get', 'post'], 'medico/consulta/salvarprontuario/{consulta_id}', [\App\Http\Controllers\Medico\ProntuarioController::class, 'salvaProntuario'])->name('medico.consulta.salvaProntuario');
+    Route::get('/medico/salva/{id}', [\App\Http\Controllers\Medico\ProntuarioController::class, 'store'])->name('medico.salva');
+    //CARREGAR SALA
+    Route::get('/carregarsala', [\App\Http\Controllers\Atendimento\AtendimentoController::class, 'index'])->name('atendimento.index');
+    //CARREGAR SALA PACIENTE
+    Route::get('/paciente/carregarsala/{id}', [\App\Http\Controllers\Paciente\MinhasConsultasController::class, 'entrarNaSala'])->name('paciente.carregarsala');
+    //FINALIZAR SALA PACIENTE
+    Route::post('/paciente/finalizar', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'finalizarConsulta'])->name('paciente.finalizarConsulta');
 });

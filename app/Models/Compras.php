@@ -18,4 +18,8 @@ class Compras extends Model
     public function info_compra(){
         return $this->hasMany(InformacaoCompras::class, 'id', 'informacao_comprar_id');
     }
+
+    public function agendaConsulta(){
+        return $this->hasOne(AgendaConsultas::class, 'compra_id', 'id');
+    }
 }

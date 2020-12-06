@@ -13,7 +13,7 @@
                                 elit sed do eiusmod tempor incididunt ut labore et dolore
                                 magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
 
-                            <a href="#" class="float-right float-lg-right float-md-right"><input type="button" class="btn btn-outline-primary btn-lg font-weight-bolder" value="Comprar"></a>
+                            <a href="{{route('loja.index')}}" class="float-right float-lg-right float-md-right"><input type="button" class="btn btn-outline-primary btn-lg font-weight-bolder" value="Comprar"></a>
                         </div>
                     </div>
                 </div>
