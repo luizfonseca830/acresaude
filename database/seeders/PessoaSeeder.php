@@ -22,5 +22,14 @@ class PessoaSeeder extends Seeder
             'sobrenome' => 'medico',
             'cpf' => '1111',
         ]);
+
+        Pessoa::create([
+            'user_id' => 2,
+            'tipo_usuario_id' => 1,
+            'nome' => 'admin',
+            'sobrenome' => 'admin',
+            'cpf' => '1112',
+
+        ]);
     }
 }

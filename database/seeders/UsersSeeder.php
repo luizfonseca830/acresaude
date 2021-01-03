@@ -20,14 +20,12 @@ class UsersSeeder extends Seeder
             'usuario' => 'medico',
             'email' => 'medico@gmail.com',
             'password' => Hash::make('medico123'),
-        ],
-        [
+        ]);
+        User::create([
             'usuario' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make('admin123'),
-        ]
-        );
-
+        ]);
 
     }
 }
