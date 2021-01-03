@@ -37,6 +37,10 @@
                     </div>
                 </div>
 
+                <div class="main-card mb-3 card">
+                    @yield('card')
+                </div>
+
                 <div class="tabs-animation">
                     <div class="row">
                         @yield('container')

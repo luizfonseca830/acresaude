@@ -54,5 +54,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/paciente/finalizar', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'finalizarConsulta'])->name('paciente.finalizarConsulta');
 
     //DASHBOARD
-    Route::get('/home/dashboard', [\App\Http\Controllers\DashBoard\HomeController::class, 'index'])->name('home.dashboard');
+    Route::group(['middleware' => ['adminverified']], function () {
+        Route::get('/home/dashboard', [\App\Http\Controllers\DashBoard\HomeController::class, 'index'])->name('home.dashboard');
+        Route::get('/dashboard/lista', [\App\Http\Controllers\DashBoard\ListaUsuarioController::class, 'index'])->name('lista.usuario.dashboard');
+
+    });
 });

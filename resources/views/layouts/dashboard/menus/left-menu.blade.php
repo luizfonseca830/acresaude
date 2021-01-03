@@ -33,8 +33,8 @@
                     </a>
                     <ul class="mm-show mm-collapse">
                         <li>
-                            <a href="#">
-                                <i class="metismenu-icon"></i>Usuários
+                            <a href="{{route('lista.usuario.dashboard')}}">
+                                <i class="metismenu-icon"></i>Lista Usuários
                             </a>
                         </li>
 

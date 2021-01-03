@@ -16,7 +16,11 @@ class AdminRedirectLogin
      */
     public function handle(Request $request, Closure $next)
     {
-//
-        return $next($request);
+
+        if (auth()->user()->pessoa->tipoUsuario->nome == 'Administrador'){
+            return $next($request);
+        }
+        return redirect()->route('inicio');
+
     }
 }
