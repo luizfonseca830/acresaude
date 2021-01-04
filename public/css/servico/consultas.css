@@ -1,0 +1,26 @@
+.busca-consulta {
+    height: 220px;
+    background-color: white;
+}
+
+.busca-consulta h2 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+}
+
+.especialidade h4 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bolder;
+}
+
+.especialidade .card {
+    margin-bottom: 5px;
+}
+
+.especialidade i {
+    margin-right: 10px;
+    font-size: 23px;
+    color: green;
+}

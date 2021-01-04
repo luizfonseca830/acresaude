@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['App\Http\Controllers\WeelcomeController', 'index']);
 Route::get('inicio', [\App\Http\Controllers\WeelcomeController::class, 'index'])->name('inicio');
 Auth::routes();
 
@@ -24,8 +22,6 @@ Route::group(['middleware' => ['auth']], function () {
     //SAIR
     Route::post('/sair', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('sair');
 
-    Route::get('/loja', [\App\Http\Controllers\Loja\LojaController::class, 'index'])->name('loja.index');
-    Route::post('/loja/store', [\App\Http\Controllers\Loja\LojaController::class, 'store'])->name('loja.store');
     Route::get('/minhascompras', [\App\Http\Controllers\Pessoa\MinhasComprasController::class, 'index'])->name('minhascompras.index');
 
 //    MEDICO AGENDA
@@ -52,4 +48,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/paciente/carregarsala/{id}', [\App\Http\Controllers\Paciente\MinhasConsultasController::class, 'entrarNaSala'])->name('paciente.carregarsala');
     //FINALIZAR SALA PACIENTE
     Route::post('/paciente/finalizar', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'finalizarConsulta'])->name('paciente.finalizarConsulta');
+
+    //DASHBOARD
+    Route::group(['middleware' => ['adminverified']], function () {
+        Route::get('/home/dashboard', [\App\Http\Controllers\DashBoard\HomeController::class, 'index'])->name('home.dashboard');
+        Route::get('/dashboard/lista', [\App\Http\Controllers\DashBoard\Lista\UsuarioController::class, 'index'])->name('lista.usuario.dashboard');
+
+        //Especilidade
+        Route::get('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
+        Route::post('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
+        Route::get('/dashboard/especialidade/lista', [\App\Http\Controllers\DashBoard\Lista\EspecialidadeController::class, 'index'])->name('especialidade.list.dashboard');
+    });
 });
+
+//SERVICOS
+Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');
