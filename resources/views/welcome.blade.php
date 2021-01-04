@@ -38,7 +38,6 @@
             </div>
             <div class="row">
                 @foreach($especialidades as $especialidade)
-
                     <div class="col-sm-6">
                         <a href="#">
                             <div class="card">
@@ -49,7 +48,6 @@
                             </div>
                         </a>
                     </div>
-
                 @endforeach
             </div>
         </div>

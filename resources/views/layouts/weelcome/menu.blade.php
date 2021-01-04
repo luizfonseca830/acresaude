@@ -5,7 +5,7 @@
                 <nav class="navbar navbar-expand-lg navbar-light">
 
                     <a class="navbar-brand" href="{{route('inicio')}}"> <img
-                            src="images/logoprincipal.png"
+                            src="{{asset('images/logoprincipal.png')}}"
                             alt="logo"> </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

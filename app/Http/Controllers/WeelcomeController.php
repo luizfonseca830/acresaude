@@ -10,7 +10,7 @@ class WeelcomeController extends Controller
 {
     //
     public function index(){
-        $especialidades = Especilidade::all();
+        $especialidades = Especilidade::all()->take(6);
         return view('welcome', [
             'especialidades' => $especialidades,
         ]);

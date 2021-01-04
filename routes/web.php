@@ -62,4 +62,4 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 //SERVICOS
-//Route::get();
+Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');

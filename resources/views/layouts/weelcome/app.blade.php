@@ -26,10 +26,11 @@
 <body>
 <div id="app">
     <main class="py-5">
-        @extends('layouts.weelcome.menu')
+        @include('layouts.weelcome.menu')
         @yield('content')
     </main>
 </div>
+<div style="margin-top: 30px"></div>
 @yield('container')
 </body>
 <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
