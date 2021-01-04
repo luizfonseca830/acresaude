@@ -43,8 +43,12 @@
 
                 <div class="tabs-animation">
                     <div class="row">
-                        @yield('container')
+                        @yield('tabs')
                     </div>
+                </div>
+
+                <div class="container">
+                    @yield('container')
                 </div>
             </div>
         </div>

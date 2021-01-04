@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Loja;
+namespace App\Http\Controllers\DashBoard\Cadastros;
 
 use App\Http\Controllers\Controller;
-use App\Models\AgendaConsultas;
-use App\Models\Compras;
-use App\Models\InformacaoCompras;
+use App\Http\Requests\EspecialidadeRequest;
+use App\Models\Especilidade;
 use Illuminate\Http\Request;
 
-class LojaController extends Controller
+class EspecialidadeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +17,7 @@ class LojaController extends Controller
     public function index()
     {
         //
-        return view('loja.loja');
+        return view('dashboard.cadastros.especialidade');
     }
 
     /**
@@ -37,24 +36,22 @@ class LojaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EspecialidadeRequest $request)
     {
         //
-        #dd($request->all());
-        #dd($request->data_vencimento);
-        $info_compra = InformacaoCompras::create([
-            'nome_completo' => $request->nome_completo,
-            'numero_cartao' => $request->numero_cartao,
-            'data_vencimento' => $request->data_vencimento,
+
+        $especialidade = Especilidade::create([
+            'especialidade' => $request->especialidade,
+            'descricao' => $request->descricao
         ]);
 
-        $compra = Compras::create([
-            'pessoa_id' => auth()->user()->pessoa->id,
-            'informacao_comprar_id' => $info_compra->id,
-            'status_compra' => 0,
-        ]);
+        if (isset($especialidade)) {
+            session()->put('sucess', 'Especialidade criada com sucesso!');
+            return redirect()->route('especialidade.store.dashboard');
+        }
 
-        return redirect()->route('inicio');
+        session()->put('error', 'Ocorreu um erro ao tentar criar especialidade!');
+        return redirect()->route('especialidade.store.dashboard');
     }
 
     /**

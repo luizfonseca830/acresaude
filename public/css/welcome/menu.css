@@ -248,7 +248,7 @@
 /****************banner****************/
 /* line 2, ../../01 cl html template/03_jun 2019/182_medico_html/sass/_banner.scss */
 .banner_part {
-    height: 935px;
+    height: 900px;
     position: relative;
     overflow: hidden;
     background-image: url(../img/banner_bg.png);

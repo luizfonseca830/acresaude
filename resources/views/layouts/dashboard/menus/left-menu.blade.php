@@ -34,7 +34,13 @@
                     <ul class="mm-show mm-collapse">
                         <li>
                             <a href="{{route('lista.usuario.dashboard')}}">
-                                <i class="metismenu-icon"></i>Lista Usuários
+                                <i class="metismenu-icon"></i>Lista de Usuários
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('especialidade.list.dashboard')}}">
+                                <i class="metismenu-icon"></i>Lista de Especialidades
                             </a>
                         </li>
 
@@ -54,6 +60,12 @@
                         <li>
                             <a href="#">
                                 <i class="metismenu-icon"></i> Usuário
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{route('especialidade.create.dashboard')}}">
+                                <i class="metismenu-icon"></i> Especialidade
                             </a>
                         </li>
                     </ul>
