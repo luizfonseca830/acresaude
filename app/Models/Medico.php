@@ -11,7 +11,6 @@ class Medico extends Model
     protected $table = 'medicos';
     protected $fillable = [
         'pessoa_id',
-        'especialidade_medico_id',
     ];
 
     public function agenda(){
@@ -20,9 +19,5 @@ class Medico extends Model
 
     public function pessoa(){
         return $this->hasOne(Pessoa::class, 'id', 'pessoa_id');
-    }
-
-    public function especialide(){
-        return $this->hasOne(EspecilidadeMedico::class, 'id', 'especialidade_medico_id');
     }
 }

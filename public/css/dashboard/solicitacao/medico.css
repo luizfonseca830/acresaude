@@ -1,0 +1,18 @@
+.icons-acao {
+    font-size: 24px;
+}
+
+.icons-acao:hover {
+    color: #006400;
+    box-shadow: 0 0px 0px 0 rgba(0,100,0,0.8);
+}
+
+.icons-close {
+    font-size: 24px;
+    color: red;
+}
+
+.icons-close:hover {
+    color: darkred;
+    box-shadow: 0 0px 0px 0 rgba(0,100,0,0.8);
+}

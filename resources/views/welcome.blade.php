@@ -1,6 +1,8 @@
 @extends('layouts.weelcome.app')
 @section('link-css')
     <link rel="stylesheet" href="{{asset('css/welcome/impletamentations.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.rtl.min.css')}}">
 @endsection
 
 @section('content')
@@ -52,4 +54,35 @@
             </div>
         </div>
     </section>
+
+    <section class="banner_part">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-xl-5">
+                    <div class="banner_text">
+                        <div class="banner_text_iner">
+                            <h1>Trabalhe
+                                Conosco</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                                elit sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
+                            <a href="{{route('solicitacao.index')}}"><input class="btn btn-outline-primary float-right" value="Faça sua solicitação"/></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="banner_img">
+                        <img src="{{asset('images/weelcome/banner_img.png')}}" alt=""
+                             data-pagespeed-url-hash="2749540510"
+                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+@section('link-scirpt')
+    <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
+    @include('notifications.notification')
 @endsection
