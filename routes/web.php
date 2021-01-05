@@ -58,8 +58,17 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
         Route::post('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
         Route::get('/dashboard/especialidade/lista', [\App\Http\Controllers\DashBoard\Lista\EspecialidadeController::class, 'index'])->name('especialidade.list.dashboard');
+        //Solicitacao
+        Route::get('/dashboard/solicitacao/medico', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'index'])->name('solicitacao.medico.dashboard');
+        Route::get('/dash/board/solicitacao/medicoa/aceita/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'aceitar'])->name('solicitacao.medico.aceitar.dashboard');
+
     });
 });
 
 //SERVICOS
 Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');
+
+
+//SOLICITACAO
+Route::get('/servico/solicitacao', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'index'])->name('solicitacao.index');
+Route::post('/servico/solicitacao/pedido', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'store'])->name('solicitacao.store');

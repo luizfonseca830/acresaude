@@ -17,7 +17,6 @@ class MedicoSeeder extends Seeder
         //
         Medico::create([
             'pessoa_id' => 1,
-            'especialidade_medico_id' => 1,
         ]);
     }
 }

@@ -16,11 +16,9 @@ class CreateMedicosTable extends Migration
         Schema::create('medicos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pessoa_id');
-            $table->unsignedBigInteger('especialidade_medico_id')->nullable();
             $table->timestamps();
 
             $table->foreign('pessoa_id')->references('id')->on('pessoas');
-            $table->foreign('especialidade_medico_id')->references('id')->on('especilidade_medicos');
         });
     }
 
