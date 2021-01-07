@@ -67,8 +67,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 //SERVICOS
 Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');
-
+//SERVICO SOLICITACAO AJAX
+Route::post('/servico/consulta/ajax', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'search'])->name('consulta.ajax.search');
 
 //SOLICITACAO
 Route::get('/servico/solicitacao', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'index'])->name('solicitacao.index');
 Route::post('/servico/solicitacao/pedido', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'store'])->name('solicitacao.store');
+

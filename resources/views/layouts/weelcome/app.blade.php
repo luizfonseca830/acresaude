@@ -33,6 +33,10 @@
 <div style="margin-top: 30px"></div>
 @yield('container')
 </body>
+
+
 <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
 @yield('link-scirpt')
+
+
 </html>
