@@ -52,6 +52,9 @@
                     </div>
                 @endforeach
             </div>
+            <div class="row justify-content-center">
+                <a href="{{route('consulta.index')}}"><input type="button" class="btn btn-outline-primary" value="Mais Especialidades"></a>
+            </div>
         </div>
     </section>
 

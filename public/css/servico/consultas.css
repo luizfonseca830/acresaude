@@ -18,7 +18,9 @@
 .especialidade .card {
     margin-bottom: 5px;
 }
-
+.especialidade .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 .especialidade i {
     margin-right: 10px;
     font-size: 23px;
