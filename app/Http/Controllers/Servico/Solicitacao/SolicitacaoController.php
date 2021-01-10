@@ -40,28 +40,15 @@ class SolicitacaoController extends Controller
         $solicitacao = Solicitacao::create([
             'pessoa_id' => auth()->user()->pessoa->id,
             'especialidade_id' => $request->especialidade_id,
+            'conselho' => $request->conselho,
+            'num_conselho' => $request->num_conselho,
+            'rqe' => $request->rqe,
+            'rg' => $request->rg,
+            'telefone' => $request->telefone,
+            'celular' => $request->celular,
+            'procedimento' => $request->procedimento,
             'status' => 0,
         ]);
-
-        //VERIFICAO SE EXISTE ANEXO
-        if (isset($request->file_conf_med)) {
-            $fileName = auth()->user()->pessoa->nome.'Confirmacao'.time().'.'.$request->file_conf_med->extension();
-            $request->file_conf_med->move(public_path('documentos'), $fileName);
-
-            $solicitacao->update([
-                'documento_comprovante_medico' => $fileName,
-            ]);
-        }
-
-        //VERIFICAO SE EXISTE ANEXO
-        if (isset($request->file_conf_esp)) {
-            $fileName = auth()->user()->pessoa->nome.$especialiade->especialidade.time().'.'.$request->file_conf_esp->extension();
-            $request->file_conf_esp->move(public_path('documentos'), $fileName);
-
-            $solicitacao->update([
-                'documento_comprovante_especialidade' => $fileName,
-            ]);
-        }
 
         //VERIFICACAO DE FALHAS
         if (isset($especialiade)) {

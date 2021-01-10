@@ -18,8 +18,15 @@ class CreateSolicatacoesTable extends Migration
             $table->unsignedBigInteger('pessoa_id');
             $table->unsignedBigInteger('especialidade_id');
 
-            $table->string('documento_comprovante_medico')->nullable();
-            $table->string('documento_comprovante_especialidade')->nullable();
+            $table->string('conselho', 100);
+            $table->string('num_conselho', 100);
+            $table->string('rqe', 100);
+
+            $table->string('rg', 13);
+            $table->string('telefone', 15)->nullable();
+            $table->string('celular', 17)->nullable();
+
+            $table->string('procedimento', 500);
 
             $table->boolean('status')->default(0);
             $table->boolean('enviado_confirmacao')->default(0);
