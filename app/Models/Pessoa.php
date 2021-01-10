@@ -15,6 +15,8 @@ class Pessoa extends Model
         'nome',
         'sobrenome',
         'cpf',
+        'sobrenome',
+        'data_nascimento',
     ];
 
     public function tipoUsuario(){

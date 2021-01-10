@@ -19,7 +19,9 @@ class CreatePessoasTable extends Migration
             $table->unsignedBigInteger('tipo_usuario_id');
             $table->string('nome', 250);
             $table->string('sobrenome', 150);
-            $table->string('cpf', 30);
+            $table->string('cpf', 30)->nullable();
+            $table->string('cnpj', 30)->nullable();
+            $table->date('data_nascimento');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

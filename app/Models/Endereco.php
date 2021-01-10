@@ -5,23 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Medico extends Model
+class Endereco extends Model
 {
     use HasFactory;
-    protected $table = 'medicos';
+    protected $table = 'endereco';
+
     protected $fillable = [
         'pessoa_id',
-        'rg',
-        'conselho',
-        'num_conselho',
-        'rqe',
-        'telefone',
-        'celular',
+        'uf',
+        'cep',
+        'endereco',
+        'bairro',
+        'municipio',
+        'complemento',
     ];
-
-    public function agenda(){
-        return $this->hasMany(AgendaMedico::class, 'medico_id', 'id');
-    }
 
     public function pessoa(){
         return $this->hasOne(Pessoa::class, 'id', 'pessoa_id');

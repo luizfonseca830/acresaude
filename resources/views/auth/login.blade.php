@@ -71,3 +71,8 @@
     </div>
 </div>
 @endsection
+
+@section('link-script')
+    <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
+    @include('notifications.notification')
+@endsection
