@@ -42,6 +42,9 @@
                                     Minha Conta
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if (auth()->user()->pessoa->tipoUsuario->nome == 'Administrador')
+                                        <a class="dropdown-item" href="{{route('home.dashboard')}}">Área Adiministrativa</a>
+                                    @endif
                                     @if(auth()->user()->pessoa->tipoUsuario->nome == 'Doutor')
                                         <a class="dropdown-item" href="{{route('agenda.index')}}">Agenda Pessoal</a>
                                     @endif
