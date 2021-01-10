@@ -77,5 +77,7 @@
             @yield('content')
         </main>
     </div>
+
+@yield('link-script')
 </body>
 </html>

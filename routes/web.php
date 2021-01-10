@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', ['App\Http\Controllers\WeelcomeController', 'index']);
 Route::get('inicio', [\App\Http\Controllers\WeelcomeController::class, 'index'])->name('inicio');
 Auth::routes();
-
+//NEW ROTA REGISTRO
+Route::post('/registro', [\App\Http\Controllers\Pessoa\RegistroController::class, 'store'])->name('registro');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function () {
     //SAIR

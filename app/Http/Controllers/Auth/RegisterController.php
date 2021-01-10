@@ -46,25 +46,32 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'nome' => ['required', 'string', 'max:255'],
-            'sobrenome' => ['required', 'string', 'max:255'],
-            'cpf' => ['required', 'max:30'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'usuario' => ['required', 'string', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        return Validator::make($data,
+            [
+                'usuario' => ['required', 'string', 'max:255', 'unique:users'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+                'nome' => ['required', 'string', 'max:255'],
+                'sobrenome' => ['required', 'string', 'max:255'],
+                'cpf' => ['required_without:cnpj', 'max:30'],
+                'cnpj' => ['required_without:cpf', 'max:30'],
+                'data_nascimento' => ['required', 'date_format:"Y/d/m"']
+
+
+            ],
+        );
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Models\User
      */
     protected function create(array $data)

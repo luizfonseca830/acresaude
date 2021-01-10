@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "46c7a2f1ec65b35c5c07b8a58bd01f5f",
+    "content-hash": "007205d933766d81d3000613270c7034",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -890,6 +890,51 @@
             "time": "2020-09-30T07:37:11+00:00"
         },
         {
+            "name": "laravel-lang/lang",
+            "version": "7.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Laravel-Lang/lang.git",
+                "reference": "679a65755db37b35acd36a5e0ca51e055815a00a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/679a65755db37b35acd36a5e0ca51e055815a00a",
+                "reference": "679a65755db37b35acd36a5e0ca51e055815a00a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*"
+            },
+            "suggest": {
+                "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
+                "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Laravel-Lang Team"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "support": {
+                "issues": "https://github.com/Laravel-Lang/lang/issues",
+                "source": "https://github.com/Laravel-Lang/lang/tree/7.0.9"
+            },
+            "time": "2020-11-30T20:35:41+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.15.0",
             "source": {
@@ -1432,68 +1477,6 @@
                 }
             ],
             "time": "2020-10-18T11:50:25+00:00"
-        },
-        {
-            "name": "mckenziearts/laravel-notify",
-            "version": "v2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mckenziearts/laravel-notify.git",
-                "reference": "1511bb97cf9ce4c3562caf6f3785eb55bad822a6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mckenziearts/laravel-notify/zipball/1511bb97cf9ce4c3562caf6f3785eb55bad822a6",
-                "reference": "1511bb97cf9ce4c3562caf6f3785eb55bad822a6",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^7.0|^8.0",
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Mckenziearts\\Notify\\LaravelNotifyServiceProvider"
-                    ],
-                    "aliases": {
-                        "Notify": "Mckenziearts\\Notify\\Facades\\LaravelNotify"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Mckenziearts\\Notify\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Arthur Monney",
-                    "email": "monneylobe@gmail.com",
-                    "homepage": "https://twitter.com/MonneyArthur",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Flexible flash notifications for Laravel",
-            "homepage": "https://github.com/mckenziearts/laravel-notify",
-            "keywords": [
-                "laravel",
-                "laravel-notify",
-                "notification"
-            ],
-            "time": "2020-09-12T06:14:18+00:00"
         },
         {
             "name": "michael/laravelpagseguro",
@@ -7514,5 +7497,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
