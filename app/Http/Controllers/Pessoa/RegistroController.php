@@ -45,13 +45,12 @@ class RegistroController extends Controller
 
         if (!is_null($endereco)) {
             session()->put('sucess', 'Registrado com sucesso.');
+            Auth::attempt(['email' => $usuario->email, 'password' => $usuario->password]);
+            Auth::guard()->login($usuario);
         }
         else {
             session()->put('error', 'Ops, algo de errado aconteceu, tente novamente.');
         }
-
-        Auth::attempt(['email' => $usuario->email, 'password' => $usuario->password]);
-        Auth::guard()->login($usuario);
         return redirect()->route('inicio');
     }
 }
