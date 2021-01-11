@@ -9,8 +9,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Especialidade</th>
-                <th>Documento de Confirmação</th>
-                <th>Documento de Especialidade</th>
+                <th>RG</th>
                 <th>Ações</th>
             </tr>
             </thead>
@@ -19,37 +18,26 @@
                 <tr>
                     <td>{{$solicitacao->pessoa->nome}}</td>
                     <td>{{$solicitacao->especialidade->especialidade}}</td>
-                    <td>
-                        @if(!is_null($solicitacao->documento_comprovante_medico))
-                            <a target="_blank" href="{{asset('documentos/'.$solicitacao->documento_comprovante_medico)}}">
-                                Anexo em PDF
-                            </a>
-                        @else
-                            <small class="text-danger font-size-lg">Não possui.</small>
-                        @endif
-                    </td>
-                    <td>
-                        @if(!is_null($solicitacao->documento_comprovante_especialidade))
-                            <a target="_blank" href="{{asset('documentos/'.$solicitacao->documento_comprovante_especialidade)}}">
-                                Anexo em PDF
-                            </a>
-                        @else
-                            <small class="text-danger font-size-lg">Não possui.</small>
-                        @endif
-                    </td>
+                    <td>{{$solicitacao->rg}}</td>
                     <td>
                         <div class="row">
-                            <div class="col col-3">
-                                <a href="{{route('solicitacao.medico.aceitar.dashboard', $solicitacao->id)}}">
-                                    <i class="pe-7s-like2 icons-acao"></i>
+                            <div class="col col-2">
+                                <a href="{{route('solicitacao.medico.visualizar.dashboard', $solicitacao->id)}}">
+                                    <i class="pe-7s-info icons-acao"></i>
                                 </a>
                             </div>
 
-                            <div class="col col-3">
-                                <a href="#">
-                                    <i class="pe-7s-close-circle icons-close"></i>
-                                </a>
-                            </div>
+{{--                            <div class="col col-2">--}}
+{{--                                <a href="{{route('solicitacao.medico.aceitar.dashboard', $solicitacao->id)}}">--}}
+{{--                                    <i class="pe-7s-like2 icons-acao"></i>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
+
+{{--                            <div class="col col-2">--}}
+{{--                                <a href="#">--}}
+{{--                                    <i class="pe-7s-close-circle icons-close"></i>--}}
+{{--                                </a>--}}
+{{--                            </div>--}}
                         </div>
                     </td>
                 </tr>
@@ -60,8 +48,7 @@
             <tr>
                 <th>Nome</th>
                 <th>Especialidade</th>
-                <th>Documento de Confirmação</th>
-                <th>Documento de Especialidade</th>
+                <th>RG</th>
                 <th>Ações</th>
             </tr>
             </tfoot>

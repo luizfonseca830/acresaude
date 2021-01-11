@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "007205d933766d81d3000613270c7034",
+    "content-hash": "f3ea27260a94caf76d5376bb48c5ede4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1228,6 +1228,57 @@
             "time": "2020-11-03T19:51:21+00:00"
         },
         {
+            "name": "laravellegends/pt-br-validator",
+            "version": "8.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelLegends/pt-br-validator.git",
+                "reference": "fcb368b07d4e3e2b7cf3ad536926c7c8ffb87aba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelLegends/pt-br-validator/zipball/fcb368b07d4e3e2b7cf3ad536926c7c8ffb87aba",
+                "reference": "fcb368b07d4e3e2b7cf3ad536926c7c8ffb87aba",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0 || ^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
+                "phpunit/phpunit": "^8.3 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelLegends\\PtBrValidator\\ValidatorProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelLegends\\PtBrValidator\\": "src/pt-br-validator"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wallace de Souza Vizerra",
+                    "email": "wallacemaxters@gmail.com"
+                }
+            ],
+            "description": "Uma biblioteca contendo validações de formatos Brasileiros, para o Laravel",
+            "support": {
+                "issues": "https://github.com/LaravelLegends/pt-br-validator/issues",
+                "source": "https://github.com/LaravelLegends/pt-br-validator/tree/8.0.0"
+            },
+            "time": "2020-11-06T16:14:00+00:00"
+        },
+        {
             "name": "league/commonmark",
             "version": "1.5.7",
             "source": {
@@ -1857,16 +1908,16 @@
         },
         {
             "name": "orangehill/iseed",
-            "version": "v2.6.4",
+            "version": "v3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orangehill/iseed.git",
-                "reference": "03c73d3f829a74065e14a757f0d749ad4928a15f"
+                "reference": "a6c54d2ed9ee0adad46ca7d0c38ffe5a56bd98c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orangehill/iseed/zipball/03c73d3f829a74065e14a757f0d749ad4928a15f",
-                "reference": "03c73d3f829a74065e14a757f0d749ad4928a15f",
+                "url": "https://api.github.com/repos/orangehill/iseed/zipball/a6c54d2ed9ee0adad46ca7d0c38ffe5a56bd98c9",
+                "reference": "a6c54d2ed9ee0adad46ca7d0c38ffe5a56bd98c9",
                 "shasum": ""
             },
             "require": {
@@ -1914,9 +1965,9 @@
             ],
             "support": {
                 "issues": "https://github.com/orangehill/iseed/issues",
-                "source": "https://github.com/orangehill/iseed/tree/v2.6.4"
+                "source": "https://github.com/orangehill/iseed/tree/v3.0"
             },
-            "time": "2020-09-10T06:25:21+00:00"
+            "time": "2020-12-14T11:29:13+00:00"
         },
         {
             "name": "phpoption/phpoption",

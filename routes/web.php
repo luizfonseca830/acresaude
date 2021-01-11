@@ -62,7 +62,8 @@ Route::group(['middleware' => ['auth']], function () {
         //Solicitacao
         Route::get('/dashboard/solicitacao/medico', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'index'])->name('solicitacao.medico.dashboard');
         Route::get('/dash/board/solicitacao/medicoa/aceita/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'aceitar'])->name('solicitacao.medico.aceitar.dashboard');
-
+        Route::get('/dash/board/solicitacao/medicoa/rejeitar/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'rejeitar'])->name('solicitacao.medico.rejeitar.dashboard');
+        Route::get('/dashboard/solicitacao/medico/visualizar/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'visualizarMedico'])->name('solicitacao.medico.visualizar.dashboard');
     });
 });
 

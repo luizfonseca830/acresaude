@@ -12,8 +12,13 @@ class Solicitacao extends Model
     protected $fillable = [
         'pessoa_id',
         'especialidade_id',
-        'documento_comprovante_medico',
-        'documento_comprovante_especialidade',
+        'conselho',
+        'num_conselho',
+        'rqe',
+        'rg',
+        'telefone',
+        'celular',
+        'procedimento',
         'status',
         'enviado_confirmacao',
     ];
