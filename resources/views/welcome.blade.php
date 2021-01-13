@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row justify-content-center col-12">
                 <div class="page-title-wrapper">
-                    <h2 style="margin-top: 10px">Especidades</h2>
+                    <h2 style="margin-top: 10px">Especialidades</h2>
                 </div>
             </div>
             <div class="row">
@@ -75,7 +75,7 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="banner_img">
-                        <img src="{{asset('images/weelcome/banner_img.png')}}" alt=""
+                        <img src="{{asset('images/weelcome/medico.png')}}" alt=""
                              data-pagespeed-url-hash="2749540510"
                              onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
                     </div>
