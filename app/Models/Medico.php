@@ -26,4 +26,9 @@ class Medico extends Model
     public function pessoa(){
         return $this->hasOne(Pessoa::class, 'id', 'pessoa_id');
     }
+
+    public function auxEspecialidades(){
+        return $this->hasMany(MedicoEspecilidade::class, 'medico_id', 'id');
+    }
+
 }

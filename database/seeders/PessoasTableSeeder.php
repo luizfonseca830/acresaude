@@ -14,16 +14,16 @@ class PessoasTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('pessoas')->delete();
-        
+
         \DB::table('pessoas')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'user_id' => 1,
-                'tipo_usuario_id' => 3,
+                'tipo_usuario_id' => 2,
                 'nome' => 'Medico',
                 'sobrenome' => 'Teste',
                 'cpf' => '952.855.311-79',
@@ -32,7 +32,7 @@ class PessoasTableSeeder extends Seeder
                 'created_at' => '2021-01-10 21:11:21',
                 'updated_at' => '2021-01-10 21:11:21',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'user_id' => 2,
@@ -46,7 +46,7 @@ class PessoasTableSeeder extends Seeder
                 'updated_at' => '2021-01-10 21:12:51',
             ),
         ));
-        
-        
+
+
     }
 }

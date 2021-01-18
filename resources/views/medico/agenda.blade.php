@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+    @include('medico.modal-calendar')
     <div class="container ajuste">
         <div class="row new_agenda">
             <a data-toggle="modal" data-target="#agenda"><input type="button" class="btn btn-outline-primary" value="Adicionar na Agenda"></a>
@@ -16,10 +17,17 @@
         @endif
         <div id='wrap'>
             <div id='calendar-wrap'>
-                <div id='calendar' data-route-load-agenda="{{route('routeLoadAgenda')}}"></div>
+                <div id='calendar'
+                     data-route-load-agenda="{{route('routeLoadAgenda')}}"
+                     data-route-event-update="{{route('routeUpdateAgenda')}}"
+                     data-route-event-store="{{route('routeStoreAgenda')}}"
+                     data-route-event-drop-update="{{route('routeDropUpdateAgenda')}}"
+                     data-route-event-delete="{{route('routeDeleteAgenda')}}"
+                ></div>
             </div>
         </div>
     </div>
+
     {{--    MODAL--}}
     <div class="modal fade" id="agenda" tabindex="-1" role="dialog" aria-labelledby="agenda" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -30,7 +38,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="{{route('agenda.store')}}">
+                <form method="post" action="{{route('routeStoreAgenda')}}">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
@@ -38,6 +46,19 @@
                             <input type="text" class="form-control" name="titulo" id="exampleInputTitulo" placeholder="Digito o título" required>
                             @error('titulo')
                                 <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputSelectEspecialidades">Especialidades</label>
+                            <select class="form-control" name="auxEspecialidade" id="inputSelectEspecialidades">
+                                <option value="">Não Selecionado</option>
+                                @foreach(auth()->user()->pessoa->medico->auxEspecialidades as $auxEspecialidade)
+                                    <option value="{{$auxEspecialidade->id}}">{{$auxEspecialidade->especialidade->especialidade}}</option>
+                                @endforeach
+                            </select>
+                            @error('auxEspecialidade')
+                            <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -54,6 +75,14 @@
                             <input type="datetime-local" name="end" class="form-control" id="exampleInputDateFim" required>
                             @error('end')
                             <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputIntervalo">Tempo de intervalo entre consultas (Minutos)</label>
+                            <input type="number" class="form-control" name="intervalo" id="inputIntervalo" value="15"/>
+                            @error('intervalo')
+                            <div class="alert alert-danger">{{$message}}</div>
                             @enderror
                         </div>
 
@@ -77,6 +106,8 @@
 
 @section('link-scirpt')
     <script src="{{asset('assets/fullcalendar/lib/main.min.js')}}"></script>
+    <script src="{{asset('assets/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js')}}"></script>
+    <script src="{{asset('assets/jquery/momenet.js')}}"></script>
     <script src="{{asset('js/medico/script.js')}}"></script>
     {{--    CONFIGURACAO DO CALENDARI--}}
     <script src="{{asset('js/medico/calender.js')}}"></script>
