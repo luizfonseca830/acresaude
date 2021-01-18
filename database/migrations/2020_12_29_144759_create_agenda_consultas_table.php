@@ -16,7 +16,6 @@ class CreateAgendaConsultasTable extends Migration
         Schema::create('agenda_consultas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('paciente_id')->nullable();
-            $table->unsignedBigInteger('medico_id');
             $table->unsignedBigInteger('compra_id')->nullable();
             $table->unsignedBigInteger('agenda_id');
 
@@ -26,9 +25,9 @@ class CreateAgendaConsultasTable extends Migration
             $table->boolean('status_finalizado')->nullable();
             $table->timestamps();
 
+            $table->foreign('agenda_id')->references('id')->on('agenda_medicos')->cascadeOnDelete();
             $table->foreign('compra_id')->references('id')->on('compras');
             $table->foreign('paciente_id')->references('id')->on('pessoas');
-            $table->foreign('medico_id')->references('id')->on('medicos');
         });
     }
 

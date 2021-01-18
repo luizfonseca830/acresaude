@@ -28,8 +28,10 @@ Route::group(['middleware' => ['auth']], function () {
 //    MEDICO AGENDA
     Route::get('/agenda', [\App\Http\Controllers\Medico\AgendaController::class, 'index'])->name('agenda.index');
     Route::get('/load-agenda', [\App\Http\Controllers\Medico\AgendaController::class, 'loadAgenda'])->name('routeLoadAgenda');
-    Route::post('/agenda/store', [\App\Http\Controllers\Medico\AgendaController::class, 'store'])->name('agenda.store');
-
+    Route::post('/agenda-store', [\App\Http\Controllers\Medico\AgendaController::class, 'store'])->name('routeStoreAgenda');
+    Route::put('/agenda-update', [\App\Http\Controllers\Medico\AgendaController::class, 'update'])->name('routeUpdateAgenda');
+    Route::put('/agenda-eventDropUpdate', [\App\Http\Controllers\Medico\AgendaController::class, 'eventDropUpdate'])->name('routeDropUpdateAgenda');
+    Route::put('/agenda-event-delete', [\App\Http\Controllers\Medico\AgendaController::class, 'delete'])->name('routeDeleteAgenda');
     //PACIENTE AGENDA
     Route::match(['get', 'post'],'/agenda/consulta/{id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'index'])->name('paciente.agenda.index');
     Route::post('/ajax/busca', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'show'])->name('paciente.agenda.ajax');

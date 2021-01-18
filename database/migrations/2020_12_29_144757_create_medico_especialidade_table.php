@@ -18,6 +18,8 @@ class CreateMedicoEspecialidadeTable extends Migration
             $table->unsignedBigInteger('medico_id');
             $table->unsignedBigInteger('especialidade_id');
 
+
+            $table->unique(['medico_id', 'especialidade_id']);
             $table->foreign('medico_id')->references('id')->on('medicos');
             $table->foreign('especialidade_id')->references('id')->on('especialidades');
             $table->timestamps();
