@@ -8,9 +8,6 @@
 @section('content')
     @include('medico.modal-calendar')
     <div class="container ajuste">
-        <div class="row new_agenda">
-            <a data-toggle="modal" data-target="#agenda"><input type="button" class="btn btn-outline-primary" value="Adicionar na Agenda"></a>
-        </div>
         @if(session()->has('sucess'))
             <div class="alert alert-success">{{ session('sucess') }}</div>
             {{session()->forget('sucess')}}
