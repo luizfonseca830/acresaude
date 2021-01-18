@@ -25,7 +25,7 @@
 </head>
 <body>
 <div id="app">
-    <main class="py-5">
+    <main class="">
         @include('layouts.weelcome.menu')
         @yield('content')
     </main>
