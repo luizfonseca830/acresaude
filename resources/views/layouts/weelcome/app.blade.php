@@ -21,6 +21,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/welcome/menu.css')}}">
     <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.rtl.min.css')}}">
     @yield('link-css')
 </head>
 <body>
@@ -35,8 +37,9 @@
 </body>
 
 
-<script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
+
 @yield('link-scirpt')
-
-
+<script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
+@include('notifications.notification')
 </html>

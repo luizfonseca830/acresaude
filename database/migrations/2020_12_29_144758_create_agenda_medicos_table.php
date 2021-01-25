@@ -17,6 +17,7 @@ class CreateAgendaMedicosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('medico_especialidade_id');
             $table->unsignedBigInteger('medico_id');
+            $table->string('preco');
             $table->string('title', 100);
             $table->dateTime('start');
             $table->dateTime('end');

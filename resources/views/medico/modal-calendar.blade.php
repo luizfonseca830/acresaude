@@ -7,11 +7,14 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form id="formEvent">
+            <form id="formEvent" action="{{route('routeInfoAgenda')}}" method="POST">
+                @csrf
+                <div class="modal-body">
+
                     <div class="form-group" id="form-title">
                         <label for="exampleInputTitulo">Título</label>
-                        <input type="text" class="form-control" name="titulo" id="exampleInputTitulo" placeholder="Digito o título" required>
+                        <input type="text" class="form-control" name="titulo" id="exampleInputTitulo"
+                               placeholder="Digito o título" required>
                         <input type="text" name="id" hidden>
                         @error('titulo')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -23,7 +26,8 @@
                         <select class="form-control" name="auxEspecialidade" id="inputSelectEspecialidades">
                             <option value="">Não Selecionado</option>
                             @foreach(auth()->user()->pessoa->medico->auxEspecialidades as $auxEspecialidade)
-                                <option value="{{$auxEspecialidade->id}}">{{$auxEspecialidade->especialidade->especialidade}}</option>
+                                <option
+                                    value="{{$auxEspecialidade->id}}">{{$auxEspecialidade->especialidade->especialidade}}</option>
                             @endforeach
                         </select>
                         @error('auxEspecialidade')
@@ -33,7 +37,8 @@
 
                     <div class="form-group" id="form-start">
                         <label for="exampleInputDateInicio">Data de Início</label>
-                        <input type="text" name="start" class="form-control date-time" id="exampleInputDateInicio" required>
+                        <input type="text" name="start" class="form-control date-time" id="exampleInputDateInicio"
+                               required>
                         @error('start')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -55,6 +60,14 @@
                         @enderror
                     </div>
 
+                    <div class="form-group" id="form-preco">
+                        <label for="inputPreco">Preço</label>
+                        <input type="text" class="form-control" name="preco" id="inputPreco" value="0"/>
+                        @error('preco')
+                        <div class="alert alert-danger">{{$message}}</div>
+                        @enderror
+                    </div>
+
                     <div class="form-group" id="form-descricao">
                         <label for="exampleInputDesc">Descrição</label>
                         <textarea class="form-control" name="descricao" id="exampleInputDesc" rows="2"></textarea>
@@ -62,13 +75,15 @@
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fecha</button>
-                <button type="button" class="btn btn-danger deletEvent">Excluir</button>
-                <button type="button" class="btn btn-primary saveEvent">Salva</button>
-            </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fecha</button>
+                    <button type="submit" class="btn btn-info ">Visualizar Consultas</button>
+                    <button type="button" class="btn btn-danger deletEvent">Excluir</button>
+                    <button type="button" class="btn btn-primary saveEvent">Salva</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

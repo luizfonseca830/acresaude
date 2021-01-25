@@ -13,7 +13,10 @@ class AgendaController extends Controller
     //
     public function index()
     {
-        return view('medico.agenda');
+        $agenda = AgendaMedico::all();
+        return view('medico.agenda', [
+            'agenda' => $agenda,
+        ]);
     }
 
     public function loadAgenda()
@@ -37,6 +40,7 @@ class AgendaController extends Controller
             'end' => $request->end,
             'intervalo' => $request->intervalo,
             'description' => $request->description,
+            'preco' => $request->preco,
         ]);
 
         while (strtotime($data_inicio) < strtotime($data_fim)) {
@@ -129,5 +133,24 @@ class AgendaController extends Controller
         $agenda = AgendaMedico::findOrFail($request->id);
         $agenda->delete();
         return response()->json(true);
+    }
+
+    public function show(Request $request){
+        $agenda = AgendaMedico::findOrFail($request->id);
+        return view('medico.minha_consultas', [
+            'agenda' => $agenda,
+        ]);
+    }
+
+    public function deleteUnique($id){
+        $consulta = AgendaConsultas::findOrFail($id);
+        if (is_null($consulta->paciente_id)) {
+            $consulta->delete();
+            session()->put('sucess', 'Consulta deleta com sucesso.');
+        }
+        else {
+            session()->put('error', 'Essa consulta não pode ser excluída.');
+        }
+        return redirect()->route('agenda.index');
     }
 }

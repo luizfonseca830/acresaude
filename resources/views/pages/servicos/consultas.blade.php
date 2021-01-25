@@ -53,5 +53,6 @@
 @endsection
 
 @section('link-scirpt')
+    <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/consultas/consultas.js')}}"></script>
 @endsection

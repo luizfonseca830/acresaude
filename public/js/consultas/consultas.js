@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function ($) {
     $("#espe").keyup(function (e) {
         e.preventDefault();
 
