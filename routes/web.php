@@ -30,8 +30,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/load-agenda', [\App\Http\Controllers\Medico\AgendaController::class, 'loadAgenda'])->name('routeLoadAgenda');
     Route::post('/agenda-store', [\App\Http\Controllers\Medico\AgendaController::class, 'store'])->name('routeStoreAgenda');
     Route::put('/agenda-update', [\App\Http\Controllers\Medico\AgendaController::class, 'update'])->name('routeUpdateAgenda');
+    Route::post('/agenda-info', [\App\Http\Controllers\Medico\AgendaController::class, 'show'])->name('routeInfoAgenda');
     Route::put('/agenda-eventDropUpdate', [\App\Http\Controllers\Medico\AgendaController::class, 'eventDropUpdate'])->name('routeDropUpdateAgenda');
     Route::put('/agenda-event-delete', [\App\Http\Controllers\Medico\AgendaController::class, 'delete'])->name('routeDeleteAgenda');
+
     //PACIENTE AGENDA
     Route::match(['get', 'post'],'/agenda/consulta/{id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'index'])->name('paciente.agenda.index');
     Route::post('/ajax/busca', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'show'])->name('paciente.agenda.ajax');
@@ -41,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/paciente/minhasconsultas', [\App\Http\Controllers\Paciente\MinhasConsultasController::class, 'index'])->name('paciente.consultas.index');
 
     //MEDICO CONSULTA
+    Route::get('/medico/consulta/delete/{id}', [\App\Http\Controllers\Medico\AgendaController::class, 'deleteUnique'])->name('medico.consulta.delete.unico');
     Route::get('/medico/minhasconsultas', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'index'])->name('medico.consultas.index');
     Route::get('/medico/consulta/criar/{consulta_id}', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'update'])->name('medico.consultas.update');
     Route::match(['get', 'post'], 'medico/consulta/salvarprontuario/{consulta_id}', [\App\Http\Controllers\Medico\ProntuarioController::class, 'salvaProntuario'])->name('medico.consulta.salvaProntuario');
@@ -71,10 +74,12 @@ Route::group(['middleware' => ['auth']], function () {
 
 //SERVICOS
 Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');
+Route::get('/servico/consulta/{id}',[\App\Http\Controllers\Consultas\ConsultasController::class, 'show'])->name('consulta.mostra');
 //SERVICO SOLICITACAO AJAX
 Route::post('/servico/consulta/ajax', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'search'])->name('consulta.ajax.search');
 
 //SOLICITACAO
 Route::get('/servico/solicitacao', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'index'])->name('solicitacao.index');
 Route::post('/servico/solicitacao/pedido', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'store'])->name('solicitacao.store');
+
 

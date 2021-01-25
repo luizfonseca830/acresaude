@@ -1,6 +1,6 @@
 $(document).ready(function ($) {
     $(".date-time").mask('00/00/0000 00:00:00');
-
+    $('#inputPreco').mask('#,##0,00', {reverse: true});
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -16,6 +16,7 @@ $(document).ready(function ($) {
         let end = moment($("#modalCalendar input[name='end']").val(), "DD/MM/YYYY HH:mm:ss").format('YYYY-MM-DD HH:mm:ss');
         let intervalo = $("#modalCalendar input[name='intervalo']").val();
         let descricao = $("#modalCalendar textarea[name='descricao']").val();
+        let preco = $("#modalCalendar input[name='preco']").val();
 
         let Event = {
             _token: $('meta[name="csrf-token"]').attr('content'),
@@ -25,6 +26,7 @@ $(document).ready(function ($) {
             description: descricao,
             intervalo: intervalo,
             auxEspecialidade: especialidade,
+            preco: preco,
         }
         let route;
         if (id == '') {
@@ -48,6 +50,7 @@ $(document).ready(function ($) {
         let route = routeEvente("routeEventDelete")
         sendEvent(route, Event)
     })
+
 })
 
 function routeEvente(route) {
@@ -95,6 +98,10 @@ function sendEvent(route, data_) {
 
             if (errors.responseJSON.errors.description && $("#modalCalendar #erro-description").length == 0) {
                 $('#form-descricao').append("<div class='alert alert-danger' id='erro-description'>" + errors.responseJSON.errors.description + "</div>")
+            }
+
+            if (errors.responseJSON.errors.preco && $("#modalCalendar #erro-preco").length == 0) {
+                $('#form-preco').append("<div class='alert alert-danger' id='erro-preco'>" + errors.responseJSON.errors.preco + "</div>")
             }
         }
     })

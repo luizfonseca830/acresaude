@@ -52,6 +52,10 @@ class ConsultasController extends Controller
     public function show($id)
     {
         //
+        $especialidade = Especilidade::findOrFail($id);
+        return view('pages.servicos.consulta-visualizar', [
+            'especialidade' => $especialidade
+        ]);
     }
 
     /**

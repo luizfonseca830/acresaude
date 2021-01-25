@@ -8,15 +8,13 @@
 @section('content')
     @include('medico.modal-calendar')
     <div class="container ajuste">
-        @if(session()->has('sucess'))
-            <div class="alert alert-success">{{ session('sucess') }}</div>
-            {{session()->forget('sucess')}}
-        @endif
+
         <div id='wrap'>
             <div id='calendar-wrap'>
                 <div id='calendar'
                      data-route-load-agenda="{{route('routeLoadAgenda')}}"
                      data-route-event-update="{{route('routeUpdateAgenda')}}"
+                     data-route-event-info="{{route('routeInfoAgenda')}}"
                      data-route-event-store="{{route('routeStoreAgenda')}}"
                      data-route-event-drop-update="{{route('routeDropUpdateAgenda')}}"
                      data-route-event-delete="{{route('routeDeleteAgenda')}}"
@@ -102,6 +100,7 @@
 @endsection
 
 @section('link-scirpt')
+    <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/fullcalendar/lib/main.min.js')}}"></script>
     <script src="{{asset('assets/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js')}}"></script>
     <script src="{{asset('assets/jquery/momenet.js')}}"></script>

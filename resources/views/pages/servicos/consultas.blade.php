@@ -40,7 +40,7 @@
                                 <div class="col col-9">
                                     <div class="text-right">
                                         <i class="pe-7s-signal"></i>
-                                        <input type="button" class="btn btn-primary" value="Agendar">
+                                        <a href="{{route('consulta.mostra', $especialidade->id)}}"><input type="button" class="btn btn-primary" value="Agendar"></a>
                                     </div>
                                 </div>
                             </div>
@@ -53,5 +53,6 @@
 @endsection
 
 @section('link-scirpt')
+    <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/consultas/consultas.js')}}"></script>
 @endsection

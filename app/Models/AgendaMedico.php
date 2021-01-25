@@ -17,12 +17,13 @@ class AgendaMedico extends Model
         'start',
         'end',
         'intervalo',
+        'preco',
         'description'
     ];
 
     public function medicoEspecialidade()
     {
-        return $this->belongsTo(MedicoEspecilidade::class, 'id', 'medico_especialidade_id');
+        return $this->hasOne(MedicoEspecilidade::class, 'id', 'medico_especialidade_id');
     }
 
     public function agendaConsulta(){

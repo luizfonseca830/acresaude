@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         events: routeEvente('routeLoadAgenda'),
         eventClick: function (element) {
+            console.log(element)
             resetForm("#formEvent")
             $("#modalCalendar").modal('show');
             $("#modalCalendar #titleModal").text('Alterar Evento');
@@ -40,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
             $("#modalCalendar textarea[name='descricao']").val(descricao);
             let id = element.event.id;
             $("#modalCalendar input[name='id']").val(id);
+
+            let preco = element.event.extendedProps.preco;
+            $("#modalCalendar input[name='preco']").val(preco);
         },
         select: function (element) {
             resetForm("#formEvent")
