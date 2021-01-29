@@ -19,7 +19,7 @@ class MedicoEspecilidade extends Model
     }
 
     public function especialidade(){
-        return $this->hasOne(Especilidade::class, 'id', 'especialidade_id');
+        return $this->hasOne(Especialidade::class, 'id', 'especialidade_id');
     }
 
     public function agenda(){

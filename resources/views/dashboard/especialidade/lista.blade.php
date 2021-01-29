@@ -1,4 +1,8 @@
 @extends('layouts.dashboard.app')
+@section('link-css')
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.rtl.min.css')}}">
+@endsection
 
 @section('card')
     <div class="card-body">
@@ -15,7 +19,11 @@
                 <tr>
                     <td>{{$especialidade->especialidade}}</td>
                     <td>{{$especialidade->descricao}}</td>
-                    <td>Construção</td>
+                    <td>
+                        <a href="#"><i class="fa fa-search" style="color: green"></i></a>
+                        <a href="#"><i class="fa fa-user" style="color: #2180e8"></i></a>
+                        <a href="#"><i class="fa fa-trash" style="color: red"></i></a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>
@@ -30,3 +38,9 @@
         </table>
     </div>
 @endsection
+
+@section('link-scirpt')
+    <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
+    @include('notifications.notification')
+@endsection
+

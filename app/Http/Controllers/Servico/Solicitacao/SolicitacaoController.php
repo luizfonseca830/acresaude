@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Servico\Solicitacao;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Servico\SolicitacaoRequest;
-use App\Models\Especilidade;
+use App\Models\Especialidade;
 use App\Models\Solicitacao;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\Utils;
@@ -18,7 +18,7 @@ class SolicitacaoController extends Controller
             return redirect()->route('register');
         }
 
-        $especialidades = Especilidade::all();
+        $especialidades = Especialidade::all();
         return view('pages.servicos.solicitacao', [
             'especialidades' => $especialidades,
         ]);
@@ -36,7 +36,7 @@ class SolicitacaoController extends Controller
         }
 
         //INICO DE CADASTRO NA TABELA
-        $especialiade = Especilidade::findOrFail($request->especialidade_id);
+        $especialiade = Especialidade::findOrFail($request->especialidade_id);
         $solicitacao = Solicitacao::create([
             'pessoa_id' => auth()->user()->pessoa->id,
             'especialidade_id' => $request->especialidade_id,
