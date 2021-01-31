@@ -13,7 +13,7 @@
                 <div class="col col-6">
                     <div class="title text-center">
                         <hr>
-                        <h4>Intruçoes</h4>
+                        <h4 class="font-weight-bold">INSTRUÇÕES</h4>
                         <hr>
                     </div>
                     <p>
@@ -39,29 +39,38 @@
                         magna id massa posuere pellentesque non ac orci.
                     </p>
                 </div>
-
                 <div class="col col-6 fundo-2-col">
                     <div class="title text-center">
                         <hr>
-                        <h4>Escolha o horário da sua Consulta</h4>
+                        <h4 class="font-weight-bold">ESCOLHA O HORÁRIO DA CONSULTA</h4>
                         <hr>
                     </div>
                     <form method="post">
+                        @csrf
+                        <input type="text" value="{{$especialidade->id}}" id="especialidade_id" hidden>
+                        <input type="text" value="{{route('consulta.ajax.searchMedicoHorario')}}" id="rota_busca"
+                               hidden/>
                         <div class="form-group">
                             <label for="medico">Médico</label>
                             <select class="form-control" id="medico">
                                 <option value="">Não Selecionado</option>
                                 @foreach($especialidade->medicoEspecialidade as $medicoEsp)
-                                    <option value="{{$medicoEsp->medico->id}}">{{$medicoEsp->medico->pessoa->nome}}</option>
+                                    <option
+                                        value="{{$medicoEsp->medico->id}}">{{$medicoEsp->medico->pessoa->nome}}</option>
                                 @endforeach
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="horario">Horários Disponíveis </label>
-                            <select class="form-control" id="horario">
+                            <select class="form-control" id="horario" disabled>
                                 <option value="">Não Selecionado</option>
                             </select>
+                        </div>
+
+                        <div class="form-group float-right">
+                            <input type="button" class="btn btn-outline-primary" value="Confirmar Pagamento"
+                                   id="confirma_pagamento" hidden/>
                         </div>
                     </form>
                 </div>
@@ -71,6 +80,7 @@
 @endsection
 
 @section('link-scirpt')
+    <script src="{{asset('assets/jquery/momenet.js')}}"></script>
     <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/consultas/consultas.js')}}"></script>
 @endsection
