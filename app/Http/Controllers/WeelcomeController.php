@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Especilidade;
+use App\Models\Especialidade;
 use App\Models\EspecilidadeMedico;
 use App\Models\Solicitacao;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class WeelcomeController extends Controller
     //
     public function index()
     {
-        $especialidades = Especilidade::all()->take(6);
+        $especialidades = Especialidade::all()->take(6);
         $this->verificar_notificacao();
         return view('welcome', [
             'especialidades' => $especialidades,

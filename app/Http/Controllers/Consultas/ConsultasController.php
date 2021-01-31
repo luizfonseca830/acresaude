@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Consultas;
 
 use App\Http\Controllers\Controller;
-use App\Models\Especilidade;
+use App\Models\Especialidade;
 use Illuminate\Http\Request;
 
 class ConsultasController extends Controller
@@ -16,7 +16,7 @@ class ConsultasController extends Controller
     public function index()
     {
         //
-        $especialidades = Especilidade::all();
+        $especialidades = Especialidade::all();
         return view('pages.servicos.consultas', [
             'especialidades'=> $especialidades,
         ]);
@@ -52,7 +52,7 @@ class ConsultasController extends Controller
     public function show($id)
     {
         //
-        $especialidade = Especilidade::findOrFail($id);
+        $especialidade = Especialidade::findOrFail($id);
         return view('pages.servicos.consulta-visualizar', [
             'especialidade' => $especialidade
         ]);

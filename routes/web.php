@@ -60,7 +60,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/home/dashboard', [\App\Http\Controllers\DashBoard\HomeController::class, 'index'])->name('home.dashboard');
         Route::get('/dashboard/lista', [\App\Http\Controllers\DashBoard\Lista\UsuarioController::class, 'index'])->name('lista.usuario.dashboard');
 
-        //Especilidade
+        //Especialidade
         Route::get('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
         Route::post('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
         Route::get('/dashboard/especialidade/lista', [\App\Http\Controllers\DashBoard\Lista\EspecialidadeController::class, 'index'])->name('especialidade.list.dashboard');
