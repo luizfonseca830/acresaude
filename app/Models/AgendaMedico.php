@@ -30,4 +30,8 @@ class AgendaMedico extends Model
         return $this->hasMany(AgendaConsultas::class, 'agenda_id', 'id');
     }
 
+    public function buscaVaga($id){
+        $agenda = AgendaConsultas::whereNull('paciente_id')->where('agenda_id', $id)->get();
+        return $agenda;
+    }
 }

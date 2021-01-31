@@ -75,8 +75,10 @@ Route::group(['middleware' => ['auth']], function () {
 //SERVICOS
 Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');
 Route::get('/servico/consulta/{id}',[\App\Http\Controllers\Consultas\ConsultasController::class, 'show'])->name('consulta.mostra');
+
 //SERVICO SOLICITACAO AJAX
 Route::post('/servico/consulta/ajax', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'search'])->name('consulta.ajax.search');
+Route::post('/servico/consulta/medico/horario/ajax', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'searchMedicoHorario'])->name('consulta.ajax.searchMedicoHorario');
 
 //SOLICITACAO
 Route::get('/servico/solicitacao', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'index'])->name('solicitacao.index');

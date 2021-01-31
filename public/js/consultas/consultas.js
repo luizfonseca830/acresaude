@@ -54,4 +54,51 @@ $(document).ready(function ($) {
             }
         }
     }
+
+    $('#medico').click(function () {
+        const medico_id = $('#medico option:selected').val()
+        const especialidade_id = $('#especialidade_id').val()
+        const route = $('#rota_busca').val()
+        var _token = $("input[name='_token']").val();
+
+        $.ajax({
+            url: route,
+            type: 'POST',
+            data: {
+                _token: _token,
+                especialidade_id: especialidade_id,
+                medico_id: medico_id
+            },
+            success: function (data) {
+                if (data.length >= 1){
+                    adicionarNoSelect(data)
+                }
+                else {
+                    $('#horario').prop("disabled", true);
+                    $('#horario').empty()
+                    $('#horario').append($('<option>', {
+                        value:  '',
+                        text: 'Não Selecionado'
+                    }));
+                }
+            }
+        });
+    })
+
+    function adicionarNoSelect(data){
+        $('#horario').removeAttr('disabled')
+        $('#horario').empty()
+        $('#horario').append($('<option>', {
+            value:  '',
+            text: 'Não Selecionado'
+        }));
+        data.forEach(function (item){
+            $('#horario').append($('<option>', {
+                value: item.id,
+                text: moment(item.data_consulta, 'YYYY/MM/DD HH:mm').format('DD-MM-YYYY HH:mm')
+            }));
+        })
+
+        $('#confirma_pagamento').removeAttr('hidden')
+    }
 });
