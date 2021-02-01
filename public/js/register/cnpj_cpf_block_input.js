@@ -2,6 +2,10 @@ $(document).ready(function($){
     //CAREGAR A PAGINA
     var cpf =  $('#cpf').val();
     var cnpj =  $('#cnpj').val();
+
+    $('#cpf').mask('999.999.99-99')
+    $('#cnpj').mask('99.999.999/9999-99')
+
     if (cpf) {
         $('#cnpj').prop('disabled', true)
     }

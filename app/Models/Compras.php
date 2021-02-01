@@ -11,6 +11,7 @@ class Compras extends Model
     protected $table = 'compras';
     protected $fillable = [
         'pessoa_id',
+        'pagarme_id',
         'informacao_comprar_id',
         'status_compra',
     ];

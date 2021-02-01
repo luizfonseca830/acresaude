@@ -45,7 +45,7 @@
                         <h4 class="font-weight-bold">ESCOLHA O HORÁRIO DA CONSULTA</h4>
                         <hr>
                     </div>
-                    <form method="post">
+                    <form>
                         @csrf
                         <input type="text" value="{{$especialidade->id}}" id="especialidade_id" hidden>
                         <input type="text" value="{{route('consulta.ajax.searchMedicoHorario')}}" id="rota_busca"
@@ -63,14 +63,23 @@
 
                         <div class="form-group">
                             <label for="horario">Horários Disponíveis </label>
-                            <select class="form-control" id="horario" disabled>
+                            <select class="form-control" id="horario" name="agenda_id" disabled>
                                 <option value="">Não Selecionado</option>
                             </select>
                         </div>
+                        <div class="form-group float-right" id="processando" hidden>
+                            <label>Processando Pagamento. Aguarde.</label>
+                            <div class="spinner-border text-warning" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+
 
                         <div class="form-group float-right">
+                            <input type="text" id="rota_pagamento" value="{{route('consulta.pagamento')}}" hidden>
+                            <input type="text" id="rota_minha_compras" value="{{route('minhascompras.index')}}" hidden/>
                             <input type="button" class="btn btn-outline-primary" value="Confirmar Pagamento"
-                                   id="confirma_pagamento" hidden/>
+                                   id="confirma_pagamento" hidden />
                         </div>
                     </form>
                 </div>

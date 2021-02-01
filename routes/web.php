@@ -70,11 +70,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dash/board/solicitacao/medicoa/rejeitar/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'rejeitar'])->name('solicitacao.medico.rejeitar.dashboard');
         Route::get('/dashboard/solicitacao/medico/visualizar/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'visualizarMedico'])->name('solicitacao.medico.visualizar.dashboard');
     });
+
+    //CONSULTA PAGAMENTO
+    Route::post('servico/consulta/pagamento', [\App\Http\Controllers\Consultas\ConsultasController::class, 'indexPagamento'])->name('consulta.pagamento');
 });
 
 //SERVICOS
 Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');
 Route::get('/servico/consulta/{id}',[\App\Http\Controllers\Consultas\ConsultasController::class, 'show'])->name('consulta.mostra');
+
 
 //SERVICO SOLICITACAO AJAX
 Route::post('/servico/consulta/ajax', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'search'])->name('consulta.ajax.search');
