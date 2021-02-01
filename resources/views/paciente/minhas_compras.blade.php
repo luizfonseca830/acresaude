@@ -23,7 +23,7 @@
                 <tr>
                     <th>{{$compra->id}}</th>
                     <th>Consulta</th>
-                    <th>{{$compra->created_at}}</th>
+                    <th>{{date('d/m/Y H:i:s', strtotime( $compra->created_at))}}</th>
                     @if($compra->status_compra == 0)
                         <th class="text-warning font-weight-bold">Pendente</th>
                     @elseif($compra->status_compra == 1 && !is_null($compra->agendaConsulta))
