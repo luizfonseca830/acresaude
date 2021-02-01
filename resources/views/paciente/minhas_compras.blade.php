@@ -53,3 +53,7 @@
         @endif
     </div>
 @endsection
+@section('link-scirpt')
+    <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
+    @include('notifications.notification')
+@endsection

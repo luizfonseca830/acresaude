@@ -16,4 +16,8 @@ class AgendaConsultas extends Model
     public function paciente(){
         return $this->hasOne(Pessoa::class, 'id', 'paciente_id');
     }
+
+    public function agendaMedico(){
+        return $this->hasOne(AgendaMedico::class, 'id', 'agenda_id');
+    }
 }

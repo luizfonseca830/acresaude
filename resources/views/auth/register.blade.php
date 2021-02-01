@@ -152,6 +152,7 @@
 @endsection
 
 @section('link-scirpt')
+    <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/register/cep.js')}}"></script>
     <script src="{{asset('assets/jQuery-Mask-Plugin-master/dist/jquery.mask.min.js')}}"></script>
     <script src="{{asset('js/register/cnpj_cpf_block_input.js')}}"></script>

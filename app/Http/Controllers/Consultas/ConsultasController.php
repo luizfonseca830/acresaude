@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Consultas;
 
 use App\Http\Controllers\Controller;
+use App\Models\AgendaConsultas;
+use App\Models\Compras;
 use App\Models\Especialidade;
 use Illuminate\Http\Request;
 
@@ -58,37 +60,23 @@ class ConsultasController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function indexPagamento(Request $request){
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $agenda = AgendaConsultas::findOrFail($request->agenda_id);
+        $pagamento = new PagamentoController();
+
+        $linkPagamento = $pagamento->pagamento($agenda);
+        Compras::create([
+            'pessoa_id' => auth()->user()->pessoa->id,
+            'pagarme_id' => $linkPagamento->id,
+            'status_compra' => $linkPagamento->status,
+        ]);
+        session()->put('sucess', 'Pedido realizado com sucesso');
+        return response()->json($linkPagamento);
+//        dd($agenda);
+//        return view('pages.servicos.pagamento', [
+//            'agenda' => $agenda,
+//        ]);
     }
 }

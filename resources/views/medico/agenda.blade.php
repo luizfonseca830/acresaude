@@ -38,7 +38,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="exampleInputTitulo">Título</label>
-                            <input type="text" class="form-control" name="titulo" id="exampleInputTitulo" placeholder="Digito o título" required>
+                            <input type="text" class="form-control" name="titulo" id="titulo" placeholder="Digito o título" required>
                             @error('titulo')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror

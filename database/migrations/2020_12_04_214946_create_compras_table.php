@@ -16,11 +16,10 @@ class CreateComprasTable extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pessoa_id');
-            $table->unsignedBigInteger('informacao_comprar_id');
+            $table->unsignedBigInteger('pagarme_id');
             $table->boolean('status_compra');
             $table->timestamps();
 
-            $table->foreign('informacao_comprar_id')->references('id')->on('informacao_compras');
             $table->foreign('pessoa_id')->references('id')->on('pessoas');
         });
     }

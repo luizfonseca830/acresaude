@@ -101,4 +101,39 @@ $(document).ready(function ($) {
 
         $('#confirma_pagamento').removeAttr('hidden')
     }
+
+
+    //PAGAMETO
+    $("#confirma_pagamento").click(function (){
+        const rota_pagamento = $('#rota_pagamento').val()
+        const agenda_id = $('#horario option:selected').val()
+        const _token = $("input[name='_token']").val();
+        $.ajax({
+            url: rota_pagamento,
+            type: 'POST',
+            data: {
+                _token: _token,
+               agenda_id: agenda_id,
+            },
+            success: function (data) {
+                const page = data.url
+                console.log(data)
+                window.open(page, '_blank')
+                // verificar_status(data.id)
+                const rotas_minhas_compras = $('#rota_minha_compras').val()
+                window.location.replace(rotas_minhas_compras);
+                console.log(1)
+            },
+            failed: function (data){
+                console.log(data)
+            }
+        });
+    })
+
+    function verificar_status(id){
+        $('#processando').removeAttr('hidden')
+        $('#horario').attr('disabled', true)
+        $('#medico').attr('disabled', true)
+        $('#confirma_pagamento').attr('hidden', true)
+    }
 });
