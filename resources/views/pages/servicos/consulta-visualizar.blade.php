@@ -17,26 +17,9 @@
                         <hr>
                     </div>
                     <p>
-                        Cras in interdum ligula. Vestibulum congue placerat eros vitae scelerisque. Pellentesque
-                        suscipit, mi et porttitor imperdiet, turpis urna laoreet erat, non vulputate lectus est tempus
-                        ante. Aenean quis quam purus.
-                    </p>
-                    <p>
-                        Fusce ultricies, arcu a consequat ultricies, nisi metus finibus
-                        nisl, ac dictum orci quam vel orci. Quisque at mattis neque. Nunc pellentesque sit amet massa
-                        non ornare. Praesent venenatis tortor consequat nisi interdum, vitae sodales felis varius.
-                        Maecenas vel lectus sit amet augue iaculis luctus consequat ac sem. Curabitur efficitur enim
-                        lectus, et aliquam mi mattis ac. Donec facilisis, dolor vitae efficitur vestibulum, justo tellus
-                        dapibus lectus, nec rhoncus libero ante ut ex. Quisque ut urna non turpis rhoncus ullamcorper.
-                        Aenean facilisis placerat dignissim. Fusce sed aliquam diam. Donec ipsum libero, semper id
-                        consectetur vel, mollis ac mauris. Quisque pulvinar tortor sit amet enim molestie, non
-                        vestibulum orci suscipit.
-                    </p>
-                    <p>
-                        Nam ut efficitur dui, nec gravida nisl. Ut faucibus aliquet erat quis sagittis. Pellentesque
-                        maximus odio est, sed consectetur eros malesuada at. Proin sit amet maximus magna. Curabitur sed
-                        placerat neque. Praesent semper ullamcorper elit, ac maximus nunc mollis sit amet. Vestibulum eu
-                        magna id massa posuere pellentesque non ac orci.
+                        Consulta pagas com cartão de credito tera sua horas confirmada mediante a validação do pagamento
+                        caso seja por boleto não se poderar garantir o agendamento na hora desejada devido o atraso
+                        de <b>3 dias na validação</b> no pagamento do mesmo.
                     </p>
                 </div>
                 <div class="col col-6 fundo-2-col">

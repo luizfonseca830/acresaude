@@ -22,7 +22,7 @@ class MinhasComprasController extends Controller
             $status_compra = $pargarme->paymentLinks()->get([
                 'id' => $verificar->pagarme_id
             ]);
-            dd($status_compra);
+          /*  dd($status_compra);*/
         }
 
         return view('paciente.minhas_compras', [

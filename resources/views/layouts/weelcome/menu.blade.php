@@ -30,41 +30,44 @@
                                     <a class="dropdown-item" href="#">Serviços</a>
                                 </div>
                             </li>
-                        </ul>
-                    </div>
-                    @if(is_null(auth()->user()))
-                        <a class="btn_2 d-none d-lg-block" href="{{route('login')}}">Login</a>
-                    @else
-                        <ul class="navbar-nav align-items-center">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Minha Conta
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @if (auth()->user()->pessoa->tipoUsuario->nome == 'Administrador')
-                                        <a class="dropdown-item" href="{{route('home.dashboard')}}">Área Adiministrativa</a>
-                                    @endif
-                                    @if(auth()->user()->pessoa->tipoUsuario->nome == 'Doutor')
-                                        <a class="dropdown-item" href="{{route('agenda.index')}}">Agenda Pessoal</a>
-                                    @endif
+                                @if(is_null(auth()->user()))
+                                    <a class="btn_2 d-none d-lg-block" href="{{route('login')}}">Login</a>
+                                @else
 
-                                    @if(auth()->user()->pessoa->tipoUsuario->nome == 'Doutor')
-                                        <a class="dropdown-item" href="{{route('medico.consultas.index')}}">Consultas
-                                            Marcadas</a>
-                                    @else
-                                        <a class="dropdown-item" href="{{route('paciente.consultas.index')}}">Consultas
-                                            Marcadas</a>
-                                    @endif
-                                    <a class="dropdown-item" href="{{route('minhascompras.index')}}">Minhas Compras</a>
-                                    <form method="post" action="{{route('sair')}}">
-                                        @csrf
-                                        <input type="submit" class="dropdown-item" value="Sair">
-                                    </form>
-                                </div>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Minha Conta
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                @if (auth()->user()->pessoa->tipoUsuario->nome == 'Administrador')
+                                                    <a class="dropdown-item" href="{{route('home.dashboard')}}">Área Adiministrativa</a>
+                                                @endif
+                                                @if(auth()->user()->pessoa->tipoUsuario->nome == 'Doutor')
+                                                    <a class="dropdown-item" href="{{route('agenda.index')}}">Agenda Pessoal</a>
+                                                @endif
+
+                                                @if(auth()->user()->pessoa->tipoUsuario->nome == 'Doutor')
+                                                    <a class="dropdown-item" href="{{route('medico.consultas.index')}}">Consultas
+                                                        Marcadas</a>
+                                                @else
+                                                    <a class="dropdown-item" href="{{route('paciente.consultas.index')}}">Consultas
+                                                        Marcadas</a>
+                                                @endif
+                                                <a class="dropdown-item" href="{{route('minhascompras.index')}}">Minhas Compras</a>
+                                                <form method="post" action="{{route('sair')}}">
+                                                    @csrf
+                                                    <input type="submit" class="dropdown-item" value="Sair">
+                                                </form>
+                                            </div>
+                                        </li>
+
+                                @endif
                             </li>
                         </ul>
-                    @endif
+                    </div>
+
                 </nav>
             </div>
         </div>
