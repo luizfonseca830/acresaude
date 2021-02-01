@@ -16,7 +16,7 @@ class CreateComprasTable extends Migration
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pessoa_id');
-            $table->unsignedBigInteger('pagarme_id');
+            $table->string('pagarme_id');
             $table->boolean('status_compra');
             $table->timestamps();
 
