@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
                 'usuario' => 'medico',
                 'email' => 'luizfonseca830@gmail.com',
                 'email_verified_at' => NULL,
-                'password' => '$2y$10$Jb9KXujWOSilEs7YMDbKGey4oM2qduherPROMckcXqgAXltlRK9pi',
+                'password' => bcrypt('123456789'),
                 'remember_token' => NULL,
                 'created_at' => '2021-01-10 21:11:21',
                 'updated_at' => '2021-01-10 21:11:21',
@@ -36,11 +36,22 @@ class UsersTableSeeder extends Seeder
                 'usuario' => 'admin',
                 'email' => 'jfsystem830@gmail.com',
                 'email_verified_at' => NULL,
-                'password' => '$2y$10$8henlYkO8ElqCsSGXoAmzO/PgXpfNUqqJCNAsHd8xrAKTirE4niSS',
+                'password' => bcrypt('123456789'),
                 'remember_token' => NULL,
                 'created_at' => '2021-01-10 21:12:51',
                 'updated_at' => '2021-01-10 21:12:51',
             ),
+            2 =>
+                array (
+                    'id' => 3,
+                    'usuario' => 'usuario',
+                    'email' => 'jfsystem830@hotmail.com',
+                    'email_verified_at' => NULL,
+                    'password' => bcrypt('123456789'),
+                    'remember_token' => NULL,
+                    'created_at' => '2021-01-10 21:12:51',
+                    'updated_at' => '2021-01-10 21:12:51',
+                ),
         ));
 
 

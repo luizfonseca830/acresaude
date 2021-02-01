@@ -45,6 +45,19 @@ class PessoasTableSeeder extends Seeder
                 'created_at' => '2021-01-10 21:12:51',
                 'updated_at' => '2021-01-10 21:12:51',
             ),
+            2 =>
+                array (
+                    'id' => 3,
+                    'user_id' => 3,
+                    'tipo_usuario_id' => 3,
+                    'nome' => 'Usuario',
+                    'sobrenome' => 'User',
+                    'cpf' => '902.885.212-34',
+                    'cnpj' => NULL,
+                    'data_nascimento' => '1971-08-23',
+                    'created_at' => '2021-01-10 21:12:51',
+                    'updated_at' => '2021-01-10 21:12:51',
+                ),
         ));
 
 

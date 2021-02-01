@@ -17,7 +17,7 @@ class CreateComprasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('pessoa_id');
             $table->string('pagarme_id');
-            $table->boolean('status_compra');
+            $table->string('status_compra');
             $table->timestamps();
 
             $table->foreign('pessoa_id')->references('id')->on('pessoas');
