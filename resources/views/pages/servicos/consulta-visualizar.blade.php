@@ -28,11 +28,10 @@
                         <h4 class="font-weight-bold">ESCOLHA O HORÁRIO DA CONSULTA</h4>
                         <hr>
                     </div>
-                    <form>
+                    <form action="#" method="post">
                         @csrf
                         <input type="text" value="{{$especialidade->id}}" id="especialidade_id" hidden>
-                        <input type="text" value="{{route('consulta.ajax.searchMedicoHorario')}}" id="rota_busca"
-                               hidden/>
+                        <input type="text" value="{{route('consulta.ajax.searchMedicoHorario')}}" id="rota_busca" hidden/>
                         <div class="form-group">
                             <label for="medico">Médico</label>
                             <select class="form-control" id="medico">
@@ -50,6 +49,7 @@
                                 <option value="">Não Selecionado</option>
                             </select>
                         </div>
+
                         <div class="form-group float-right" id="processando" hidden>
                             <label>Processando Pagamento. Aguarde.</label>
                             <div class="spinner-border text-warning" role="status">
@@ -57,10 +57,9 @@
                             </div>
                         </div>
 
-
                         <div class="form-group float-right">
-                            <input type="text" id="rota_pagamento" value="{{route('consulta.pagamento')}}" hidden>
-                            <input type="text" id="rota_minha_compras" value="{{route('minhascompras.index')}}" hidden/>
+{{--                            <input type="text" id="rota_pagamento" value="{{route('consulta.pagamento')}}" hidden>--}}
+{{--                            <input type="text" id="rota_minha_compras" value="{{route('minhascompras.index')}}" hidden/>--}}
                             <input type="button" class="btn btn-outline-primary" value="Confirmar Pagamento"
                                    id="confirma_pagamento" hidden />
                         </div>
@@ -75,4 +74,37 @@
     <script src="{{asset('assets/jquery/momenet.js')}}"></script>
     <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/consultas/consultas.js')}}"></script>
+    <script src="https://assets.pagar.me/checkout/1.1.0/checkout.js"></script>
+
+    <script>
+        $('#confirma_pagamento').click(function () {
+            var checkout = new PagarMeCheckout.Checkout({
+                encryption_key: '{{env('API_KEY_PAGARME_ENCRYPTION')}}',
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+                close: function () {
+                    console.log('The modal has been closed.');
+                }
+            })
+
+            checkout.open({
+                amount: 10000,
+                customerData: 'true',
+                createToken: 'true',
+                paymentMethods: 'boleto,credit_card',
+                boletoExpirationDate: "{{Date('Y-m-d', strtotime('+3 days'))}}",
+                items: [{
+                    id: 1, //NUMERO NA LOJA
+                    title: 'Consulta - Online',
+                    unit_price: 1500,
+                    quantity: 1,
+                    tangible: 'false'
+                }]
+            })
+        })
+    </script>
 @endsection

@@ -73,6 +73,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     //CONSULTA PAGAMENTO
     Route::post('servico/consulta/pagamento', [\App\Http\Controllers\Consultas\ConsultasController::class, 'indexPagamento'])->name('consulta.pagamento');
+    //REALIZAR PAGAMENTO
+    Route::post('servico/realizar/pagamento', [\App\Http\Controllers\Consultas\ConsultasController::class, 'solicitationPayment'])->name('realizar.pagamento');
 });
 
 //SERVICOS

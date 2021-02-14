@@ -25,7 +25,6 @@ $(document).ready(function ($) {
     });
 
     function verificar(data) {
-
         if ($.isEmptyObject(data.error)) {
             if (data.length <= 0) {
                 var container = $('#container').html('');
@@ -60,7 +59,6 @@ $(document).ready(function ($) {
         const especialidade_id = $('#especialidade_id').val()
         const route = $('#rota_busca').val()
         var _token = $("input[name='_token']").val();
-
         $.ajax({
             url: route,
             type: 'POST',
@@ -71,6 +69,7 @@ $(document).ready(function ($) {
             },
             success: function (data) {
                 if (data.length >= 1){
+                    console.log(data)
                     adicionarNoSelect(data)
                 }
                 else {
@@ -104,31 +103,31 @@ $(document).ready(function ($) {
 
 
     //PAGAMETO
-    $("#confirma_pagamento").click(function (){
-        const rota_pagamento = $('#rota_pagamento').val()
-        const agenda_id = $('#horario option:selected').val()
-        const _token = $("input[name='_token']").val();
-        $.ajax({
-            url: rota_pagamento,
-            type: 'POST',
-            data: {
-                _token: _token,
-               agenda_id: agenda_id,
-            },
-            success: function (data) {
-                const page = data.url
-                console.log(data)
-                window.open(page, '_blank')
-                // verificar_status(data.id)
-                const rotas_minhas_compras = $('#rota_minha_compras').val()
-                window.location.replace(rotas_minhas_compras);
-                console.log(1)
-            },
-            failed: function (data){
-                console.log(data)
-            }
-        });
-    })
+    // $("#confirma_pagamento").click(function (){
+    //     const rota_pagamento = $('#rota_pagamento').val()
+    //     const agenda_id = $('#horario option:selected').val()
+    //     const _token = $("input[name='_token']").val();
+    //     $.ajax({
+    //         url: rota_pagamento,
+    //         type: 'POST',
+    //         data: {
+    //             _token: _token,
+    //            agenda_id: agenda_id,
+    //         },
+    //         success: function (data) {
+    //             const page = data.url
+    //             console.log(data)
+    //             // window.open(page, '_blank')
+    //             // verificar_status(data.id)
+    //             const rotas_minhas_compras = $('#rota_minha_compras').val()
+    //             // window.location.replace(rotas_minhas_compras);
+    //             console.log(1)
+    //         },
+    //         failed: function (data){
+    //             console.log(data)
+    //         }
+    //     });
+    // })
 
     function verificar_status(id){
         $('#processando').removeAttr('hidden')
@@ -136,4 +135,6 @@ $(document).ready(function ($) {
         $('#medico').attr('disabled', true)
         $('#confirma_pagamento').attr('hidden', true)
     }
+
+
 });

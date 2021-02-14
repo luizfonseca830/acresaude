@@ -27,31 +27,33 @@
                     </li>
                 </ul>
 
-                {{--                <form class="card p-2">--}}
-                {{--                    <div class="input-group">--}}
-                {{--                        <input type="text" class="form-control" placeholder="Código promocional">--}}
-                {{--                        <div class="input-group-append">--}}
-                {{--                            <button type="submit" class="btn btn-secondary">Resgatar</button>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </form>--}}
+                <form class="card p-2">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Código promocional">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary">Resgatar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Informações de Pagamento</h4>
-                <form class="needs-validation" method="post" action="{{route('consulta.realizar.pagamento')}}" novalidate>
+                <form class="needs-validation" method="post" action="{{route('realizar.pagamento')}}" novalidate>
                     @csrf
                     <input type="text" value="{{$agenda->id}}" name="produto_id" hidden>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="primeiroNome">Nome</label>
-                            <input type="text" class="form-control" id="primeiroNome" name="primeiroNome" placeholder="Fulano" value="" required>
+                            <input type="text" class="form-control" id="primeiroNome" name="primeiroNome"
+                                   placeholder="Fulano" value="{{auth()->user()->pessoa->nome}}" required>
                             <div class="invalid-feedback">
                                 É obrigatório inserir um nome válido.
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="sobrenome">Sobrenome</label>
-                            <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="da Silva" value="" required>
+                            <input type="text" class="form-control" id="sobrenome" name="sobrenome"
+                                   placeholder="{{auth()->user()->pessoa->nome}}" value="" required>
                             <div class="invalid-feedback">
                                 É obrigatório inserir um sobre nome válido.
                             </div>
@@ -60,7 +62,8 @@
 
                     <div class="mb-3">
                         <label for="celular">Celular</label>
-                        <input type="text" class="form-control" id="celular" name="celular" placeholder="(99) 99999-9999" required>
+                        <input type="text" class="form-control" id="celular" name="celular"
+                               placeholder="(99) 99999-9999" required>
                         <div class="invalid-feedback">
                             Por favor, insira um endereço de e-mail válido, para atualizações de entrega.
                         </div>
@@ -68,7 +71,8 @@
 
                     <div class="mb-3">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="fulano@exemplo.com">
+                        <input type="email" class="form-control" id="email" name="email"
+                               value="{{auth()->user()->email}}" placeholder="fulano@exemplo.com">
                         <div class="invalid-feedback">
                             Por favor, insira um endereço de e-mail válido, para atualizações de entrega.
                         </div>
@@ -76,7 +80,8 @@
 
                     <div class="mb-3">
                         <label for="cep">CEP</label>
-                        <input type="text" class="form-control" id="cep" name="cep" placeholder="Informe o cep" required>
+                        <input type="text" class="form-control" id="cep" name="cep" placeholder="Informe o cep"
+                               required>
                         <div class="invalid-feedback">
                             É obrigatório inserir um CEP.
                         </div>
@@ -84,7 +89,8 @@
 
                     <div class="mb-3">
                         <label for="endereco">Endereço</label>
-                        <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua dos bobos, nº 0"
+                        <input type="text" class="form-control" id="endereco" name="endereco"
+                               placeholder="Rua dos bobos, nº 0"
                                required>
                         <div class="invalid-feedback">
                             Por favor, insira seu endereço de entrega.
@@ -93,7 +99,8 @@
 
                     <div class="mb-3">
                         <label for="endereco2">Endereço 2 <span class="text-muted">(Opcional)</span></label>
-                        <input type="text" class="form-control" id="endereco2" name="endereco2" placeholder="Apartamento ou casa">
+                        <input type="text" class="form-control" id="endereco2" name="endereco2"
+                               placeholder="Apartamento ou casa">
                     </div>
 
                     <div class="row">
@@ -124,12 +131,14 @@
 
                     <div class="d-block my-3">
                         <div class="custom-control custom-radio">
-                            <input id="credito" name="paymentMethod" value="credit_card" type="radio" class="custom-control-input" checked
+                            <input id="credito" name="paymentMethod" value="credit_card" type="radio"
+                                   class="custom-control-input" checked
                                    required>
                             <label class="custom-control-label" for="credito">Cartão de crédito</label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input id="boleto" name="paymentMethod" value="boleto" type="radio" class="custom-control-input" required>
+                            <input id="boleto" name="paymentMethod" value="boleto" type="radio"
+                                   class="custom-control-input" required>
                             <label class="custom-control-label" for="boleto">Boleto</label>
                         </div>
                     </div>
@@ -137,7 +146,8 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cc-nome">Nome no cartão</label>
-                                <input type="text" class="form-control" id="cc-nome" name="cc-nome" placeholder="" required>
+                                <input type="text" class="form-control" id="cc-nome" name="cc-nome" placeholder=""
+                                       required>
                                 <small class="text-muted">Nome completo, como mostrado no cartão.</small>
                                 <div class="invalid-feedback">
                                     O nome que está no cartão é obrigatório.
@@ -145,7 +155,8 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="cc-numero">Número do cartão de crédito</label>
-                                <input type="text" class="form-control" id="cc-numero" name="cc-numero" placeholder="" required>
+                                <input type="text" class="form-control" id="cc-numero" name="cc-numero" placeholder=""
+                                       required>
                                 <div class="invalid-feedback">
                                     O número do cartão de crédito é obrigatório.
                                 </div>
@@ -154,14 +165,16 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="cc-expiracao">Data de expiração</label>
-                                <input type="text" class="form-control" id="cc-expiracao" name="cc-expiracao" placeholder="" required>
+                                <input type="text" class="form-control" id="cc-expiracao" name="cc-expiracao"
+                                       placeholder="" required>
                                 <div class="invalid-feedback">
                                     Data de expiração é obrigatória.
                                 </div>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="cc-cvv">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv" name="cc-ccv" placeholder="" required>
+                                <input type="text" class="form-control" id="cc-cvv" name="cc-ccv" placeholder=""
+                                       required>
                                 <div class="invalid-feedback">
                                     Código de segurança é obrigatório.
                                 </div>
@@ -169,7 +182,8 @@
 
                             <div class="col-md-6 mb-3">
                                 <label for="cc-cvv">CPF do títular</label>
-                                <input type="text" class="form-control" id="cpf" name="cpf_credit_card" placeholder="" required>
+                                <input type="text" class="form-control" id="cpf" name="cpf_credit_card" placeholder=""
+                                       required>
                                 <div class="invalid-feedback">
                                     Código de segurança é obrigatório.
                                 </div>
@@ -181,12 +195,14 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="CPF">CPF</label>
-                                <input type="text" class="form-control" id="cpf_boleto" name="cpf_boleto" placeholder="" required>
+                                <input type="text" class="form-control" id="cpf_boleto" name="cpf_boleto" placeholder=""
+                                       required>
                             </div>
                         </div>
                     </div>
                     <hr class="mb-4">
-                    <input class="btn btn-primary btn-lg btn-block" type="submit" value="Finalizar Compra">
+                    <input class="btn btn-primary btn-lg btn-block" type="button" id="finish_payment"
+                           value="Finalizar Compra">
                 </form>
             </div>
         </div>
@@ -199,3 +215,5 @@
     <script src="{{asset('js/pagamento/pagamento.js')}}"></script>
     <script src="{{asset('assets/jquery/momenet.js')}}"></script>
 @endsection
+
+
