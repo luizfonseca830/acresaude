@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('servico/consulta/pagamento', [\App\Http\Controllers\Consultas\ConsultasController::class, 'indexPagamento'])->name('consulta.pagamento');
     //REALIZAR PAGAMENTO
     Route::post('servico/realizar/pagamento', [\App\Http\Controllers\Consultas\ConsultasController::class, 'solicitationPayment'])->name('realizar.pagamento');
+    Route::post('agenda/ajax/consulta/preco/', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'price'])->name('consulta.price');
 });
 
 //SERVICOS

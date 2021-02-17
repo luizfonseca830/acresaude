@@ -32,6 +32,8 @@
                         @csrf
                         <input type="text" value="{{$especialidade->id}}" id="especialidade_id" hidden>
                         <input type="text" value="{{route('consulta.ajax.searchMedicoHorario')}}" id="rota_busca" hidden/>
+                        <input type="text" value="{{env('api_key_pagarme_encryption')}}" id="api_key_encryption" hidden/>
+                        <input type="text" value="{{route('consulta.price')}}" id="route_price" hidden />
                         <div class="form-group">
                             <label for="medico">Médico</label>
                             <select class="form-control" id="medico">
@@ -75,36 +77,4 @@
     <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('js/consultas/consultas.js')}}"></script>
     <script src="https://assets.pagar.me/checkout/1.1.0/checkout.js"></script>
-
-    <script>
-        $('#confirma_pagamento').click(function () {
-            var checkout = new PagarMeCheckout.Checkout({
-                encryption_key: '{{env('API_KEY_PAGARME_ENCRYPTION')}}',
-                success: function (data) {
-                    console.log(data);
-                },
-                error: function (err) {
-                    console.log(err);
-                },
-                close: function () {
-                    console.log('The modal has been closed.');
-                }
-            })
-
-            checkout.open({
-                amount: 10000,
-                customerData: 'true',
-                createToken: 'true',
-                paymentMethods: 'boleto,credit_card',
-                boletoExpirationDate: "{{Date('Y-m-d', strtotime('+3 days'))}}",
-                items: [{
-                    id: 1, //NUMERO NA LOJA
-                    title: 'Consulta - Online',
-                    unit_price: 1500,
-                    quantity: 1,
-                    tangible: 'false'
-                }]
-            })
-        })
-    </script>
 @endsection
