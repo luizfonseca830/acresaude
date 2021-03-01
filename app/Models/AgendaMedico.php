@@ -34,4 +34,11 @@ class AgendaMedico extends Model
         $agenda = AgendaConsultas::whereNull('paciente_id')->where('agenda_id', $id)->get();
         return $agenda;
     }
+
+    public function meusAtendimentos($id){
+//        dd($id);
+        $atendimentos = AgendaConsultas::where('agenda_id', $id)->whereNull('status_finalizado')->where('status_reserva', '1')->get();
+//        dd($atendimentos);
+        return $atendimentos;
+    }
 }

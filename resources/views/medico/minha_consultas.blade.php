@@ -4,37 +4,40 @@
     <link rel="stylesheet" href="{{asset('assets/DataTables/datatables.min.css')}}">
 @endsection
 @section('content')
+
     <div class="container">
         <div class="row">
-            <div class="title">
-                <hr>
-                <h2>{{$agenda->medicoEspecialidade->especialidade->especialidade}}</h2>
-                <hr>
-            </div>
             <table id="consultas" class="table table-striped table-bordered" style="width:100%">
                 <thead>
                 <tr>
                     <th>Id</th>
+                    <th>Especialidade</th>
                     <th>Data Consulta</th>
                     <th>Tempo de Consulta</th>
                     <th>Ações</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($agenda->agendaConsulta as $consulta)
-                    <tr>
-                        <td>{{$consulta->id}}</td>
-                        <td>{{$consulta->data_consulta}}</td>
-                        <td>{{$agenda->intervalo}}</td>
-                        <td class="text-center">
-                            <a href="{{route('medico.consulta.delete.unico', $consulta->id)}}"><i class="fas fa-trash"></i></a>
-                        </td>
-                    </tr>
+                @foreach($agendaMedico as $agenda)
+
+                    @foreach($agenda->meusAtendimentos($agenda->id) as $atendimento)
+                        <tr>
+                            <td>{{$atendimento->id}}</td>
+                            <td>{{$agenda->medicoEspecialidade->especialidade->especialidade}}</td>
+                            <td>{{$atendimento->data_consulta}}</td>
+                            <td>{{$agenda->intervalo}} Minutos</td>
+                            <td class="text-center">
+                                <a href="{{route('medico.consulta.delete.unico', $atendimento->id)}}"><i
+                                            class="fas fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    @endforeach
                 @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
                     <th>Id</th>
+                    <th>Especialidade</th>
                     <th>Data Consulta</th>
                     <th>Tempo de Consulta</th>
                     <th>Ações</th>
