@@ -24,8 +24,9 @@
                 </form>
             </div>
         @endif
-
+        <div class="row text-center align-content-center justify-content-center">
         <div id="meet"></div>
+        </div>
         @if(auth()->user()->pessoa->tipoUsuario->nome != 'Doutor')
             @csrf
         @endif

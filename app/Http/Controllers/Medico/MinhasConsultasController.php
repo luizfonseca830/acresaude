@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Medico;
 
 use App\Http\Controllers\Controller;
 use App\Models\AgendaConsultas;
+use App\Models\AgendaMedico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -17,10 +18,10 @@ class MinhasConsultasController extends Controller
     public function index()
     {
         //
-        $consultas = AgendaConsultas::where('medico_id', auth()->user()->pessoa->medico->id)
-        ->where('status_reserva', 1)->get();
+//        dd(auth()->user()->pessoa->medico);
+        $agendaMedico = AgendaMedico::where('medico_id', auth()->user()->pessoa->medico->id)->get();
         return view('medico.minha_consultas', [
-            'consultas' => $consultas
+            'agendaMedico' => $agendaMedico
         ]);
     }
 

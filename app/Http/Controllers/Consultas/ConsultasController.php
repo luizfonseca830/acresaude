@@ -20,7 +20,7 @@ class ConsultasController extends Controller
         //
         $especialidades = Especialidade::all();
         return view('pages.servicos.consultas', [
-            'especialidades'=> $especialidades,
+            'especialidades' => $especialidades,
         ]);
     }
 
@@ -37,7 +37,7 @@ class ConsultasController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -48,7 +48,7 @@ class ConsultasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -61,22 +61,16 @@ class ConsultasController extends Controller
     }
 
 
-    public function indexPagamento(Request $request){
-
+    public function indexPagamento(Request $request)
+    {
         $agenda = AgendaConsultas::findOrFail($request->agenda_id);
-        $pagamento = new PagamentoController();
-
-        $linkPagamento = $pagamento->pagamento($agenda);
-        Compras::create([
-            'pessoa_id' => auth()->user()->pessoa->id,
-            'pagarme_id' => $linkPagamento->id,
-            'status_compra' => $linkPagamento->status,
+        return view('pages.servicos.pagamento', [
+            'agenda' => $agenda,
         ]);
-        session()->put('sucess', 'Pedido realizado com sucesso');
-        return response()->json($linkPagamento);
-//        dd($agenda);
-//        return view('pages.servicos.pagamento', [
-//            'agenda' => $agenda,
-//        ]);
+    }
+
+    public function solicitationPayment(Request $request){
+        $pagamento = new PagamentoController();
+        $pagamento->pagamento($request);
     }
 }

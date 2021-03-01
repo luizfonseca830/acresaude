@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Consultas;
 
 use App\Http\Controllers\Controller;
+use App\Models\AgendaConsultas;
 use App\Models\AgendaMedico;
 use App\Models\Especialidade;
 use Illuminate\Http\Request;
@@ -29,5 +30,12 @@ class ConsultasAjaxController extends Controller
 
         }
         return response()->json($consultas);
+    }
+
+    public function price(Request $request){
+//        return response()->json($request->all());
+        $agenda = AgendaConsultas::findOrFail($request->id);
+
+        return response()->json($agenda->agendaMedico->preco);
     }
 }

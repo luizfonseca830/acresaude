@@ -12,13 +12,9 @@ class Compras extends Model
     protected $fillable = [
         'pessoa_id',
         'pagarme_id',
-        'informacao_comprar_id',
         'status_compra',
     ];
 
-    public function info_compra(){
-        return $this->hasMany(InformacaoCompras::class, 'id', 'informacao_comprar_id');
-    }
 
     public function agendaConsulta(){
         return $this->hasOne(AgendaConsultas::class, 'compra_id', 'id');

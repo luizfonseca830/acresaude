@@ -24,9 +24,9 @@
                     <th>{{$compra->id}}</th>
                     <th>Consulta</th>
                     <th>{{date('d/m/Y H:i:s', strtotime( $compra->created_at))}}</th>
-                    @if($compra->status_compra == 0)
+                    @if($compra->status_compra == 'waiting_payment')
                         <th class="text-warning font-weight-bold">Pendente</th>
-                    @elseif($compra->status_compra == 1 && !is_null($compra->agendaConsulta))
+                    @elseif($compra->status_compra == 'paid' && !is_null($compra->agendaConsulta))
                         @if(!is_null($compra->agendaConsulta->compra_id) && is_null($compra->agendaConsulta->sala_consulta))
                             <th class="text-success font-weight-bold">Agendado</th>
                         @elseif (!is_null($compra->agendaConsulta->status_finalizado))
@@ -41,6 +41,7 @@
                     @endif
                     {{--ACOES--}}
                     @if(is_null($compra->agendaConsulta))
+{{--                        vai servir para boleto--}}
                         <th><a href="{{route('paciente.agenda.index', $compra->id)}}"><i
                                     class="fas fa-calendar-alt fa-2x"></i></a></th>
                     @endif

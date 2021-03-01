@@ -14,6 +14,7 @@ class AgendaConsultaController extends Controller
 {
     //
     public function index($id){
+//        dd(1);
         $medicos = Medico::all();
         return view('paciente.agenda_consulta', [
             'medicos' => $medicos,

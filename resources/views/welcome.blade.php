@@ -41,7 +41,7 @@
             <div class="row">
                 @foreach($especialidades as $especialidade)
                     <div class="col-sm-6">
-                        <a href="#">
+                        <a href="{{route('consulta.mostra', $especialidade->id)}}">
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">{{$especialidade->especialidade}}</h5>

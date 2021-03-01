@@ -5,6 +5,8 @@ $(document).ready(function($){
     $('#celular').mask('(99) 99999-9999')
     $('#cc-numero').mask('9999 9999 9999 9999')
     $('#cc-expiracao').mask('99/9999')
+    $('#cc-cvv').mask('999')
+
     $("#cep").keyup(function() {
         var cepInput = $('#cep').val();
         var cepClear = cepInput.replace(/\D/g, '');

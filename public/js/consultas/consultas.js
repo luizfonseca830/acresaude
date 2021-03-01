@@ -15,17 +15,16 @@ $(document).ready(function ($) {
                 especialidade: especialidade,
             },
             success: function (data) {
-                setTimeout(function(){
+                setTimeout(function () {
                     $("#card").animate({height: "-0px"});
                     $("#card").animate({height: "77px"});
-                }, 10   );
+                }, 10);
                 verificar(data)
             }
         });
     });
 
     function verificar(data) {
-
         if ($.isEmptyObject(data.error)) {
             if (data.length <= 0) {
                 var container = $('#container').html('');
@@ -60,7 +59,6 @@ $(document).ready(function ($) {
         const especialidade_id = $('#especialidade_id').val()
         const route = $('#rota_busca').val()
         var _token = $("input[name='_token']").val();
-
         $.ajax({
             url: route,
             type: 'POST',
@@ -70,14 +68,13 @@ $(document).ready(function ($) {
                 medico_id: medico_id
             },
             success: function (data) {
-                if (data.length >= 1){
+                if (data.length >= 1) {
                     adicionarNoSelect(data)
-                }
-                else {
+                } else {
                     $('#horario').prop("disabled", true);
                     $('#horario').empty()
                     $('#horario').append($('<option>', {
-                        value:  '',
+                        value: '',
                         text: 'Não Selecionado'
                     }));
                 }
@@ -85,14 +82,14 @@ $(document).ready(function ($) {
         });
     })
 
-    function adicionarNoSelect(data){
+    function adicionarNoSelect(data) {
         $('#horario').removeAttr('disabled')
         $('#horario').empty()
         $('#horario').append($('<option>', {
-            value:  '',
+            value: '',
             text: 'Não Selecionado'
         }));
-        data.forEach(function (item){
+        data.forEach(function (item) {
             $('#horario').append($('<option>', {
                 value: item.id,
                 text: moment(item.data_consulta, 'YYYY/MM/DD HH:mm').format('DD-MM-YYYY HH:mm')
@@ -102,38 +99,79 @@ $(document).ready(function ($) {
         $('#confirma_pagamento').removeAttr('hidden')
     }
 
+    let price = 0;
+    $('#confirma_pagamento').click(async function () {
+        if ($('#horario').val() >= 1) {
+            var price = await getPrice()
+            var priceString = price.toString().replace(',', '')//CONVERTION STRING REMOVE ,
 
-    //PAGAMETO
-    $("#confirma_pagamento").click(function (){
-        const rota_pagamento = $('#rota_pagamento').val()
-        const agenda_id = $('#horario option:selected').val()
-        const _token = $("input[name='_token']").val();
-        $.ajax({
-            url: rota_pagamento,
-            type: 'POST',
-            data: {
-                _token: _token,
-               agenda_id: agenda_id,
-            },
-            success: function (data) {
-                const page = data.url
-                console.log(data)
-                window.open(page, '_blank')
-                // verificar_status(data.id)
-                const rotas_minhas_compras = $('#rota_minha_compras').val()
-                window.location.replace(rotas_minhas_compras);
-                console.log(1)
-            },
-            failed: function (data){
-                console.log(data)
-            }
-        });
+            var checkout = new PagarMeCheckout.Checkout({
+                encryption_key: $('#api_key_encryption').val(),
+                success: function (data) {
+                    console.log($('#horario').val())
+                    $('#modal-confirm-pagament').css('display', 'block')
+                    $('#modal-confirm-pagament').addClass('show')
+                    $('#dataToken').val(data.token)
+                    $('#dataPrice').val(priceString)
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+                close: function () {
+                    console.log('The modal has been closed.');
+                }
+            })
+
+            checkout.open({
+                amount: priceString,
+                customerData: 'true',
+                createToken: 'true',
+                paymentMethods: 'boleto,credit_card',
+                boletoExpirationDate: "{{Date('Y-m-d', strtotime('+3 days'))}}",
+                items: [{
+                    id: $('#horario').val(), //NUMERO NA LOJA
+                    title: 'Consulta - Online',
+                    unit_price: priceString,
+                    quantity: 1,
+                    tangible: 'false'
+                }]
+            })
+        }
     })
 
-    function verificar_status(id){
+    function verificar_status(id) {
         $('#processando').removeAttr('hidden')
         $('#horario').attr('disabled', true)
         $('#medico').attr('disabled', true)
         $('#confirma_pagamento').attr('hidden', true)
     }
+
+    async function getPrice() {
+       try {
+           const res = await getData($('#route_price').val())
+           return res
+       } catch (e) {
+           console.log(e)
+       }
+    }
+
+    function getData(routeReceive){
+        const route = routeReceive
+        return $.ajax({
+            url: route,
+            type: 'POST',
+            data: {
+                _token: $("input[name='_token']").val(),
+                id: $('#horario').val()
+            }
+        })
+    }
+
+    async function sendTransaction(){
+
+    }
+
+    $('#modal-confirm-pagament').click(function () {
+        $('#modal-confirm-pagament').css('display', 'none');
+    })
 });
