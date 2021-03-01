@@ -101,39 +101,41 @@ $(document).ready(function ($) {
 
     let price = 0;
     $('#confirma_pagamento').click(async function () {
-        // console.log($('#api_key_encryption').val())
-        // console.log($('#horario').val())
         if ($('#horario').val() >= 1) {
-            var teste = await getPrice()
+            var price = await getPrice()
+            var priceString = price.toString().replace(',', '')//CONVERTION STRING REMOVE ,
 
-            // console.log(data)
-            // var checkout = new PagarMeCheckout.Checkout({
-            //     encryption_key: $('#api_key_encryption').val(),
-            //     success: function (data) {
-            //         console.log(data);
-            //     },
-            //     error: function (err) {
-            //         console.log(err);
-            //     },
-            //     close: function () {
-            //         console.log('The modal has been closed.');
-            //     }
-            // })
-            //
-            // checkout.open({
-            //     amount: 10000,
-            //     customerData: 'true',
-            //     createToken: 'true',
-            //     paymentMethods: 'boleto,credit_card',
-            //     boletoExpirationDate: "{{Date('Y-m-d', strtotime('+3 days'))}}",
-            //     items: [{
-            //         id: 1, //NUMERO NA LOJA
-            //         title: 'Consulta - Online',
-            //         unit_price: 1500,
-            //         quantity: 1,
-            //         tangible: 'false'
-            //     }]
-            // })
+            var checkout = new PagarMeCheckout.Checkout({
+                encryption_key: $('#api_key_encryption').val(),
+                success: function (data) {
+                    console.log($('#horario').val())
+                    $('#modal-confirm-pagament').css('display', 'block')
+                    $('#modal-confirm-pagament').addClass('show')
+                    $('#dataToken').val(data.token)
+                    $('#dataPrice').val(priceString)
+                },
+                error: function (err) {
+                    console.log(err);
+                },
+                close: function () {
+                    console.log('The modal has been closed.');
+                }
+            })
+
+            checkout.open({
+                amount: priceString,
+                customerData: 'true',
+                createToken: 'true',
+                paymentMethods: 'boleto,credit_card',
+                boletoExpirationDate: "{{Date('Y-m-d', strtotime('+3 days'))}}",
+                items: [{
+                    id: $('#horario').val(), //NUMERO NA LOJA
+                    title: 'Consulta - Online',
+                    unit_price: priceString,
+                    quantity: 1,
+                    tangible: 'false'
+                }]
+            })
         }
     })
 
@@ -146,15 +148,15 @@ $(document).ready(function ($) {
 
     async function getPrice() {
        try {
-           const res = await getData()
+           const res = await getData($('#route_price').val())
            return res
        } catch (e) {
            console.log(e)
        }
     }
 
-    function getData(){
-        const route = $('#route_price').val()
+    function getData(routeReceive){
+        const route = routeReceive
         return $.ajax({
             url: route,
             type: 'POST',
@@ -164,4 +166,12 @@ $(document).ready(function ($) {
             }
         })
     }
+
+    async function sendTransaction(){
+
+    }
+
+    $('#modal-confirm-pagament').click(function () {
+        $('#modal-confirm-pagament').css('display', 'none');
+    })
 });

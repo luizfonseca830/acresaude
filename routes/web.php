@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth']], function () {
     //REALIZAR PAGAMENTO
     Route::post('servico/realizar/pagamento', [\App\Http\Controllers\Consultas\ConsultasController::class, 'solicitationPayment'])->name('realizar.pagamento');
     Route::post('agenda/ajax/consulta/preco/', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'price'])->name('consulta.price');
+    Route::post('/pagamento/transacao', [\App\Http\Controllers\Consultas\PagamentoController::class, 'pagarmentoTransação'])->name('pagamento.transação');
+    Route::get('/confirmacao/transacao/emial/{trasacao}', [\App\Http\Controllers\Email\EmailController::class, 'index'])->name('email.transacao');
 });
 
 //SERVICOS
