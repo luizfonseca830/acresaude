@@ -36,6 +36,8 @@
                         <input type="text" value="{{env('api_key_pagarme_encryption')}}" id="api_key_encryption"
                                hidden/>
                         <input type="text" value="{{route('consulta.price')}}" id="route_price" hidden/>
+                        <input type="text" value="{{route('login')}}" id="route_login_acess" hidden/>
+                        <input type="text" value="{{auth()->check()}}" id="logado" hidden/>
                         <div class="form-group">
                             <label for="medico">Médico</label>
                             <select class="form-control" id="medico">
@@ -59,6 +61,13 @@
                             <div class="spinner-border text-warning" role="status">
                                 <span class="sr-only">Loading...</span>
                             </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <a href="#">Lê e Concordo com os Termos de Compra.</a>
+                            </label>
                         </div>
 
                         <div class="form-group float-right">
@@ -88,13 +97,32 @@
                         <h3>Você deseja confirma o pagamento ?</h3>
                         <input type="text" value="" name="dataToken" id="dataToken" hidden/>
                         <input type="text" value="" name="idLoja" id="idShop" hidden/>
-                        <input type="text" value="" name="price" id="dataPrice" hidden />
+                        <input type="text" value="" name="price" id="dataPrice" hidden/>
                     </div>
                     <div class="modal-footer">
                         <input type="submit" class="btn btn-outline-success" value="Confirma Pagamento">
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal-login">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Você não está logado!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_login">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text">
+                    <h6>Você precisa está logado ou se cadastrar para realizar uma consulta em nosso site.</h6>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-outline-success" id="confirm_login" value="Confirmar">
+                </div>
+            </div>
         </div>
     </div>
 
