@@ -102,6 +102,10 @@ $(document).ready(function ($) {
     let price = 0;
     $('#confirma_pagamento').click(async function () {
         if ($('#horario').val() >= 1) {
+            if ($('#logado').val() != true) { //logado
+                $('#modal-login').addClass('show')
+                $('#modal-login').css('display', 'block');
+            }
             var price = await getPrice()
             var priceString = price.toString().replace(',', '')//CONVERTION STRING REMOVE ,
 
@@ -115,7 +119,8 @@ $(document).ready(function ($) {
                     $('#dataPrice').val(priceString)
                 },
                 error: function (err) {
-                    console.log(err);
+                    // console.log('erro')
+                    window.location.assign($('#route_login_acess').val())
                 },
                 close: function () {
                     console.log('The modal has been closed.');
@@ -137,6 +142,10 @@ $(document).ready(function ($) {
                 }]
             })
         }
+    })
+
+    $('#confirm_login').click(function (){
+        window.location.assign($('#route_login_acess').val())
     })
 
     function verificar_status(id) {
@@ -174,4 +183,9 @@ $(document).ready(function ($) {
     $('#modal-confirm-pagament').click(function () {
         $('#modal-confirm-pagament').css('display', 'none');
     })
+
+    $('#close_login').click(function () {
+        $('#modal-login').css('display', 'none');
+    })
+
 });
