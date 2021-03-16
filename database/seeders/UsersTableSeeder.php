@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'usuario' => 'medico',
+                'usuario' => 'enoque.araujo',
                 'email' => 'luizfonseca830@gmail.com',
                 'email_verified_at' => NULL,
                 'password' => bcrypt('123456789'),

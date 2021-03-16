@@ -14,21 +14,21 @@ class EspecialidadesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('especialidades')->delete();
-        
+
         \DB::table('especialidades')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
-                'especialidade' => 'Pediatra',
-                'descricao' => 'Realizar exames.',
+                'especialidade' => 'Clinico Geral',
+                'descricao' => 'Teleconsulta',
                 'created_at' => '2021-01-10 21:53:07',
                 'updated_at' => '2021-01-10 21:53:07',
             ),
         ));
-        
-        
+
+
     }
 }
