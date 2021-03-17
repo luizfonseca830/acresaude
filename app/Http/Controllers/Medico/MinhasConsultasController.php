@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Medico;
 use App\Http\Controllers\Controller;
 use App\Models\AgendaConsultas;
 use App\Models\AgendaMedico;
+use App\Models\Pessoa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -20,6 +21,7 @@ class MinhasConsultasController extends Controller
         //
 //        dd(auth()->user()->pessoa->medico);
         $agendaMedico = AgendaMedico::where('medico_id', auth()->user()->pessoa->medico->id)->get();
+
         return view('medico.minha_consultas', [
             'agendaMedico' => $agendaMedico
         ]);

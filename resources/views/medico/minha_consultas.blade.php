@@ -24,11 +24,13 @@
                         <tr>
                             <td>{{$atendimento->id}}</td>
                             <td>{{$agenda->medicoEspecialidade->especialidade->especialidade}}</td>
-                            <td>{{$atendimento->data_consulta}}</td>
+                            <td>{{\Carbon\Carbon::parse($atendimento->data_consulta)->format('d/m/Y')}}</td>
                             <td>{{$agenda->intervalo}} Minutos</td>
                             <td class="text-center">
+                                <a href="{{route('medico.consultas.update', $atendimento->id)}}"><i
+                                        class="fas fa-desktop"> </i></a>
                                 <a href="{{route('medico.consulta.delete.unico', $atendimento->id)}}"><i
-                                            class="fas fa-trash"></i></a>
+                                        class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach
