@@ -14,17 +14,15 @@
                         <div class="banner_text_iner">
                             <h1>Agende
                                 Sua Consulta</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
+                            <p>Nossas consultas são a distância</p>
+                            <p>Tendo em vista a situação atual.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="banner_img">
                         <img src="{{asset('images/weelcome/banner_img.png')}}" alt=""
-                             data-pagespeed-url-hash="2749540510"
-                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                             data-pagespeed-url-hash="2749540510">
                     </div>
                 </div>
             </div>
@@ -76,8 +74,7 @@
                 <div class="col-lg-7">
                     <div class="banner_img">
                         <img src="{{asset('images/weelcome/medico.png')}}" alt=""
-                             data-pagespeed-url-hash="2749540510"
-                             onload="pagespeed.CriticalImages.checkImageForCriticality(this);">
+                             data-pagespeed-url-hash="2749540510">
                     </div>
                 </div>
             </div>

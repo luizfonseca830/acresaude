@@ -12,23 +12,15 @@
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse main-menu-item justify-content-center"
+                    <li class="collapse navbar-collapse main-menu-item justify-content-center"
                          id="navbarSupportedContent">
                         <ul class="navbar-nav align-items-center">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{route('inicio')}}">Início</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Doutores</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Páginas
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Serviços</a>
-                                </div>
+                            <li class="nav-item">
+                                <a class="dropdown-item" href="#">Serviços</a>
                             </li>
                             <li class="nav-item dropdown">
                                 @if(is_null(auth()->user()))
