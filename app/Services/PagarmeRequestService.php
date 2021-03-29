@@ -180,9 +180,7 @@ class PagarmeRequestService extends BaseRequestService
     private function getPaymentMethods($type)
     {
         $method = [
-            1 => ['boleto'],
-            2 => ['credit_card'],
-            3 => ['boleto', 'credit_card']
+            1 => ['credit_card'],
         ];
 
         return $method[$type];
@@ -193,26 +191,4 @@ class PagarmeRequestService extends BaseRequestService
         return $this->get('balance');
     }
 
-    public function teste(){
-        $data = [
-            'amount' => 1000,
-            'payment_method' => 'boleto',
-            'async' => false,
-            'customer' => [
-                'external_id' => '1',
-                'name' => 'Nome do cliente',
-                'type' => 'individual',
-                'country' => 'br',
-                'documents' => [
-                    [
-                        'type' => 'cpf',
-                        'number' => '00000000000'
-                    ]
-                ],
-                'phone_numbers' => [ '+551199999999' ],
-                'email' => 'cliente@email.com'
-            ]
-        ];
-        return $this->post('plans', $data);
-    }
 }

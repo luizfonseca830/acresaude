@@ -131,7 +131,7 @@ $(document).ready(function ($) {
                 amount: priceString,
                 customerData: 'true',
                 createToken: 'true',
-                paymentMethods: 'boleto,credit_card',
+                paymentMethods: 'credit_card',
                 boletoExpirationDate: "{{Date('Y-m-d', strtotime('+3 days'))}}",
                 items: [{
                     id: $('#horario').val(), //NUMERO NA LOJA
