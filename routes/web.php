@@ -61,8 +61,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard/lista', [\App\Http\Controllers\DashBoard\Lista\UsuarioController::class, 'index'])->name('lista.usuario.dashboard');
 
         //Especialidade
-        Route::get('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
-        Route::post('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
+        Route::get('/dashboard/especialidade/novo', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
+        Route::post('/dashboard/especialidade/salvar', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
         Route::get('/dashboard/especialidade/lista', [\App\Http\Controllers\DashBoard\Lista\EspecialidadeController::class, 'index'])->name('especialidade.list.dashboard');
         Route::get('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'update'])->name('especialidade.update.dashboard');
         //Solicitacao
