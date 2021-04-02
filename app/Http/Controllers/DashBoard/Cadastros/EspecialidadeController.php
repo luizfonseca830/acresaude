@@ -83,9 +83,18 @@ class EspecialidadeController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EspecialidadeRequest $request, $id)
     {
         //
+        $especialidades = Especialidade::findOrFail($id);
+
+        $especialidades->update([
+            'nome' => quotemeta($request->nome),
+
+        ]);
+
+        session()->put('sucess', 'especialidade editado com sucesso!');
+        return redirect()->route('especialidade.update.dashboard');
     }
 
     /**

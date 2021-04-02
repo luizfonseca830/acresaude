@@ -64,6 +64,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
         Route::post('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
         Route::get('/dashboard/especialidade/lista', [\App\Http\Controllers\DashBoard\Lista\EspecialidadeController::class, 'index'])->name('especialidade.list.dashboard');
+        Route::get('/dashboard/especialidade', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'update'])->name('especialidade.update.dashboard');
         //Solicitacao
         Route::get('/dashboard/solicitacao/medico', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'index'])->name('solicitacao.medico.dashboard');
         Route::get('/dash/board/solicitacao/medicoa/aceita/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'aceitar'])->name('solicitacao.medico.aceitar.dashboard');

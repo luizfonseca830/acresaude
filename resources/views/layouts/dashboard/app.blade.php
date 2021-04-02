@@ -31,7 +31,7 @@
                                 <i class="pe-7s-graph icon-gradient bg-ripe-malin"></i>
                             </div>
                             <div>Seja Bem Vindo, {{auth()->user()->pessoa->name . " " . auth()->user()->pessoa->sobrenome}}
-                                <div class="page-title-subheading">#.</div>
+                                <div class="page-title-subheading">Essa é a área administrativa</div>
                             </div>
                         </div>
                     </div>
