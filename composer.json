@@ -16,7 +16,6 @@
         "laravel/framework": "^8.12",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
-        "laravellegends/pt-br-validator": "^8.0",
         "orangehill/iseed": "^3.0"
     },
     "require-dev": {
