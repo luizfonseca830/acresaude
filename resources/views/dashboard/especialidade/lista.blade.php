@@ -21,8 +21,8 @@
                     <td>{{$especialidade->descricao}}</td>
                     <td>
                         <a href="#"><i class="fa fa-search" style="color: green"></i></a>
-                        <a href="#"><i class="fa fa-pen" style="color: #2180e8"></i></a>
-                        <a href="#"><i class="fa fa-trash" style="color: red"></i></a>
+                        <a href="{{route('especialidade.edit.dashboard', $especialidade->id)}}"><i class="fa fa-pen" style="color: #2180e8"></i></a>
+                        <a href="{{route('especialidade.destroy.dashboard', $especialidade->id)}}"><i class="fa fa-trash" style="color: red"></i></a>
                     </td>
                 </tr>
             @endforeach

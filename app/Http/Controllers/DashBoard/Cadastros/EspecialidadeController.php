@@ -17,7 +17,7 @@ class EspecialidadeController extends Controller
     public function index()
     {
         //
-        return view('dashboard.cadastros.especialidade');
+        return view('dashboard.especialidade.especialidade');
     }
 
     /**
@@ -48,10 +48,10 @@ class EspecialidadeController extends Controller
         if (isset($especialidade)) {
             session()->put('sucess', 'Especialidade criada com sucesso!');
             return redirect()->route('especialidade.list.dashboard');
+        } else {
+            session()->put('error', 'Ocorreu um erro ao tentar criar especialidade!');
+            return redirect()->route('especialidade.list.dashboard');
         }
-
-        session()->put('error', 'Ocorreu um erro ao tentar criar especialidade!');
-        return redirect()->route('especialidade.list.dashboard');
     }
 
     /**
@@ -73,7 +73,8 @@ class EspecialidadeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $especialidade = Especialidade::findOrFail($id);
+        return view('dashboard.especialidade.editar', ['especialidade' => $especialidade]);
     }
 
     /**
@@ -90,11 +91,12 @@ class EspecialidadeController extends Controller
 
         $especialidades->update([
             'nome' => quotemeta($request->nome),
+            'descricao' => quotemeta($request->descricao)
 
         ]);
 
         session()->put('sucess', 'especialidade editado com sucesso!');
-        return redirect()->route('especialidade.update.dashboard');
+        return redirect()->route('especialidade.list.dashboard');
     }
 
     /**

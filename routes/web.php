@@ -35,9 +35,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/agenda-event-delete', [\App\Http\Controllers\Medico\AgendaController::class, 'delete'])->name('routeDeleteAgenda');
 
     //PACIENTE AGENDA
-    Route::match(['get', 'post'],'/agenda/consulta/{id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'index'])->name('paciente.agenda.index');
+    Route::match(['get', 'post'], '/agenda/consulta/{id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'index'])->name('paciente.agenda.index');
     Route::post('/ajax/busca', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'show'])->name('paciente.agenda.ajax');
-    Route::match(['get', 'post'],'/consulta/marca/{compra_id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'marcaConsulta'])->name('paciente.maracaConsulta');
+    Route::match(['get', 'post'], '/consulta/marca/{compra_id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'marcaConsulta'])->name('paciente.maracaConsulta');
 
     //PACIENTE CONSULTA
     Route::get('/paciente/minhasconsultas', [\App\Http\Controllers\Paciente\MinhasConsultasController::class, 'index'])->name('paciente.consultas.index');
@@ -64,7 +64,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard/especialidade/novo', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
         Route::post('/dashboard/especialidade/salvar', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
         Route::get('/dashboard/especialidade/lista', [\App\Http\Controllers\DashBoard\Lista\EspecialidadeController::class, 'index'])->name('especialidade.list.dashboard');
-        Route::get('/dashboard/especialidade/edita/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'update'])->name('especialidade.update.dashboard');
+        Route::get('/dashboard/especialidade/editar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'edit'])->name('especialidade.edit.dashboard');
+        Route::get('/dashboard/especialidade/deletar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'destroy'])->name('especialidade.destroy.dashboard');
+        Route::match(['get', 'post'], '/dashboard/especialidade/update/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'update'])->name('especialidade.update.dashboard');
         //Solicitacao
         Route::get('/dashboard/solicitacao/medico', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'index'])->name('solicitacao.medico.dashboard');
         Route::get('/dash/board/solicitacao/medicoa/aceita/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'aceitar'])->name('solicitacao.medico.aceitar.dashboard');
@@ -83,7 +85,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 //SERVICOS
 Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');
-Route::get('/servico/consulta/{id}',[\App\Http\Controllers\Consultas\ConsultasController::class, 'show'])->name('consulta.mostra');
+Route::get('/servico/consulta/{id}', [\App\Http\Controllers\Consultas\ConsultasController::class, 'show'])->name('consulta.mostra');
 
 
 //SERVICO SOLICITACAO AJAX

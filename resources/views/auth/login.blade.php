@@ -70,6 +70,10 @@
         </div>
     </div>
 </div>
+<section class="modal-footer">
+    ©<?php echo "20", date("y"), " ACRE SAÚDE LTDA CNPJ:10.834.104/0001-55"?>
+    <br>RESPONSÁVEL TÉCNICO MÉDICO: DR. ENOQUE PEREIRA DE ARAÚJO - CRM/AC 772
+</section>
 @endsection
 
 @section('link-script')

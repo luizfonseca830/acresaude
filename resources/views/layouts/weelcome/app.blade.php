@@ -18,7 +18,7 @@
 
     <!-- Styles -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" >
     <link rel="stylesheet" href="{{asset('css/welcome/menu.css')}}">
     <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">

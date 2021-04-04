@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/Icon-font-7-stroke/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}">
     <link rel="stylesheet" href="{{asset('assets/Icon-font-7-stroke/pe-icon-7-stroke/css/helper.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.rtl.min.css')}}">
+
 
     @yield('link-css')
     <title>DASHBOARD</title>
@@ -57,6 +60,10 @@
 
 </div>
 </body>
+
+@yield('link-scirpt')
+<script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
 <script src="{{asset('js/dashboard/app.js')}}"></script>
-@yield('link-scripts')
+@include('notifications.notification')
 </html>
