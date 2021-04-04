@@ -63,11 +63,20 @@
                                                             <i class="fas fa-user-tie"></i>
                                                         </div>
                                                         <div class="widget-content-left">
-                                                            <div class="widget-heading">{{auth()->user()->pessoa->nome}}</div>
+                                                            <div
+                                                                class="widget-heading">{{auth()->user()->pessoa->nome}}</div>
                                                             <div class="widget-subheading opacity-8">Admin</div>
                                                         </div>
                                                         <div class="widget-content-right mr-2">
-                                                            <input type="button" class="btn-pill btn-shadow btn-shine btn btn-focus" value="Sair">
+                                                            <input type="button"
+                                                                   class="btn-pill btn-shadow btn-shine btn btn-focus"
+                                                                   value="Sair" href="{{ route('logout') }}"
+                                                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                            <form id="logout-form" action="{{ route('logout') }}"
+                                                                  method="POST" class="d-none">
+                                                                @csrf
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -78,20 +87,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="widget-content-left  ml-3 header-user-info">
-                            <div class="widget-heading"> {{auth()->user()->pessoa->nome}}</div>
-                            <div class="widget-subheading"> Adminastrador</div>
-                        </div>
+
                     </div>
                 </div>
-            </div>
-
-            <div class="header-btn-lg">
-                <button type="button" class="hamburger hamburger--elastic open-right-drawer">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                </button>
             </div>
         </div>
     </div>
