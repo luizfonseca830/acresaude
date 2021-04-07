@@ -17,7 +17,11 @@
                     <td>{{$usuario->pessoa->nome}}</td>
                     <td>{{$usuario->pessoa->cpf}}</td>
                     <td>{{$usuario->pessoa->tipoUsuario->nome}}</td>
-                    <td>Construção</td>
+                    <td>
+                        <a href="{{route('usuario.edit.dashboard', $usuario->id)}}"><i class="fa fa-pen" style="color: blue"></i></a>
+                        <a href="{{route('usuario.destroy.dashboard', $usuario->id)}}"><i class="fa fa-trash" style="color: red"></i></a>
+
+                    </td>
                 </tr>
             @endforeach
             </tbody>

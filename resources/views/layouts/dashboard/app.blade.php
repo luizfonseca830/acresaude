@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="{{asset('css/dashboard/main.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/fontawesome/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('assets/Icon-font-7-stroke/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}">
     <link rel="stylesheet" href="{{asset('assets/Icon-font-7-stroke/pe-icon-7-stroke/css/helper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">

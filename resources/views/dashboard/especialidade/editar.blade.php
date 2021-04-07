@@ -18,5 +18,6 @@
                       value="{{$especialidade->descricao}}">
         </div>
         <input type="submit" class="btn btn-primary" value="Editar">
+        <button class="btn btn-primary" href="{{route('especialidade.list.dashboard')}}" type="button">Sair</button>
     </form>
 @endsection
