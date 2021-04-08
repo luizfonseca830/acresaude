@@ -6285,7 +6285,7 @@ a.close.disabled {
     -webkit-box-align: center;
     align-items: center;
     -webkit-box-pack: end;
-    justify-content: flex-end;
+    justify-content: center;
     padding: 1rem;
     border-top: 1px solid #dee2e6;
     border-bottom-right-radius: 0.3rem;

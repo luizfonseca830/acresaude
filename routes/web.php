@@ -58,7 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
     //DASHBOARD
     Route::group(['middleware' => ['adminverified']], function () {
         Route::get('/home/dashboard', [\App\Http\Controllers\DashBoard\HomeController::class, 'index'])->name('home.dashboard');
-        Route::get('/dashboard/lista', [\App\Http\Controllers\DashBoard\Lista\UsuarioController::class, 'index'])->name('lista.usuario.dashboard');
+
 
         //Especialidade
         Route::get('/dashboard/especialidade/novo', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
@@ -67,6 +67,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/dashboard/especialidade/editar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'edit'])->name('especialidade.edit.dashboard');
         Route::get('/dashboard/especialidade/deletar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'destroy'])->name('especialidade.destroy.dashboard');
         Route::match(['get', 'post'], '/dashboard/especialidade/update/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'update'])->name('especialidade.update.dashboard');
+
+        //Usuário
+        Route::get('/dashboard/lista', [\App\Http\Controllers\DashBoard\Lista\UsuarioController::class, 'index'])->name('lista.usuario.dashboard');
+
         //Solicitacao
         Route::get('/dashboard/solicitacao/medico', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'index'])->name('solicitacao.medico.dashboard');
         Route::get('/dash/board/solicitacao/medicoa/aceita/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'aceitar'])->name('solicitacao.medico.aceitar.dashboard');

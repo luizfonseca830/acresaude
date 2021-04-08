@@ -4,6 +4,7 @@ namespace App\Http\Controllers\DashBoard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Usuario;
+use App\Http\Requests\RegistroRequest;
 use Illuminate\Http\Request;
 
 class UsuarioController extends Controller
