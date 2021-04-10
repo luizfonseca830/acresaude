@@ -1,5 +1,4 @@
 @extends('layouts.dashboard.app')
-
 @section('container')
     <form method="post" action="{{route('especialidade.update.dashboard', $especialidade->id)}}">
         @csrf

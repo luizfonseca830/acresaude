@@ -10,10 +10,10 @@ class UsuarioController extends Controller
 {
     //
     public function index(){
-        $usuarios = User::all();
+        $users = User::all();
 
         return view('dashboard.usuario.lista', [
-            'usuarios' => $usuarios,
+            'users' => $users,
         ]);
     }
 }

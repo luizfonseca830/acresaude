@@ -5,6 +5,7 @@ namespace App\Http\Controllers\DashBoard\Cadastros;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UsuarioResquest;
 use App\Models\Pessoa;
+use App\Models\User;
 use App\Models\Usuario;
 use App\Http\Requests\RegistroRequest;
 use Illuminate\Http\Request;
@@ -62,8 +63,8 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $usuario = Usuario::findOrFail($id);
-        return view('dashboard.usuario.editar', ['usuario' => $usuario]);
+        $users = User::findOrFail($id);
+        return view('dashboard.usuario.editar', ['usuario' => $users]);
     }
 
     /**
@@ -76,9 +77,9 @@ class UsuarioController extends Controller
     public function update(UsuarioResquest $request, $id)
     {
         //
-        $usuario = Usuario::findOrFail($id);
+        $users = User::findOrFail($id);
 
-        $usuario->update([
+        $users->update([
             'usuario' => quotemeta($request->usuario),
             'email' => ($request->email),
             'password' => Hash::make($request->password)
@@ -96,9 +97,9 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        $usuario = Usuario::find($id);
+        $users = User::find($id);
 
-        if ($usuario->delete()) {
+        if ($users->delete()) {
             session()->pull('sucess', 'Usuário deletada com sucesso');
         } else {
             session()->put('error', 'Esse usuário não pode ser deletado!');

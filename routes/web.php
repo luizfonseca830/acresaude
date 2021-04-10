@@ -69,10 +69,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::match(['get', 'post'], '/dashboard/especialidade/update/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'update'])->name('especialidade.update.dashboard');
 
         //Usuário
-        Route::get('/dashboard/usuario/lista', [\App\Http\Controllers\DashBoard\Lista\UsuarioController::class, 'index'])->name('lista.usuario.dashboard');
-        Route::get('/dashboard/usuario/editar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'edit'])->name('edit.usuario.dashboard');
-        Route::get('/dashboard/usuario/deletar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'destroy'])->name('destroy.usuario.dashboard');
-        Route::match(['get', 'post'], '/dashboard/usuario/update/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'update'])->name('update.usuario.dashboard');
+        Route::get('/dashboard/usuario/lista', [\App\Http\Controllers\DashBoard\Lista\UsuarioController::class, 'index'])->name('usuario.lista.dashboard');
+        Route::get('/dashboard/usuario/editar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'edit'])->name('usuario.edit.dashboard');
+        Route::get('/dashboard/usuario/deletar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'destroy'])->name('usuario.destroy.dashboard');
+        Route::match(['get', 'post'], '/dashboard/usuario/update/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'update'])->name('usuario.update.dashboard');
 
 
         //Solicitacao

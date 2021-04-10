@@ -41,7 +41,11 @@
                 </div>
 
                 <div class="main-card mb-3 card">
+                    <div class="row justify-content-center" id="carregando">
+                        <img src="{{asset('/gifs/Spinner-0.5s-74px.gif')}}">
+                    </div>
                     @yield('card')
+
                 </div>
 
                 <div class="tabs-animation">
@@ -65,5 +69,10 @@
 <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
 <script src="{{asset('js/dashboard/app.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function (){
+        $("#carregando").css("display", "none");
+    })
+</script>
 @include('notifications.notification')
 </html>
