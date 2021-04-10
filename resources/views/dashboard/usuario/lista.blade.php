@@ -18,8 +18,8 @@
                     <td>{{$usuario->pessoa->cpf}}</td>
                     <td>{{$usuario->pessoa->tipoUsuario->nome}}</td>
                     <td>
-                        <a href="{{route('usuario.edit.dashboard', $usuario->id)}}"><i class="fa fa-pen" style="color: blue"></i></a>
-                        <a href="{{route('usuario.destroy.dashboard', $usuario->id)}}"><i class="fa fa-trash" style="color: red"></i></a>
+                        <a href="{{route('edit.usuario.dashboard', $usuario->id)}}"><i class="fa fa-pen" style="color: blue"></i></a>
+                        <a href="{{route('destroy.usuario.dashboard', $usuario->id)}}"><i class="fa fa-trash" style="color: red"></i></a>
 
                     </td>
                 </tr>

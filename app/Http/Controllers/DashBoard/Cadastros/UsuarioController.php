@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\DashBoard;
+namespace App\Http\Controllers\DashBoard\Cadastros;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UsuarioResquest;
+use App\Models\Pessoa;
 use App\Models\Usuario;
 use App\Http\Requests\RegistroRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
@@ -57,9 +60,10 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usuario $usuario)
+    public function edit($id)
     {
-        //
+        $usuario = Usuario::findOrFail($id);
+        return view('dashboard.usuario.editar', ['usuario' => $usuario]);
     }
 
     /**
@@ -69,9 +73,19 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(UsuarioResquest $request, $id)
     {
         //
+        $usuario = Usuario::findOrFail($id);
+
+        $usuario->update([
+            'usuario' => quotemeta($request->usuario),
+            'email' => ($request->email),
+            'password' => Hash::make($request->password)
+        ]);
+
+        session()->put('sucess', 'Usuário editado com sucesso!');
+        return redirect()->route('usuario.list.dashboard');
     }
 
     /**
@@ -80,8 +94,15 @@ class UsuarioController extends Controller
      * @param  \App\Models\Usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usuario $usuario)
+    public function destroy($id)
     {
-        //
+        $usuario = Usuario::find($id);
+
+        if ($usuario->delete()) {
+            session()->pull('sucess', 'Usuário deletada com sucesso');
+        } else {
+            session()->put('error', 'Esse usuário não pode ser deletado!');
+        }
+        return redirect()->route('usuario.list.dashboard');
     }
 }
