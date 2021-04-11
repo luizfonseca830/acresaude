@@ -3,7 +3,7 @@
 
 ## Sobre o sistema  da Acresaude
 
-É um e-commerce, de compras de serviços de profissionais que atendente a distancia ou A domicílio.
+É um e-commerce, de compras de serviços de profissionais que atendente a distancia ou a domicílio.
 Mediante a agendamentos e pagamentos online via cartão.
 
 ## Metodo de pagamento seguro usando PAGARME
