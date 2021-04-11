@@ -6,7 +6,7 @@
 É um e-commerce, de compras de serviços de profissionais que atendente a distancia ou A domicílio.
 Mediante a agendamentos e pagamentos online via cartão.
 
-##Metodo de pagamento seguro usando PAGARME
+## Metodo de pagamento seguro usando PAGARME
 <img src="https://avatars1.githubusercontent.com/u/3846050?v=4&s=200" width="127px" height="127px" align="center"/>
 
 ## About Laravel
