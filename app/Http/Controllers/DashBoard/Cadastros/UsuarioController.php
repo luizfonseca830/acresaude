@@ -80,13 +80,11 @@ class UsuarioController extends Controller
         $users = User::findOrFail($id);
 
         $users->update([
-            'usuario' => quotemeta($request->usuario),
             'email' => ($request->email),
-            'password' => Hash::make($request->password)
         ]);
 
         session()->put('sucess', 'Usuário editado com sucesso!');
-        return redirect()->route('usuario.list.dashboard');
+        return redirect()->route('usuario.lista.dashboard');
     }
 
     /**
@@ -104,6 +102,6 @@ class UsuarioController extends Controller
         } else {
             session()->put('error', 'Esse usuário não pode ser deletado!');
         }
-        return redirect()->route('usuario.list.dashboard');
+        return redirect()->route('usuario.lista.dashboard');
     }
 }

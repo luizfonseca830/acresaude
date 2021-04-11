@@ -5,6 +5,7 @@
             <thead>
             <tr>
                 <th>Nome</th>
+                <th>Usuário</th>
                 <th>CPF</th>
                 <th>Tipo de Usuário</th>
                 <th>Ações</th>
@@ -14,6 +15,7 @@
             @foreach($users as $usuario)
                 <tr>
                     <td>{{$usuario->pessoa->nome}}</td>
+                    <td>{{$usuario->usuario}}
                     <td>{{$usuario->pessoa->cpf}}</td>
                     <td>{{$usuario->pessoa->tipoUsuario->nome}}</td>
                     <td>
@@ -30,6 +32,7 @@
             <tfoot>
             <tr>
                 <th>Nome</th>
+                <th>Usuário</th>
                 <th>CPF</th>
                 <th>Tipo de Usuário</th>
                 <th>Ações</th>

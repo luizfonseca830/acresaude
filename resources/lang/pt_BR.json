@@ -615,6 +615,6 @@
     "Your email address is not verified.": "Seu endereço de e-mail não está verificado.",
     "Zambia": "Zambia",
     "Zimbabwe": "Zimbabwe",
-    "validation.unique": "Esse usuário está sendo usado.",
+    "validation.unique": "Já está sendo usado",
     "validation.required": "Campo obrigatório"
 }
