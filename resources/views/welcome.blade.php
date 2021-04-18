@@ -14,8 +14,8 @@
                         <div class="banner_text_iner">
                             <h1>Agende
                                 Sua Consulta</h1>
-                            <p>Nossas consultas são a distância</p>
-                            <p>Tendo em vista a situação atual.</p>
+                            <p>Tenha o profissional da vossa escolha em casa</p>
+                            <a href="{{route('consulta.index')}}"><input type="button" class="btn btn-outline-primary" value="Agendar"></a>
                         </div>
                     </div>
                 </div>
@@ -64,10 +64,8 @@
                         <div class="banner_text_iner">
                             <h1>Trabalhe
                                 Conosco</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit sed do eiusmod tempor incididunt ut labore et dolore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
-                            <a href="{{route('solicitacao.index')}}"><input type="button" class="btn btn-outline-primary float-right" value="Faça sua solicitação"/></a>
+                            <p>Tenha o consultorio na palma da mão </p>
+                            <a href="{{route('solicitacao.index')}}"><input type="button" class="btn btn-outline-primary" value="Faça sua solicitação"/></a>
                         </div>
                     </div>
                 </div>
