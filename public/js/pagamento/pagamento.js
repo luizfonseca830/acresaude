@@ -30,12 +30,6 @@ $(document).ready(function($){
         console.log(1)
     })
 
-    $('#boleto').click(function (){
-        $('#sumir-cartao').attr('hidden', true)
-        $('#sumir-boleto').removeAttr('hidden')
-
-        $('#cpf_boleto').mask('999.999.999-99');
-    })
     $('#credito').click(function (){
         $('#sumir-boleto').attr('hidden', true)
         $('#sumir-cartao').removeAttr('hidden')

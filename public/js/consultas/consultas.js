@@ -132,7 +132,6 @@ $(document).ready(function ($) {
                 customerData: 'true',
                 createToken: 'true',
                 paymentMethods: 'credit_card',
-                boletoExpirationDate: "{{Date('Y-m-d', strtotime('+3 days'))}}",
                 items: [{
                     id: $('#horario').val(), //NUMERO NA LOJA
                     title: 'Consulta - Online',
