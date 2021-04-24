@@ -39,7 +39,7 @@
                 <h5>Iniciar</h5>
                 <ul>
                     <li><a href="{{ route('inicio') }}">Inicio</a></li>
-                    <li><a href="#">Logar</a></li>
+                    <li><a href="{{ route('login') }}">Logar</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
