@@ -9,7 +9,7 @@
                  style="background-image:url({{asset('images/teleconsulta.jpg')}});color:rgba(9, 162, 255, 0.85);">
             <div class="text">
                 <h2>Sistema de atendimento Online.</h2>
-                <p>Tenha a consulta com o profissional de vossa preferencia em vossas mãos</p>
+                <p>A consulta está em suas mãos</p>
                 <button class="btn btn-outline-light btn-lg" type="button"
                         onclick="window.location='{{route("consulta.index")}}'">
                    Agende
@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="block-heading">
                     <h2 class="text-info">INFORMAÇÕES</h2>
-                    <p>Aceitamos pagamentos somente em cartão de crédito, parcelamentos até 3x.</p>
+                    <p>Aceitamos pagamentos somente em cartão de crédito, parcelamentos até 3 vezes.</p>
                 </div>
                 <div class="row align-items-center">
                     <div class="col-md-6">
