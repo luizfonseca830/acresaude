@@ -1,14 +1,12 @@
 @extends('layouts.weelcome.app')
 @section('link-css')
     <link rel="stylesheet" href="{{asset('css/welcome/impletamentations.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.rtl.min.css')}}">
 @endsection
 
 @section('content')
     <section class="banner_part">
         <section class="clean-block clean-hero"
-                 style="background-image:url({{asset('images/tech/image4.jpg')}});color:rgba(9, 162, 255, 0.85);">
+                 style="background-image:url({{asset('images/teleconsulta.jpg')}});color:rgba(9, 162, 255, 0.85);">
             <div class="text">
                 <h2>Sistema de atendimento Online.</h2>
                 <p>Tenha a consulta com o profissional de vossa preferencia em vossas mãos</p>
@@ -83,7 +81,7 @@
             </div>
         </div>
     </section>
-    <section class="clean-block about-us">
+    <section class="clean-block">
         <div class="container">
             <div class="block-heading">
                 <h2 class="text-info">Sobre nós</h2>
@@ -133,5 +131,6 @@
 
 @section('link-scirpt')
     <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
+    <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>
     @include('notifications.notification')
 @endsection

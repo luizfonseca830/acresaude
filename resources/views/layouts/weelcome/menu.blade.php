@@ -1,23 +1,17 @@
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
     <div class="container">
-        <img style="height: 31px;" src="{{\Illuminate\Support\Facades\URL::asset('images/logo_name.png')}}">
-
-
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
+        <img style="height: 31px" src="{{\Illuminate\Support\Facades\URL::asset('images/logo_name.png')}}">
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{{ route('inicio') }}">{{ __('Inicio') }}</a></li>
                 @guest
-                    <li class="nav-item"><a class="nav-link active" href="{{ route('inicio') }}">{{ __('Inicio') }}</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about-us.html">Sobre nós</a></li>
-
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Logar') }}</a>
-                        </li>
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Logar') }}</a></li>
                     @endif
                 @else
-
                     <li class="nav-item dropdown">
                         @if(is_null(auth()->user()))
                             <a class="btn_2 d-none d-lg-block" href="{{route('login')}}">Login</a>

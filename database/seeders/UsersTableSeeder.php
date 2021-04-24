@@ -52,6 +52,17 @@ class UsersTableSeeder extends Seeder
                     'created_at' => '2021-01-10 21:12:51',
                     'updated_at' => '2021-01-10 21:12:51',
                 ),
+            3 =>
+                array (
+                    'id' => 4,
+                    'usuario' => 'rayssa',
+                    'email' => 'rayssa@hotmail.com',
+                    'email_verified_at' => NULL,
+                    'password' => bcrypt('123456789'),
+                    'remember_token' => NULL,
+                    'created_at' => '2021-01-10 21:12:51',
+                    'updated_at' => '2021-01-10 21:12:51',
+                ),
         ));
 
 

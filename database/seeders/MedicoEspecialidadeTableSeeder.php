@@ -14,12 +14,12 @@ class MedicoEspecialidadeTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('medico_especialidade')->delete();
-        
+
         \DB::table('medico_especialidade')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'medico_id' => 1,
@@ -27,8 +27,17 @@ class MedicoEspecialidadeTableSeeder extends Seeder
                 'created_at' => '2021-01-11 00:14:28',
                 'updated_at' => '2021-01-11 00:14:28',
             ),
+
+            1 =>
+                array (
+                    'id' => 2,
+                    'medico_id' => 2,
+                    'especialidade_id' => 4,
+                    'created_at' => '2021-01-11 00:14:28',
+                    'updated_at' => '2021-01-11 00:14:28',
+                ),
         ));
-        
-        
+
+
     }
 }
