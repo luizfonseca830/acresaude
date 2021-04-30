@@ -31,6 +31,7 @@ class RegistroController extends Controller
             'cpf' => $request->cpf,
             'cnpj' => $request->cnpj,
             'data_nascimento' => $request->data_nascimento,
+            'image' => $request->image,
         ]);
 
         $endereco = Endereco::create([

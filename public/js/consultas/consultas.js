@@ -92,7 +92,7 @@ $(document).ready(function ($) {
         data.forEach(function (item) {
             $('#horario').append($('<option>', {
                 value: item.id,
-                text: moment(item.data_consulta, 'YYYY/MM/DD HH:mm').format('DD-MM-YYYY HH:mm')
+                text: moment(item.data_consulta, 'HH:mm').format('HH:mm')
             }));
         })
 

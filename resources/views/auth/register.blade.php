@@ -22,7 +22,8 @@
 
                     <div class="form-group">
                         <label for="email">Endereço de Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email" value="{{old('email')}}" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email"
+                               value="{{old('email')}}" required>
                     </div>
                     @error('email')
                     <span class="text-danger" role="alert"><strong>{{ $message }}</strong></span>

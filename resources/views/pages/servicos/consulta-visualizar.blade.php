@@ -2,117 +2,263 @@
 
 @section('link-css')
     <link rel="stylesheet" href="{{asset('css/servico/consulta-visualizacao.css')}}">
+    <link rel="stylesheet" href="{{asset('css/servico/consulta-base.css')}}">
     <link rel="stylesheet" href="{{asset('assets/Icon-font-7-stroke/pe-icon-7-stroke/css/pe-icon-7-stroke.css')}}">
     <link rel="stylesheet" href="{{asset('assets/Icon-font-7-stroke/pe-icon-7-stroke/css/helper.css')}}">
 @endsection
 
 @section('container')
-    <section class="fundo">
-        <div class="container">
-            <div class="row">
-                <div class="col col-6">
-                    <div class="title text-center">
-                        <hr>
-                        <h4 class="font-weight-bold">INSTRUÇÕES</h4>
-                        <hr>
+    <form action="#" method="post">
+        @csrf
+        <div class="container-fluid step-two__container container-scheduling drc-scheduling-step-3">
+            <section class="step-two__region">
+                <header class="step-two__sub-header">
+                    <h5 class="blue step-two__sub-title">
+                        <time datetime="1619672400000">quinta-feira, 29 de abril</time>
+                    </h5>
+                </header>
+                <div class="drc-schedules-professional">
+                    <div class="drc-schedules-professional-info">
+                        <div class="drc-professional-image drc-fem"><img
+                                src="https://s2pics.s3.amazonaws.com/profissionais/fotos/100312_s.jpg" alt="-"></div>
+                        <h6 class="blue">Giovanna Mainardi</h6>
+                        <p class="drc-legend"><span>CRM-AC 176897</span></p>
                     </div>
-                    <p>
-                        Consulta pagas com cartão de credito tera sua horas confirmada mediante a validação do pagamento
-                        caso seja por boleto não se poderar garantir o agendamento na hora desejada devido o atraso
-                        de <b>3 dias na validação</b> no pagamento do mesmo.
-                    </p>
+                    <ul>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619703300000">08:35</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619704200000">08:50</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619706300000">09:25</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619706900000">09:35</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619707800000">09:50</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619709900000">10:25</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619710500000">10:35</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619711400000">10:50</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619712000000">11:00</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619712600000">11:10</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619713500000">11:25</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619714100000">11:35</time>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col col-6 fundo-2-col">
-                    <div class="title text-center">
-                        <hr>
-                        <h4 class="font-weight-bold">ESCOLHA O HORÁRIO DA CONSULTA</h4>
-                        <hr>
-                    </div>
-                    <form action="#" method="post">
-                        @csrf
-                        <input type="text" value="{{$especialidade->id}}" id="especialidade_id" hidden>
-                        <input type="text" value="{{route('consulta.ajax.searchMedicoHorario')}}" id="rota_busca"
-                               hidden/>
-                        <input type="text" value="{{env('api_key_pagarme_encryption')}}" id="api_key_encryption"
-                               hidden/>
-                        <input type="text" value="{{route('consulta.price')}}" id="route_price" hidden/>
-                        <input type="text" value="{{route('login')}}" id="route_login_acess" hidden/>
-                        <input type="text" value="{{auth()->check()}}" id="logado" hidden/>
-                        <div class="form-group">
-                            <label for="medico">Médico</label>
-                            <select class="form-control" id="medico">
-                                <option value="">Não Selecionado</option>
-                                @foreach($especialidade->medicoEspecialidade as $medicoEsp)
-                                    <option
-                                            value="{{$medicoEsp->medico->id}}">{{$medicoEsp->medico->pessoa->nome}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+            </section>
 
-                        <div class="form-group">
-                            <label for="horario">Horários Disponíveis </label>
-                            <select class="form-control" id="horario" name="agenda_id" disabled>
-                                <option value="">Não Selecionado</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group float-right" id="processando" hidden>
-                            <label>Processando Pagamento. Aguarde.</label>
-                            <div class="spinner-border text-warning" role="status">
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                <a href="#">Lê e Concordo com os Termos de Compra.</a>
-                            </label>
-                        </div>
-
-                        <div class="form-group float-right">
-                            {{--                            <input type="text" id="rota_pagamento" value="{{route('consulta.pagamento')}}" hidden>--}}
-                            {{--                            <input type="text" id="rota_minha_compras" value="{{route('minhascompras.index')}}" hidden/>--}}
-                            <input type="button" class="btn btn-outline-primary" value="Confirmar Pagamento"
-                                   id="confirma_pagamento" hidden/>
-                        </div>
-                    </form>
+            <section class="step-two__region">
+                <div class="drc-schedules-professional">
+                    <div class="drc-schedules-professional-info">
+                        <div class="drc-professional-image drc-fem"><img
+                                src="https://s2pics.s3.amazonaws.com/profissionais/fotos/103143_s.jpg" alt="-"></div>
+                        <h6 class="blue">Mirela Andrea Rosenberg Ward</h6>
+                        <p class="drc-legend"><span>CRM-AC 182658</span></p></div>
+                    <ul>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619705700000">09:15</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619707500000">09:45</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619709300000">10:15</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619710200000">10:30</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619714700000">11:45</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619715600000">12:00</time>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </section>
+            <section class="step-two__region">
+                <div class="drc-schedules-professional">
+                    <div class="drc-schedules-professional-info">
+                        <div class="drc-professional-image drc-fem"></div>
+                        <h6 class="blue">Erika Felix Andrade</h6>
+                        <p class="drc-legend"><span>CRM-AC 180622</span></p></div>
+                    <ul>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619714100000">11:35</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619715000000">11:50</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619715600000">12:00</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619716200000">12:10</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619717100000">12:25</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619717700000">12:35</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619718600000">12:50</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619719200000">13:00</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619719800000">13:10</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619720700000">13:25</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619721300000">13:35</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619722200000">13:50</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619722800000">14:00</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619723400000">14:10</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619724300000">14:25</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619724900000">14:35</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619725800000">14:50</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619726400000">15:00</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619727000000">15:10</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619727900000">15:25</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619728500000">15:35</time>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="nb_btn nb_btn--green nb_btn--block">
+                                <time datetime="1619729400000">15:50</time>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </div>
-    </section>
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal-confirm-pagament">
-        <div class="modal-dialog" role="document">
-            <form method="post" action="{{route('pagamento.transação')}}">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">CONFIRMAÇÃO DE PAGAMENTO</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body text">
-                        <h3>Você deseja confirma o pagamento ?</h3>
-                        <input type="text" value="" name="dataToken" id="dataToken" hidden/>
-                        <input type="text" value="" name="idLoja" id="idShop" hidden/>
-                        <input type="text" value="" name="price" id="dataPrice" hidden/>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-outline-success" value="Confirma Pagamento">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
+    </form>
     <div class="modal fade" tabindex="-1" role="dialog" id="modal-login">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Você não está logado!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close_login">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            id="close_login">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -126,6 +272,7 @@
         </div>
     </div>
 
+    </section>
 @endsection
 
 @section('link-scirpt')

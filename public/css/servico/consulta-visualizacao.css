@@ -1,4 +1,186 @@
-.fundo {
-    background: #fff;
+element.style {
+    min-height: 976px;
 }
+
+.step-two__sub-header {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+.step-two__region {
+    margin-bottom: 80px;
+    margin-top: 80px;
+}
+
+
+.container-scheduling {
+    margin-left: 340px;
+    padding-top: 80px!important;
+    padding-bottom: 20px;
+}
+
+
+.step-two__container {
+    margin-left: 340px;
+    width: calc(100% - 340px);
+    padding-bottom: 20px;
+    padding-top: 50px!important;
+    background-color: #eaeaea!important;
+}
+
+
+.drc-schedules-professional {
+    padding: 27px 40px 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px -3px rgb(0 0 0);
+}
+
+.drc-schedules-professional>ul {
+    font-size: 0;
+    margin-bottom: 0;
+}
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+li{
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    min-width: 110px;
+}
+dl, ol, ul {
+    margin-top: 0;
+}
+address, dl, ol, ul {
+    margin-bottom: 1rem;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+user agent stylesheet
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    cursor: pointer;
+}
+.nb_btn--green {
+    border-color: #01efad;
+    background-color: #01efad;
+    color: #055df9;
+}
+.nb_btn--block {
+    width: 100%;
+    text-align: center;
+}
+.nb_btn {
+    border-radius: 50px;
+    font-family: "Sua";
+    font-weight: 700;
+    font-size: 16px;
+    height: 40px;
+    line-height: 36px;
+    vertical-align: middle;
+    padding: 0 1.75rem;
+    border-width: 2px;
+    border-style: solid;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+    white-space: nowrap;
+    text-align: center;
+    width: -moz-min-content;
+    width: min-content;
+}
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+
+.blue {
+    color: #055df9!important;
+}
+
+.drc-schedules-professional {
+    padding: 27px 40px 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px -3px rgb(0 0 0);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+}
+body {
+    font-family: "Lato",sans-serif;
+    font-size: 100%;
+    background-color: #eaeaea;
+    color: #0446c9;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+after, :before {
+    box-sizing: inherit;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+:after, :before {
+    box-sizing: inherit;
+}
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.drc-schedules-professional .drc-schedules-professional-info .drc-masc {
+    background-image: url(public/images/img-equipe-man.svg);
+    background-size: cover;
+}
+
+.drc-schedules-professional .drc-schedules-professional-info .drc-fem {
+    background-image: url(public/images/img-equipe-woman.svg);
+    background-size: cover;
+}
+
+.drc-schedules-professional .drc-schedules-professional-info .drc-professional-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 40%;
+    overflow: hidden;
+    border: 1px solid #055df9;
+    background-color: #fff;
+}
+
 
