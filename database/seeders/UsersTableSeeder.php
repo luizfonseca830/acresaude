@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'usuario' => 'enoque.araujo',
-                'email' => 'luizfonseca830@gmail.com',
+                'email' => 'enoque.araujo0@gmail.com',
                 'email_verified_at' => NULL,
                 'password' => bcrypt('123456789'),
                 'remember_token' => NULL,
@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'usuario' => 'admin',
-                'email' => 'jfsystem830@gmail.com',
+                'email' => 'admin@gmail.com',
                 'email_verified_at' => NULL,
                 'password' => bcrypt('123456789'),
                 'remember_token' => NULL,
@@ -45,7 +45,7 @@ class UsersTableSeeder extends Seeder
                 array (
                     'id' => 3,
                     'usuario' => 'usuario',
-                    'email' => 'jfsystem830@hotmail.com',
+                    'email' => 'usuario@hotmail.com',
                     'email_verified_at' => NULL,
                     'password' => bcrypt('123456789'),
                     'remember_token' => NULL,

@@ -22,7 +22,7 @@ class CreatePessoasTable extends Migration
             $table->string('cpf', 30)->nullable();
             $table->string('cnpj', 30)->nullable();
             $table->date('data_nascimento');
-            $table->string('imagem');
+            $table->string('imagem')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

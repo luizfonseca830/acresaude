@@ -12,7 +12,7 @@ class WeelcomeController extends Controller
     //
     public function index()
     {
-        $especialidades = Especialidade::all()->take(6);
+        $especialidades = Especialidade::all()->take(4);
         $this->verificar_notificacao();
         return view('welcome', [
             'especialidades' => $especialidades,
@@ -36,7 +36,7 @@ class WeelcomeController extends Controller
                             'enviado_confirmacao' => 1,
                         ]);
                         return session()->put('error', 'Você não foi aceito em nossa equipe, revise os documentos e tente novamente.');
-                    } else if ($solicitacao->status == 0 && $solicitacao->enviado_confirmacao == 0){
+                    } else if ($solicitacao->status == 0 && $solicitacao->enviado_confirmacao == 0) {
 
                         return session()->put('error', 'Seus documentos estão em revisão, aguarde.');
                     }

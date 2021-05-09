@@ -14,26 +14,26 @@ class TiposUsuariosTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('tipos_usuarios')->delete();
-        
+
         \DB::table('tipos_usuarios')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'nome' => 'Administrador',
                 'created_at' => '2021-01-10 21:09:48',
                 'updated_at' => '2021-01-10 21:09:48',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
-                'nome' => 'Doutor',
+                'nome' => 'Profissional',
                 'created_at' => '2021-01-10 21:09:48',
                 'updated_at' => '2021-01-10 21:09:48',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'nome' => 'Paciente',
@@ -41,7 +41,7 @@ class TiposUsuariosTableSeeder extends Seeder
                 'updated_at' => '2021-01-10 21:09:48',
             ),
         ));
-        
-        
+
+
     }
 }
