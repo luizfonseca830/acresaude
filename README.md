@@ -1,10 +1,8 @@
 <p align="center">AcreSaude</p>
 
-
-
 # Sobre o projeto
 
-(http://acresaude.com.br/)
+http://acresaude.com.br/
 
 É um e-commerce, de compras de serviços de profissionais que atendente a distancia ou a domicílio.
 Mediante a agendamentos e pagamentos online via cartão.
