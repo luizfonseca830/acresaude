@@ -1,21 +1,17 @@
 <p align="center">AcreSaude</p>
 
 
-## Sobre o sistema  da Acresaude
-
-
-## Metodo de pagamento seguro usando PAGARME
-<img src="https://avatars1.githubusercontent.com/u/3846050?v=4&s=200" width="127px" height="127px" align="center"/>
-
-# Big Game Survey 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/neliocursos/exemplo-readme/blob/main/LICENSE) 
 
 # Sobre o projeto
+
+(http://acresaude.com.br/)
 
 É um e-commerce, de compras de serviços de profissionais que atendente a distancia ou a domicílio.
 Mediante a agendamentos e pagamentos online via cartão.
 
-(http://acresaude.com.br/ "Site")
+
+## Metodo de pagamento seguro usando PAGARME
+<img src="https://avatars1.githubusercontent.com/u/3846050?v=4&s=200" width="127px" height="127px" align="center"/>
 
 
 ## Layout mobile
