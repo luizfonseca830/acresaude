@@ -19,7 +19,7 @@
         <input type="text" value="{{route('login')}}" id="route_login_acess" hidden/>
         <input type="text" value="{{auth()->check()}}" id="logado" hidden/>
         @foreach($especialidade->medicoEspecialidade as $medicoEsp)
-        <div class="container-fluid step-two__container container-scheduling drc-scheduling-step-3">
+        <div class="container-fluid">
 
                 <section class="step-two__region">
                     <header class="step-two__sub-header">
@@ -58,7 +58,7 @@
                 </section>
         </div>
         @endforeach
-        <div class="container-fluid step-two__container container-scheduling drc-scheduling-step-3">
+        <div class="container-fluid">
             @foreach($especialidade->medicoEspecialidade as $medicoEsp)
                 <section class="step-two__region">
                     <header class="step-two__sub-header">
