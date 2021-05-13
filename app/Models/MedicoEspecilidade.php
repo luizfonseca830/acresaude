@@ -25,4 +25,9 @@ class MedicoEspecilidade extends Model
     public function agenda(){
         return $this->hasMany(AgendaMedico::class, 'medico_especialidade_id', 'id');
     }
+
+    public function agendaCosulta(){
+
+        return $this->hasMany(AgendaConsultas::class, 'agenda_id', 'id');
+    }
 }

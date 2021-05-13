@@ -38,21 +38,15 @@
                                 <span>{{$medicoEsp->medico->conselho}}: {{$medicoEsp->medico->num_conselho}}</span></p>
                         </div>
                         <ul>
+
+                            @foreach($medicoEsp->agendaCosulta as $agendaConsulta)
+{{--                                @dd($agendaConsulta->data_consulta)--}}
                             <li>
                                 <button type="button" class="nb_btn nb_btn--green nb_btn--block">
-                                    <time datetime="1619703300000">08:35</time>
+                                    <time datetime="1619703300000">{{date_format(date_create($agendaConsulta->data_consulta), 'H:i:s')}}</time>
                                 </button>
                             </li>
-                            <li>
-                                <button type="button" class="nb_btn nb_btn--green nb_btn--block">
-                                    <time datetime="1619704200000">08:50</time>
-                                </button>
-                            </li>
-                            <li>
-                                <button type="button" class="nb_btn nb_btn--green nb_btn--block">
-                                    <time datetime="1619706300000">09:25</time>
-                                </button>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </section>
