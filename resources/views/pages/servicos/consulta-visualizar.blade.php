@@ -43,7 +43,7 @@
 {{--                                @dd($agendaConsulta->data_consulta)--}}
                             <li>
                                 <button type="button" class="nb_btn nb_btn--green nb_btn--block">
-                                    <time datetime="1619703300000">{{date_format(date_create($agendaConsulta->data_consulta), 'H:i:s')}}</time>
+                                    <time datetime="1619703300000">{{date_format(date_create($agendaConsulta->data_consulta), 'H:i')}}</time>
                                 </button>
                             </li>
                             @endforeach
