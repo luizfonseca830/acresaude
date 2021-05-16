@@ -100,19 +100,18 @@ $(document).ready(function ($) {
     }
 
     let price = 0;
-    $('#confirma_pagamento').click(async function () {
-        if ($('#horario').val() >= 1) {
+    $('#confirma_pagamento[data-time]').click(async function () {
+        if ($(this).attr('data-time') >= 1) {
             if ($('#logado').val() != true) { //logado
                 $('#modal-login').addClass('show')
                 $('#modal-login').css('display', 'block');
             }
-            var price = await getPrice()
+            var price = await getPrice($(this).attr('data-time'))
             var priceString = price.toString().replace(',', '')//CONVERTION STRING REMOVE ,
 
             var checkout = new PagarMeCheckout.Checkout({
                 encryption_key: $('#api_key_encryption').val(),
                 success: function (data) {
-                    console.log($('#horario').val())
                     $('#modal-confirm-pagament').css('display', 'block')
                     $('#modal-confirm-pagament').addClass('show')
                     $('#dataToken').val(data.token)
@@ -132,8 +131,9 @@ $(document).ready(function ($) {
                 customerData: 'true',
                 createToken: 'true',
                 paymentMethods: 'credit_card',
+                maxInstallments: 3,
                 items: [{
-                    id: $('#horario').val(), //NUMERO NA LOJA
+                    id: $('id').attr('data-time'), //NUMERO NA LOJA
                     title: 'Consulta - Online',
                     unit_price: priceString,
                     quantity: 1,
@@ -154,9 +154,9 @@ $(document).ready(function ($) {
         $('#confirma_pagamento').attr('hidden', true)
     }
 
-    async function getPrice() {
+    async function getPrice(id) {
        try {
-           const res = await getData($('#route_price').val())
+           const res = await getDataAgenda($('#route_price').val(), id)
            return res
        } catch (e) {
            console.log(e)
@@ -171,6 +171,18 @@ $(document).ready(function ($) {
             data: {
                 _token: $("input[name='_token']").val(),
                 id: $('#horario').val()
+            }
+        })
+    }
+
+    function getDataAgenda(routeReceive, id){
+        const route = routeReceive
+        return $.ajax({
+            url: route,
+            type: 'POST',
+            data: {
+                _token: $("input[name='_token']").val(),
+                id: id
             }
         })
     }
