@@ -27,7 +27,6 @@ class MedicoEspecilidade extends Model
     }
 
     public function agendaCosulta(){
-
-        return $this->hasMany(AgendaConsultas::class, 'agenda_id', 'id');
+        return $this->hasMany(AgendaConsultas::class, 'agenda_id', 'id')->orderBy('data_consulta');
     }
 }
