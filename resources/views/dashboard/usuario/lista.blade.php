@@ -1,4 +1,9 @@
 @extends('layouts.dashboard.app')
+@section('link-css')
+    <link rel="stylesheet" href="{{asset('css/dashboard/solicitacao/medico.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.rtl.min.css')}}">
+@endsection
 @section('card')
     <div class="card-body">
         <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -40,4 +45,8 @@
             </tfoot>
         </table>
     </div>
+@endsection
+@section('link-scirpt')
+    <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
+    @include('notifications.notification')
 @endsection

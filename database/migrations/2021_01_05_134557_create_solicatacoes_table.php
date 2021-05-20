@@ -20,13 +20,13 @@ class CreateSolicatacoesTable extends Migration
 
             $table->string('conselho', 100);
             $table->string('num_conselho', 100);
-            $table->string('rqe', 100);
+            $table->string('rqe', 100)->nullable();
 
             $table->string('rg', 13);
             $table->string('telefone', 15)->nullable();
             $table->string('celular', 17)->nullable();
 
-            $table->string('procedimento', 500);
+            $table->string('procedimento', 500)->nullable();
 
             $table->boolean('status')->default(0);
             $table->boolean('enviado_confirmacao')->default(0);

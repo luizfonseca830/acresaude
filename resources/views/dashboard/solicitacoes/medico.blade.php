@@ -1,6 +1,8 @@
 @extends('layouts.dashboard.app')
 @section('link-css')
     <link rel="stylesheet" href="{{asset('css/dashboard/solicitacao/medico.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/alertifyjs/css/alertify.rtl.min.css')}}">
 @endsection
 @section('card')
     <div class="card-body">
@@ -27,17 +29,17 @@
                                 </a>
                             </div>
 
-{{--                            <div class="col col-2">--}}
-{{--                                <a href="{{route('solicitacao.medico.aceitar.dashboard', $solicitacao->id)}}">--}}
-{{--                                    <i class="pe-7s-like2 icons-acao"></i>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="col col-2">--}}
+                            {{--                                <a href="{{route('solicitacao.medico.aceitar.dashboard', $solicitacao->id)}}">--}}
+                            {{--                                    <i class="pe-7s-like2 icons-acao"></i>--}}
+                            {{--                                </a>--}}
+                            {{--                            </div>--}}
 
-{{--                            <div class="col col-2">--}}
-{{--                                <a href="#">--}}
-{{--                                    <i class="pe-7s-close-circle icons-close"></i>--}}
-{{--                                </a>--}}
-{{--                            </div>--}}
+                            {{--                            <div class="col col-2">--}}
+                            {{--                                <a href="#">--}}
+                            {{--                                    <i class="pe-7s-close-circle icons-close"></i>--}}
+                            {{--                                </a>--}}
+                            {{--                            </div>--}}
                         </div>
                     </td>
                 </tr>
@@ -54,4 +56,8 @@
             </tfoot>
         </table>
     </div>
+@endsection
+@section('link-scirpt')
+    <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
+    @include('notifications.notification')
 @endsection
