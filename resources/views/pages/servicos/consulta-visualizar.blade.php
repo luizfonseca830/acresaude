@@ -48,16 +48,17 @@
                                     <span>{{$medicoEsp->medico->conselho}}: {{$medicoEsp->medico->num_conselho}}</span>
                                 </p>
                             </div>
-                            <ul id="datalist">
+                            <ul id="datalist" data-med-list="{{$medicoEsp->id}}">
                                 @foreach($medicoEsp->agendaCosultaMaisProxima() as $agendaConsulta)
-                                    <li>
+                                    <li data-li="{{$agendaConsulta->id}}">
                                         <button type="button" class="nb_btn nb_btn--green nb_btn--block"
                                                 id="confirma_pagamento" data-time="{{$agendaConsulta->id}}">
                                             <time>{{date_format(date_create($agendaConsulta->data_consulta), 'H:i')}}</time>
                                         </button>
                                     </li>
                                 @endforeach
-                                <span type="button" class="nb_btn nb_btn--green nb_btn--block">Mostrar Mais</span>
+                                <span type="button" class="nb_btn nb_btn--green nb_btn--block"
+                                      data-med="{{$medicoEsp->id}}">Mostrar Mais</span>
                             </ul>
                         </div>
                     </section>
@@ -95,10 +96,11 @@
     <script src="{{asset('js/consultas/consultas.js')}}"></script>
     <script>
         $(function () {
-            $('span').click(function () {
-                $('#datalist li:hidden').slice(0, 5).show();
-                if ($('#datalist li').length == $('#datalist li:visible').length) {
-                    $('span ').hide();
+            $('span[data-med]').click(function () {
+                var data = $(this).attr('data-med');
+                $(`#datalist[data-med-list="${data}"] li[data-li]:hidden`).slice(0, 5).show();
+                if ($(`#datalist[data-med-list="${data}"] li`).length == $(`#datalist[data-med-list="${data}"] li:visible`).length) {
+                    $(this).hide();
                 }
             });
 
