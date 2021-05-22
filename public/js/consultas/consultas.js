@@ -118,7 +118,7 @@ $(document).ready(function ($) {
                     $('#dataPrice').val(priceString)
                 },
                 error: function (err) {
-                    // console.log('erro')
+                    // console.log(err)
                     window.location.assign($('#route_login_acess').val())
                 },
                 close: function () {
@@ -133,7 +133,7 @@ $(document).ready(function ($) {
                 paymentMethods: 'credit_card',
                 maxInstallments: 3,
                 items: [{
-                    id: $('id').attr('data-time'), //NUMERO NA LOJA
+                    id: $('#confirma_pagamento').attr('data-time'), //NUMERO NA LOJA
                     title: 'Consulta - Online',
                     unit_price: priceString,
                     quantity: 1,
@@ -143,7 +143,7 @@ $(document).ready(function ($) {
         }
     })
 
-    $('#confirm_login').click(function (){
+    $('#confirm_login').click(function () {
         window.location.assign($('#route_login_acess').val())
     })
 
@@ -155,15 +155,15 @@ $(document).ready(function ($) {
     }
 
     async function getPrice(id) {
-       try {
-           const res = await getDataAgenda($('#route_price').val(), id)
-           return res
-       } catch (e) {
-           console.log(e)
-       }
+        try {
+            const res = await getDataAgenda($('#route_price').val(), id)
+            return res
+        } catch (e) {
+            console.log(e)
+        }
     }
 
-    function getData(routeReceive){
+    function getData(routeReceive) {
         const route = routeReceive
         return $.ajax({
             url: route,
@@ -175,7 +175,7 @@ $(document).ready(function ($) {
         })
     }
 
-    function getDataAgenda(routeReceive, id){
+    function getDataAgenda(routeReceive, id) {
         const route = routeReceive
         return $.ajax({
             url: route,
@@ -187,7 +187,7 @@ $(document).ready(function ($) {
         })
     }
 
-    async function sendTransaction(){
+    async function sendTransaction() {
 
     }
 
