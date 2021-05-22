@@ -32,6 +32,7 @@
 </div>
 <div style="margin-top: 30px"></div>
 @yield('container')
+<div style="margin-bottom: 300px"></div>
 <footer class="page-footer dark">
     <div class="container">
         <div class="row">
@@ -76,7 +77,7 @@
 @yield('link-scirpt')
 <script src="{{asset('assets/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('assets/alertifyjs/alertify.min.js')}}"></script>
-{{--<script src="{{asset ('bootstrap/js/bootstrap.min.js')}}"></script>--}}
-{{--<script src="{{asset ('js/script.min.js')}}"></script>--}}
+<script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+
 @include('notifications.notification')
 </html>

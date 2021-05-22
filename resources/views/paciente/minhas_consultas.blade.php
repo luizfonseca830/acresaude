@@ -31,6 +31,7 @@
                     @if(!is_null($consulta->sala_consulta) && is_null($consulta->status_finalizado))
                         <th><a href="{{route('paciente.carregarsala', $consulta->id)}}"><i class="fa fa-user-clock"></i></a>
                         </th>
+
                     @endif
                     @if(!is_null($consulta->status_finalizado))
                         <th><a href="#"><i class="fa fa-file-pdf fa-2x"></i></a></th>
@@ -39,5 +40,8 @@
             @endforeach
             </tbody>
         </table>
+        @if(count($consultas)==0)
+            <p class="text-info font-weight-bold text-center">Nenhuma Consulta Marcada!</p>
+        @endif
     </div>
 @endsection
