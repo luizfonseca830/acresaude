@@ -32,7 +32,7 @@ class MedicoEspecialidadeTableSeeder extends Seeder
                 array (
                     'id' => 2,
                     'medico_id' => 2,
-                    'especialidade_id' => 4,
+                    'especialidade_id' => 1,
                     'created_at' => '2021-01-11 00:14:28',
                     'updated_at' => '2021-01-11 00:14:28',
                 ),
