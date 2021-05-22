@@ -32,7 +32,7 @@
 </div>
 <div style="margin-top: 30px"></div>
 @yield('container')
-<div style="margin-bottom: 300px"></div>
+<div style="margin-bottom: 500px"></div>
 <footer class="page-footer dark">
     <div class="container">
         <div class="row">
