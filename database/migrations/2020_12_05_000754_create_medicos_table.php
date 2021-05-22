@@ -19,7 +19,7 @@ class CreateMedicosTable extends Migration
             $table->string('rg', 100);
             $table->string('conselho', 100);
             $table->string('num_conselho', 100);
-            $table->string('rqe', 100);
+            $table->string('rqe', 100)->nullable();
 
             $table->string('telefone', 100);
             $table->string('celular', 100);

@@ -54,23 +54,34 @@ class SolicitacaoRequest extends FormRequest
     public function messages()
     {
         return [
-            'usuario' => ['required', 'string', 'max:255', 'unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-            'confirm_passowrd' => 'required|same:password',
+            'usuario.required' => 'O campo usuário é obrigatório.',
 
-            'nome' => ['required', 'string', 'max:255'],
-            'sobrenome' => ['required', 'string', 'max:255'],
-            'cpf' => ['required_without_all:cnpj', 'max:30'],
-            'cnpj' => ['required_without_all:cpf', 'max:30'],
-            'data_nascimento' => ['required', 'date_format:"Y-m-d"'],
+            'validation.email' => 'email não valido',
 
-            'cep' => ['required', 'string', 'max:10'],
-            'uf' => ['required', 'string', 'max:3'],
-            'bairro' => ['required', 'string', 'max:100'],
-            'municipio' => ['required', 'string', 'max:100'],
-            'complemento' => ['max:100'],
-            'endereco' => ['required', 'max:100', 'string'],
+            'email.required' => 'O campo email é obrigatório.',
+
+            'password.required' => 'O campo password é obrigatório.',
+
+            'confirm_passowrd.required' => 'O campo de confirmação de senha é obrigatório.',
+            'confirm_passowrd.same' => 'O campo senha e confirma senha não coincidem.',
+
+            'nome.required' => 'O campo nome é obrigatório.',
+
+            'sobrenome.required' => 'O campo sobrenome é obrigatório.',
+
+            'cpf.required_without_all' => 'É necessário preencher o campo CPF ou CNPJ.',
+
+            'cnpj.required_without_all' => 'É necessário preencher o campo CPF ou CNPJ.',
+
+            'data_nascimento.required' => 'O campo data de nascimento é obrigatório.',
+
+            'cep.required' => 'O campo cep é obrigatório.',
+
+            'uf.required' => 'O campo uf é obrigatório.',
+
+            'bairro.required' => 'O campo bairro é obrigatório.',
+
+            'municipio.required' => 'O campo municipio é obrigatório.',
 
             'especialidade_id.required' => "O campo especialidade é obrigatório.",
             'especialidade_id.exists' => "O campo especialidade não existe em nosso banco.",
