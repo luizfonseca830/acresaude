@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\DashBoard\Solicitacao\MedicoController;
+use \App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController;
+use \App\Http\Controllers\DashBoard\Lista\UsuarioController;
+use \App\Http\Controllers\Consultas\ConsultasController;
+use \App\Http\Controllers\Medico\AgendaController;
+use \App\Http\Controllers\Servico\Solicitacao\SolicitacaoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +32,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/minhascompras', [\App\Http\Controllers\Pessoa\MinhasComprasController::class, 'index'])->name('minhascompras.index');
 
 //    MEDICO AGENDA
-    Route::get('/agenda', [\App\Http\Controllers\Medico\AgendaController::class, 'index'])->name('agenda.index');
-    Route::get('/load-agenda', [\App\Http\Controllers\Medico\AgendaController::class, 'loadAgenda'])->name('routeLoadAgenda');
-    Route::post('/agenda-store', [\App\Http\Controllers\Medico\AgendaController::class, 'store'])->name('routeStoreAgenda');
-    Route::put('/agenda-update', [\App\Http\Controllers\Medico\AgendaController::class, 'update'])->name('routeUpdateAgenda');
-    Route::post('/agenda-info', [\App\Http\Controllers\Medico\AgendaController::class, 'show'])->name('routeInfoAgenda');
-    Route::put('/agenda-eventDropUpdate', [\App\Http\Controllers\Medico\AgendaController::class, 'eventDropUpdate'])->name('routeDropUpdateAgenda');
-    Route::put('/agenda-event-delete', [\App\Http\Controllers\Medico\AgendaController::class, 'delete'])->name('routeDeleteAgenda');
+    Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
+    Route::get('/load-agenda', [AgendaController::class, 'loadAgenda'])->name('routeLoadAgenda');
+    Route::post('/agenda-store', [AgendaController::class, 'store'])->name('routeStoreAgenda');
+    Route::put('/agenda-update', [AgendaController::class, 'update'])->name('routeUpdateAgenda');
+    Route::post('/agenda-info', [AgendaController::class, 'show'])->name('routeInfoAgenda');
+    Route::put('/agenda-eventDropUpdate', [AgendaController::class, 'eventDropUpdate'])->name('routeDropUpdateAgenda');
+    Route::put('/agenda-event-delete', [AgendaController::class, 'delete'])->name('routeDeleteAgenda');
 
     //PACIENTE AGENDA
     Route::match(['get', 'post'], '/agenda/consulta/{id}', [\App\Http\Controllers\Paciente\AgendaConsultaController::class, 'index'])->name('paciente.agenda.index');
@@ -43,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/paciente/minhasconsultas', [\App\Http\Controllers\Paciente\MinhasConsultasController::class, 'index'])->name('paciente.consultas.index');
 
     //MEDICO CONSULTA
-    Route::get('/medico/consulta/delete/{id}', [\App\Http\Controllers\Medico\AgendaController::class, 'deleteUnique'])->name('medico.consulta.delete.unico');
+    Route::get('/medico/consulta/delete/{id}', [AgendaController::class, 'deleteUnique'])->name('medico.consulta.delete.unico');
     Route::get('/medico/minhasconsultas', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'index'])->name('medico.consultas.index');
     Route::get('/medico/consulta/criar/{consulta_id}', [\App\Http\Controllers\Medico\MinhasConsultasController::class, 'update'])->name('medico.consultas.update');
     Route::match(['get', 'post'], 'medico/consulta/salvarprontuario/{consulta_id}', [\App\Http\Controllers\Medico\ProntuarioController::class, 'salvaProntuario'])->name('medico.consulta.salvaProntuario');
@@ -61,39 +67,39 @@ Route::group(['middleware' => ['auth']], function () {
 
 
         //Especialidade
-        Route::get('/dashboard/especialidade/novo', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
-        Route::post('/dashboard/especialidade/salvar', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
-        Route::get('/dashboard/especialidade/lista', [\App\Http\Controllers\DashBoard\Lista\EspecialidadeController::class, 'index'])->name('especialidade.list.dashboard');
-        Route::get('/dashboard/especialidade/editar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'edit'])->name('especialidade.edit.dashboard');
-        Route::get('/dashboard/especialidade/deletar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'destroy'])->name('especialidade.destroy.dashboard');
-        Route::match(['get', 'post'], '/dashboard/especialidade/update/{id}', [\App\Http\Controllers\DashBoard\Cadastros\EspecialidadeController::class, 'update'])->name('especialidade.update.dashboard');
+        Route::get('/dashboard/especialidade/novo', [EspecialidadeController::class, 'index'])->name('especialidade.create.dashboard');
+        Route::post('/dashboard/especialidade/salvar', [EspecialidadeController::class, 'store'])->name('especialidade.store.dashboard');
+        Route::get('/dashboard/especialidade/lista', [EspecialidadeController::class, 'index'])->name('especialidade.list.dashboard');
+        Route::get('/dashboard/especialidade/editar/{id}', [EspecialidadeController::class, 'edit'])->name('especialidade.edit.dashboard');
+        Route::get('/dashboard/especialidade/deletar/{id}', [EspecialidadeController::class, 'destroy'])->name('especialidade.destroy.dashboard');
+        Route::match(['get', 'post'], '/dashboard/especialidade/update/{id}', [EspecialidadeController::class, 'update'])->name('especialidade.update.dashboard');
 
         //Usuário
-        Route::get('/dashboard/usuario/lista', [\App\Http\Controllers\DashBoard\Lista\UsuarioController::class, 'index'])->name('usuario.lista.dashboard');
-        Route::get('/dashboard/usuario/editar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'edit'])->name('usuario.edit.dashboard');
-        Route::get('/dashboard/usuario/deletar/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'destroy'])->name('usuario.destroy.dashboard');
-        Route::match(['get', 'post'], '/dashboard/usuario/update/{id}', [\App\Http\Controllers\DashBoard\Cadastros\UsuarioController::class, 'update'])->name('usuario.update.dashboard');
+        Route::get('/dashboard/usuario/lista', [UsuarioController::class, 'index'])->name('usuario.lista.dashboard');
+        Route::get('/dashboard/usuario/editar/{id}', [UsuarioController::class, 'edit'])->name('usuario.edit.dashboard');
+        Route::get('/dashboard/usuario/deletar/{id}', [UsuarioController::class, 'destroy'])->name('usuario.destroy.dashboard');
+        Route::match(['get', 'post'], '/dashboard/usuario/update/{id}', [UsuarioController::class, 'update'])->name('usuario.update.dashboard');
 
 
         //Solicitacao
-        Route::get('/dashboard/solicitacao/medico', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'index'])->name('solicitacao.medico.dashboard');
-        Route::get('/dash/board/solicitacao/medicoa/aceita/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'aceitar'])->name('solicitacao.medico.aceitar.dashboard');
-        Route::get('/dash/board/solicitacao/medicoa/rejeitar/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'rejeitar'])->name('solicitacao.medico.rejeitar.dashboard');
-        Route::get('/dashboard/solicitacao/medico/visualizar/{id}', [\App\Http\Controllers\DashBoard\Solicitacao\MedicoController::class, 'visualizarMedico'])->name('solicitacao.medico.visualizar.dashboard');
+        Route::get('/dashboard/solicitacao/medico', [MedicoController::class, 'index'])->name('solicitacao.medico.dashboard');
+        Route::get('/dash/board/solicitacao/medicoa/aceita/{id}', [MedicoController::class, 'aceitar'])->name('solicitacao.medico.aceitar.dashboard');
+        Route::get('/dash/board/solicitacao/medicoa/rejeitar/{id}', [MedicoController::class, 'rejeitar'])->name('solicitacao.medico.rejeitar.dashboard');
+        Route::get('/dashboard/solicitacao/medico/visualizar/{id}', [MedicoController::class, 'visualizarMedico'])->name('solicitacao.medico.visualizar.dashboard');
     });
 
     //CONSULTA PAGAMENTO
-    Route::post('servico/consulta/pagamento', [\App\Http\Controllers\Consultas\ConsultasController::class, 'indexPagamento'])->name('consulta.pagamento');
+    Route::post('servico/consulta/pagamento', [ConsultasController::class, 'indexPagamento'])->name('consulta.pagamento');
     //REALIZAR PAGAMENTO
-    Route::post('servico/realizar/pagamento', [\App\Http\Controllers\Consultas\ConsultasController::class, 'solicitationPayment'])->name('realizar.pagamento');
+    Route::post('servico/realizar/pagamento', [ConsultasController::class, 'solicitationPayment'])->name('realizar.pagamento');
     Route::post('agenda/ajax/consulta/preco/', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'price'])->name('consulta.price');
     Route::post('/pagamento/transacao', [\App\Http\Controllers\Consultas\PagamentoController::class, 'pagarmentoTransação'])->name('pagamento.transação');
     Route::get('/confirmacao/transacao/emial/{trasacao}', [\App\Http\Controllers\Email\EmailController::class, 'index'])->name('email.transacao');
 });
 
 //SERVICOS
-Route::get('/servico/consulta', [\App\Http\Controllers\Consultas\ConsultasController::class, 'index'])->name('consulta.index');
-Route::get('/servico/consulta/{id}', [\App\Http\Controllers\Consultas\ConsultasController::class, 'show'])->name('consulta.mostra');
+Route::get('/servico/consulta', [ConsultasController::class, 'index'])->name('consulta.index');
+Route::get('/servico/consulta/{id}', [ConsultasController::class, 'show'])->name('consulta.mostra');
 
 
 //SERVICO SOLICITACAO AJAX
@@ -101,7 +107,7 @@ Route::post('/servico/consulta/ajax', [\App\Http\Controllers\Consultas\Consultas
 Route::post('/servico/consulta/medico/horario/ajax', [\App\Http\Controllers\Consultas\ConsultasAjaxController::class, 'searchMedicoHorario'])->name('consulta.ajax.searchMedicoHorario');
 
 //SOLICITACAO
-Route::get('/servico/solicitacao', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'index'])->name('solicitacao.index');
-Route::post('/servico/solicitacao/pedido', [\App\Http\Controllers\Servico\Solicitacao\SolicitacaoController::class, 'store'])->name('solicitacao.store');
+Route::get('/servico/solicitacao', [SolicitacaoController::class, 'index'])->name('solicitacao.index');
+Route::post('/servico/solicitacao/pedido', [SolicitacaoController::class, 'store'])->name('solicitacao.store');
 
 
