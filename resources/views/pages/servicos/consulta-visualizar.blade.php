@@ -31,40 +31,41 @@
         @foreach($especialidade->medicoEspecialidade as $medicoEsp)
             @foreach($medicoEsp->agenda as $agenda_medico)
                 @if($agenda_medico >= date('Y-m-d'))
-                @if (!is_null($medicoEsp->agendaCosultaMaisProxima()))
-                    <div class="container-fluid">
-                        <section class="step-two__region">
-                            <header class="step-two__sub-header">
-                                <h5 class="blue step-two__sub-title">
-                                    <time>{{$medicoEsp->converteData(date($agenda_medico->start))}}</time>
-                                </h5>
-                            </header>
+                    @if (!is_null($medicoEsp->agendaCosultaMaisProxima()))
+                        <div class="container-fluid">
+                            <section class="step-two__region">
+                                <header class="step-two__sub-header">
+                                    <h5 class="blue step-two__sub-title">
+                                        <time>{{$medicoEsp->converteData(date($agenda_medico->start))}}</time>
+                                    </h5>
+                                </header>
 
-                            <div class="drc-schedules-professional">
-                                <div class="drc-schedules-professional-info" value="{{$medicoEsp->medico->id}}">
-                                    <div class="drc-professional-image drc-fem">
-                                        <img src="{{asset('images/img-equipe-man.svg')}}" alt="-">
+                                <div class="drc-schedules-professional">
+                                    <div class="drc-schedules-professional-info" value="{{$medicoEsp->medico->id}}">
+                                        <div class="drc-professional-image drc-fem">
+                                            <img src="{{asset('images/img-equipe-man.svg')}}" alt="-">
+                                        </div>
+                                        <h6 class="blue">{{$medicoEsp->medico->pessoa->nome}}</h6>
+                                        <p class="drc-legend">
+                                            <span>{{$medicoEsp->medico->conselho}}: {{$medicoEsp->medico->num_conselho}}</span>
+                                        </p>
                                     </div>
-                                    <h6 class="blue">{{$medicoEsp->medico->pessoa->nome}}</h6>
-                                    <p class="drc-legend">
-                                        <span>{{$medicoEsp->medico->conselho}}: {{$medicoEsp->medico->num_conselho}}</span>
-                                    </p>
+                                    <ul id="datalist" data-med-list="{{$medicoEsp->id}}">
+                                        @foreach($agenda_medico->agendaConsulta as $agendaConsulta)
+                                            <li data-li="{{$agendaConsulta->id}}">
+                                                <button type="button" class="nb_btn nb_btn--green nb_btn--block"
+                                                        id="confirma_pagamento" data-time="{{$agendaConsulta->id}}">
+                                                    <time>{{date_format(date_create($agendaConsulta->data_consulta), 'H:i')}}</time>
+                                                </button>
+                                            </li>
+                                        @endforeach
+                                        <span type="button" class="nb_btn nb_btn--green nb_btn--block"
+                                              data-med="{{$medicoEsp->id}}">Mostrar Mais</span>
+                                    </ul>
                                 </div>
-                                <ul id="datalist" data-med-list="{{$medicoEsp->id}}">
-                                    @foreach($medicoEsp->agendaCosultaMaisProxima() as $agendaConsulta)
-                                        <li data-li="{{$agendaConsulta->id}}">
-                                            <button type="button" class="nb_btn nb_btn--green nb_btn--block"
-                                                    id="confirma_pagamento" data-time="{{$agendaConsulta->id}}">
-                                                <time>{{date_format(date_create($agendaConsulta->data_consulta), 'H:i')}}</time>
-                                            </button>
-                                        </li>
-                                    @endforeach
-                                    <span type="button" class="nb_btn nb_btn--green nb_btn--block"
-                                          data-med="{{$medicoEsp->id}}">Mostrar Mais</span>
-                                </ul>
-                            </div>
-                        </section>
-                    </div>
+                            </section>
+                        </div>
+                    @endif
                 @endif
             @endforeach
         @endforeach
